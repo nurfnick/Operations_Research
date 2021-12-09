@@ -1,0 +1,28 @@
+def f(x):
+  return (x+5)**2
+
+f(5)
+
+def derf(x):
+  return 2*(x+5)
+
+initialize = 3
+weight = 0.12
+x = initialize
+
+update = x - weight*derf(x)
+update
+
+def graddescent(x,weight):
+  return x- weight*derf(x)
+
+update = graddescent(update,weight)
+print(update)
+
+x = 12
+
+for i in range(20):
+  print(i,x,f(x))
+  x = graddescent(x,weight)
+
+

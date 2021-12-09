@@ -3,3 +3,10 @@ title: "Operations Research OER"
 logo: JuliaSetECUColors.jpg
 execute:
   execute_notebooks: "off"
+repository:
+  url: https://github.com/nurfnick/Operations_Research
+html:
+  use_repository_button: true
+  use_issues_button: true
+launch_buttons:
+  colab_url: "https://colab.research.google.com"

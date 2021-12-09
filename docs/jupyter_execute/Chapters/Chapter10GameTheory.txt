@@ -1,0 +1,58 @@
+!apt-get -qq install -y graphviz && pip install nashpy
+
+import numpy as np
+import nashpy as nash
+
+p1 = np.array([
+    [0, -1, 1],   #rock payoff
+    [1, 0, -1],   #paper payoff
+    [-1, 1, 0]    #scissors payoff      
+])
+
+p1 = np.array([
+    [0, -1, 1],   #rock payoff
+    [1, 0, -1],   #paper payoff
+    [-1, 1, 0]    #scissors payoff      
+])
+p2 = p1.transpose()
+rock_paper_scissors = nash.Game(p1, p2)
+equilibria = rock_paper_scissors.support_enumeration()
+for p1, p2 in equilibria:
+  print("Player 1", p1)
+  print("Player 2", p2)
+
+!pip install nashpy
+
+import nashpy as nash
+import numpy as np
+
+A = np.array([[-8,0],[-12,-1]])
+B = np.array([[-8,-12],[0,-1]])
+
+rps = nash.Game(A, B)
+
+rps
+
+
+eqs = rps.support_enumeration()
+
+list(eqs)
+
+iterations = 10
+
+play_counts = rps.fictitious_play(iterations=iterations)
+
+for row_play_count, column_play_count in play_counts:
+
+    print(row_play_count, column_play_count)
+
+p1 = [.1,.9]
+p2 = [1,0]
+
+rps[p1,p2]
+
+play_counts = rps.stochastic_fictitious_play(iterations=iterations)
+
+for row_play_count, column_play_count in play_counts:
+
+    print(row_play_count, column_play_count)
