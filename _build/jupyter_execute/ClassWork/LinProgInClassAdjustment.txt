@@ -1,0 +1,79 @@
+import numpy as np
+
+A = np.array([[7,3,6,1,0],[4,4,5,0,1]])
+b= np.array([300,200])
+
+import itertools
+
+for i in itertools.combinations(range(5), r=2):
+  print(i)
+#np.linalg.solve(A,b)
+
+index = [[i,j] for i in range(5) for j in range(i+1,5)]
+
+index
+
+for i in index:
+  print(np.linalg.solve(A[:,i],b))
+
+d = {0:'small',1:'med',2:'large',3:'slacklabor',4:'slackmaterial'}
+
+d[4]
+
+
+
+for i in index:
+  print((d[i[0]],d[i[1]]),np.linalg.solve(A[:,i],b))
+
+def profit(list):
+  return 4*list[0]+2*list[1]+3*list[2]
+
+
+newlist = []
+indexref = [2,3]
+solution = np.linalg.solve(A[:,indexref],b)
+def buildFullList(indexref,solution):
+  newlist =[]
+  solutioncounter = 0
+  for j in range(5):
+    if j not in indexref:
+      newlist.append(0)
+    else:
+      newlist.append(solution[solutioncounter])
+      solutioncounter += 1
+  return newlist
+
+buildFullList(indexref,solution)
+
+for i in index:
+  solution = np.linalg.solve(A[:,i],b)
+  print((d[i[0]],d[i[1]]),solution,buildFullList(i,solution),profit(buildFullList(i,solution)))
+
+def testForFeasible(list1):
+  return all([i>=0 for i in list1])
+
+
+all([i>=0 for i in buildFullList(indexref,solution)])
+
+buildFullList(indexref,solution)
+
+for i in index:
+  solution = np.linalg.solve(A[:,i],b)
+  list1 = buildFullList(i,solution)
+  print((d[i[0]],d[i[1]]),solution,list1,profit(list1),testForFeasible(list1))
+
+X = []
+for i in index:
+  solution = np.linalg.solve(A[:,i],b)
+  list1 = buildFullList(i,solution)
+  X.append([(d[i[0]],d[i[1]]),solution,list1,profit(list1),testForFeasible(list1)])
+
+import pandas as pd
+
+pd.DataFrame(X,columns = ['Variables Used','Solution','Expanded with Zeros','Profit','In Feasible'])
+
+from scipy.optimize import linprog
+
+linprog([-4,-2,-3],A[:,0:3],b)
+
+

@@ -1,0 +1,5 @@
+# in _config.yml
+title: "Operations Research:  An OER"
+logo: logo.png
+execute:
+  execute_notebooks: "off"
