@@ -1,5 +1,6 @@
 # in _config.yml
 title: "Operations Research OER"
+description: "An OER for Operations Research developed Fall 2021 at East Central University"
 logo: JuliaSetECUColors.jpg
 execute:
   execute_notebooks: "off"
