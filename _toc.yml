@@ -1,6 +1,6 @@
 # In _toc.yml
 format: jb-book
-root: README.md
+root: Chapters/Introduction.ipynb
 chapters:
 - file: Chapters/Chapter01Modeling.ipynb
 - file: Chapters/Chapter02LinearProgramming.ipynb

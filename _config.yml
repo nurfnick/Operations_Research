@@ -1,5 +1,5 @@
 # in _config.yml
-title: "Operations Research:  An OER"
-logo: logo.png
+title: "Operations Research OER"
+logo: JuliaSetECUColors.jpg
 execute:
   execute_notebooks: "off"
