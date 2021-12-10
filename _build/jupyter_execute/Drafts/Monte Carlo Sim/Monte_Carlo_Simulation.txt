@@ -1,0 +1,235 @@
+import random
+import matplotlib.pyplot as plt
+
+def coin_toss():
+
+   x = random.uniform(0, 1)
+     
+   if x > 0.5:
+        # Heads for True
+       return True
+   else:
+       # Tails for False
+        return False
+
+
+# Number of tosses in each experiment
+N = 10
+   # List for the results
+results = []
+ 
+    # Toss the coin N times and store in a list
+for i in range(N):
+   result = coin_toss()
+   results.append(result)
+ 
+   n_heads = sum(results)
+   p_heads = n_heads/N
+
+prob = []
+ 
+# Number of times the experimemnt is conducted
+for i in range(10000):
+     
+   # Number of tosses in each experiment
+   N = 10
+   # List for the results
+   results = []
+ 
+    # Toss the coin N times and store in a list
+   for i in range(N):
+      result = coin_toss()
+      results.append(result)
+ 
+   n_heads = sum(results)
+   p_heads = n_heads/N
+   prob.append(p_heads)
+ 
+# average the probability of heads over the number of experiments
+p_heads_FINAL = sum(prob)/10000
+print("Probability of heads is {:.5f}\n".format(p_heads_FINAL))
+
+plt.hist(prob, bins=[0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0, 1.1])
+
+import random
+import matplotlib.pyplot as plt
+
+#We are going with 3 doors :
+#1 - Car
+#2 - Goats
+doors = ["goat","goat","car"]
+
+#Empty lists to store probability values :
+switch_win_probability = []
+stick_win_probability = []
+
+def monte_carlo(n):
+    
+    #Calculating switch and stick wins :
+    switch_wins = 0
+    stick_wins = 0
+    
+    for i in range(n):
+    
+        #Randomly placing the car and goats behind the three doors :
+        random.shuffle(doors) 
+        
+        #Contestant's choice :
+        k = random.randrange(2)  
+
+        #If the contestant doesn't get car :
+        if doors[k] != 'car': 
+            switch_wins += 1
+            
+        #If the contestant got car :
+        else: 
+            stick_wins += 1
+
+        #Updating the list values :
+        switch_win_probability.append(switch_wins/(i+1))
+        stick_win_probability.append(stick_wins/(i+1))
+        
+        #Plotting the data :
+        plt.plot(switch_win_probability)
+        plt.plot(stick_win_probability)
+
+    #plotting the expected value   
+    plt.axhline(y=0.66666, color='r', linestyle='-')
+    plt.axhline(y=0.33333, color='g', linestyle='-')
+
+   #plotting the expected value
+    plt.axhline(y=0.66666, color='r', linestyle='-')
+    plt.axhline(y=0.33333, color='g', linestyle='-')
+
+    #Print the probability values :
+    print('Winning probability if you always switch:',switch_win_probability[-1])
+    print('Winning probability if you always stick to your original choice:', stick_win_probability[-1])
+
+monte_carlo(1000)
+
+import random
+
+random.randint(1,6)
+
+def Roll2Dice():
+  return [random.randint(1,6),random.randint(1,6)]
+
+Roll2Dice()
+
+sums = range(2,13,1)
+newlist =[]
+for i in sums:
+  newlist.append(0)
+
+for i in listy:
+  for j in sums:
+    if i == j:
+      newlist[i-2] +=1
+
+newlist
+
+def ComeOutRoll(TwoDice):
+  s = sum(TwoDice)
+  if (s == 2)|(s == 3)|(s==12):
+    return 'Craps'
+  elif (s == 7)|(s == 11):
+    return 'comeAgain'
+  else:
+    return s #return the point
+
+ComeOutRoll([4,4])
+
+ComeOutRoll([6,6])
+
+def SetPointRoll(TwoDice,point):
+  s = sum(TwoDice)
+  if s == 7:
+    return 'SevenOut'
+  elif s == point:
+    return 'comeAgain'
+  else:
+    return point
+
+SetPointRoll([5,4],9)
+
+SetPointRoll([3,4],4)
+
+SetPointRoll([3,1],5)
+
+def PlayCraps():
+  x = ComeOutRoll(Roll2Dice())
+  rollCounter = 1
+  while (x != 'Craps')&(x != 'SevenOut'):
+    if x == 'comeAgain':
+      rollCounter += 1
+      x = ComeOutRoll(Roll2Dice())
+    else:
+      point = x
+      rollCounter += 1
+      x = SetPointRoll(Roll2Dice(),point)
+  return rollCounter
+
+
+PlayCraps()
+
+list1 = []
+for i in range(100):
+  list1.append(PlayCraps())
+sum(list1)/len(list1)
+
+
+import matplotlib.pyplot as plt
+
+plt.hist(list1)
+
+list2 = []
+for j in range(200):
+  list1 = []
+  for i in range(100):
+    list1.append(PlayCraps())
+  list2.append(sum(list1)/len(list1))
+
+plt.hist(list2)
+
+from numpy import mean
+
+mean(list2)
+
+def ErrorTestingPlayCraps():
+  listOfRolls = []
+  randRoll = Roll2Dice()
+  listOfRolls.append(randRoll)
+  x = ComeOutRoll(randRoll)
+  rollCounter = 1
+  PassLineWins = 0
+  while (x != 'Craps')&(x != 'SevenOut'):
+    if x == 'comeAgain':
+      listOfRolls.append('Pass Line Win')
+      PassLineWins += 1
+      rollCounter += 1
+      randRoll = Roll2Dice()
+      listOfRolls.append(randRoll)
+      x = ComeOutRoll(randRoll)
+    else:
+      point = x
+      rollCounter += 1
+      randRoll = Roll2Dice()
+      listOfRolls.append(randRoll)
+      listOfRolls.append(point)
+      x = SetPointRoll(randRoll,point)
+  else:
+    listOfRolls.append(x)
+  return rollCounter, listOfRolls
+
+ErrorTestingPlayCraps()
+
+ErrorTestingPlayCraps()
+
+import sympy
+
+x = sympy.Symbol('x')
+sympy.solve(4/36+8/36*(x+1)+2*3/36*(5+3/9*x)+8/36*(4.6+4/10*x)+10/36*(36/11+1+5/11*x)-x,x)
+
+
+
+
