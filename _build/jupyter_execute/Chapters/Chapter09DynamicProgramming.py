@@ -32,7 +32,7 @@ def recursion():
 #Removing the comment from above will cause the recursion function to loop infinitely because it will keep calling on itself.
 
 
-# ![Recursion](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Recursion.jpg)
+# ![Recursion](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Recursion.jpg)
 
 # **Figure 1:** Visual example of recursion
 
@@ -93,7 +93,7 @@ print(fib(20))
 # ### Memoization: Matrix Chain 
 # &nbsp;&nbsp;&nbsp;&nbsp;Memoization prevents continuous solving of the same recursive subproblems by creating a 'sticky note' like save-state per inputs to be called for later calculations. This programming technique takes advantage of the CPU's cache and stores those more time-consuming calculations to later be used when called on throughout the solutions.
 
-# ![Memoization](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/memoization.png)
+# ![Memoization](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/memoization.png)
 
 # **Figure 2:** Memoization: Recursive calls are stored in an array. With sticky notes, information gets written down and the sticky notes get be placed next to each other. This is the same way an array stores its data in memory.
 
@@ -180,15 +180,15 @@ print("\nMinimum number of operations possible: ", MtxChainOrder(array, size2))
 # 
 # &nbsp;&nbsp;&nbsp;&nbsp;In most cases, it is better to take a **bottom-up approach** rather than a top-down approach. Bottom-up has a different approach, it uses composition. Instead of starting from the root, it starts from the bottom, the smallest variable types, and moves upward towards the root. This means that we will build it from the ground up. In the model car example, this would be like pulling the model out of the box. All the pieces are connected, but it still needs to be assembled. The pieces represent the subproblems and the sub subproblems. In objected-oriented programming we can define the model car as a class, meaning that all pieces are no longer separated but in constant communication and reduce redundancy. Good examples for bottom-up are object-oriented languages; languages like C++, C#, and Java, all use the bottom-up approach because the object is always identified first. Finally, once we add each piece and put all the pieces together, we will have a functional model car.
 
-# ![Parse Tree](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Parse%20Tree.png)
+# ![Parse Tree](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Parse%20Tree.png)
 
 # **Figure 3:** Parse tree with the root called "Statements".
 
-# ![Top-Down Parse Tree](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Top%20Down%20Parse%20Tree.png)
+# ![Top-Down Parse Tree](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Top%20Down%20Parse%20Tree.png)
 
 # **Figure 4:** Top-down parse tree. Look at the numerical value and notice how it descends breaking the parse tree down, piece by piece.
 
-# ![Bottom-up Parse Tree](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Bottom%20UP%20Parse%20Tree.png)
+# ![Bottom-up Parse Tree](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Bottom%20UP%20Parse%20Tree.png)
 
 # **Figure 5:** Notice how the bottom-up parse tree tries to compile all pieces from the bottom before it makes its way to the next tier. It is always building every piece to the root.
 
@@ -200,7 +200,7 @@ print("\nMinimum number of operations possible: ", MtxChainOrder(array, size2))
 # is. 
 # 
 
-# ![Rod Cut Ex](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RodCuttingEx3.jpg)
+# ![Rod Cut Ex](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RodCuttingEx3.jpg)
 
 # **Figure 6:** Rod Cutting Example
 
@@ -275,7 +275,7 @@ print('Maximum profit for rod is: ', RodCutting(10, [2, 4, 5, 6, 7, 8, 9, 10, 12
 print("--- %s seconds ---" % (time.time() - start_time)) #Will print out the time in a tenth of a second.
 
 
-# ![Rod Cut L=3](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RodCuttingRT3.jpg)
+# ![Rod Cut L=3](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RodCuttingRT3.jpg)
 
 # **Figure 7:** Recursion tree. Length = 3.
 
@@ -283,7 +283,7 @@ print("--- %s seconds ---" % (time.time() - start_time)) #Will print out the tim
 # 
 # Below is another example of a recursion tree. Again, the subproblems are overlapping, but the number of times it needs to run a subproblem is increasing by $n^2$.
 
-# ![Rod Cut L=4](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RTFour.jpg)
+# ![Rod Cut L=4](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RTFour.jpg)
 
 # **Figure 8:** Recursion Tree with a length = 4.
 
@@ -318,7 +318,7 @@ print("--- %s seconds ---" % (time.time() - start_time)) #Will print out the tim
 
 # Time complexity is $O(n^2)$
 
-# ![BU Rod Cut L=4](https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RTFourBU.jpg)
+# ![BU Rod Cut L=4](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RTFourBU.jpg)
 
 # **Figure 9:** Bottom-Up Tree with a length = 4.
 
@@ -575,3 +575,9 @@ print("--- %s seconds ---" % (time.time() - start_time)) #Will print out the tim
 # Principal authors of this chapter were: [B.Roy](https://github.com/roybibek), [D.L.Castaneda](https://github.com/DannyCR7XD), & [T.A.Wood](https://github.com/Skurmes)
 # 
 # Contributors: [N.C.Jacob](https://github.com/nurfnick)
+
+# In[ ]:
+
+
+
+

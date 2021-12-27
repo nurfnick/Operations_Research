@@ -364,7 +364,7 @@
 </div>
 </div>
 </div>
-<p><img alt="Recursion" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Recursion.jpg" /></p>
+<p><img alt="Recursion" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Recursion.jpg" /></p>
 <p><strong>Figure 1:</strong> Visual example of recursion</p>
 <div class="section" id="recursion-fibonacci-sequence">
 <h3>Recursion: Fibonacci Sequence<a class="headerlink" href="#recursion-fibonacci-sequence" title="Permalink to this headline">¶</a></h3>
@@ -424,7 +424,7 @@ Since the Fibonacci method does only a constant amount of work, the time complex
 <div class="section" id="memoization-matrix-chain">
 <h3>Memoization: Matrix Chain<a class="headerlink" href="#memoization-matrix-chain" title="Permalink to this headline">¶</a></h3>
 <p>    Memoization prevents continuous solving of the same recursive subproblems by creating a ‘sticky note’ like save-state per inputs to be called for later calculations. This programming technique takes advantage of the CPU’s cache and stores those more time-consuming calculations to later be used when called on throughout the solutions.</p>
-<p><img alt="Memoization" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/memoization.png" /></p>
+<p><img alt="Memoization" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/memoization.png" /></p>
 <p><strong>Figure 2:</strong> Memoization: Recursive calls are stored in an array. With sticky notes, information gets written down and the sticky notes get be placed next to each other. This is the same way an array stores its data in memory.</p>
 <p>    Memoization should only be used for recursive calculations so that when requesting an output it will stay consistent each time calculations are executed. If not, the program would lose its efficiency and gained advantages as memoization would in the end take up more CPU cycle times to verify its cache stored data in verifying whether the output would be the same or not. Global variables would also greatly influence or break a memoized function. A different algorithm would be much more acceptable.</p>
 <p><strong>Example 2:</strong> Memoization</p>
@@ -508,18 +508,18 @@ Minimum number of operations possible:  18000
 <p>    Recursion and memoization both take a <strong>top-down approach</strong> to solving the problem. This means that the problem is looked at as a whole and is broken down into pieces, examining each piece to see how it makes a whole. Top-down can even go further by breaking down the parts into sub subparts. The main languages that also focus on top-down approach are COBOL, Fortran, and C.</p>
 <p>    Take a look at a plastic model car for example. For top-down we will start by looking at the model car(the root). Because top-down is a decomposition process, we will break the model car down into pieces. You will have many parts: the engine, wheels, the body, and the interior. All these items are separate, but they end up forming the model car. Because they are separate, this can cause redundancy and communication errors within the program.</p>
 <p>    In most cases, it is better to take a <strong>bottom-up approach</strong> rather than a top-down approach. Bottom-up has a different approach, it uses composition. Instead of starting from the root, it starts from the bottom, the smallest variable types, and moves upward towards the root. This means that we will build it from the ground up. In the model car example, this would be like pulling the model out of the box. All the pieces are connected, but it still needs to be assembled. The pieces represent the subproblems and the sub subproblems. In objected-oriented programming we can define the model car as a class, meaning that all pieces are no longer separated but in constant communication and reduce redundancy. Good examples for bottom-up are object-oriented languages; languages like C++, C#, and Java, all use the bottom-up approach because the object is always identified first. Finally, once we add each piece and put all the pieces together, we will have a functional model car.</p>
-<p><img alt="Parse Tree" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Parse%20Tree.png" /></p>
+<p><img alt="Parse Tree" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Parse%20Tree.png" /></p>
 <p><strong>Figure 3:</strong> Parse tree with the root called “Statements”.</p>
-<p><img alt="Top-Down Parse Tree" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Top%20Down%20Parse%20Tree.png" /></p>
+<p><img alt="Top-Down Parse Tree" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Top%20Down%20Parse%20Tree.png" /></p>
 <p><strong>Figure 4:</strong> Top-down parse tree. Look at the numerical value and notice how it descends breaking the parse tree down, piece by piece.</p>
-<p><img alt="Bottom-up Parse Tree" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/Bottom%20UP%20Parse%20Tree.png" /></p>
+<p><img alt="Bottom-up Parse Tree" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/Bottom%20UP%20Parse%20Tree.png" /></p>
 <p><strong>Figure 5:</strong> Notice how the bottom-up parse tree tries to compile all pieces from the bottom before it makes its way to the next tier. It is always building every piece to the root.</p>
 <p><strong>Example 3:</strong> Recursion and Bottom-up.</p>
 <p>The Rod Cutting Problem is basic. There is n length of a rod. The seller is wanting to maximize
 profit. For each length of n there can be a price of i that can represent each length. The seller
 wants to know what the optimal price is. Should they cut the rod into pieces or sell the rod as it
 is.</p>
-<p><img alt="Rod Cut Ex" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RodCuttingEx3.jpg" /></p>
+<p><img alt="Rod Cut Ex" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RodCuttingEx3.jpg" /></p>
 <p><strong>Figure 6:</strong> Rod Cutting Example</p>
 <p>Example: Let’s say the seller has a rod with the length of 3. The price for length 1 is 2 dollars, length 2 is 5 dollars, and length 3 is 6 dollars.</p>
 <p>If the seller wanted to cut the rod into 3 lengths of 1 then each rod would equal 2 dollars each making
@@ -603,11 +603,11 @@ the time complexity.</p>
 </div>
 </div>
 </div>
-<p><img alt="Rod Cut L=3" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RodCuttingRT3.jpg" /></p>
+<p><img alt="Rod Cut L=3" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RodCuttingRT3.jpg" /></p>
 <p><strong>Figure 7:</strong> Recursion tree. Length = 3.</p>
 <p>Above is a recursion tree with the length of 3. Each number represents a subproblem and it clearly shows that the recursion function is overlapping the subproblems.</p>
 <p>Below is another example of a recursion tree. Again, the subproblems are overlapping, but the number of times it needs to run a subproblem is increasing by <span class="math notranslate nohighlight">\(n^2\)</span>.</p>
-<p><img alt="Rod Cut L=4" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RTFour.jpg" /></p>
+<p><img alt="Rod Cut L=4" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RTFour.jpg" /></p>
 <p><strong>Figure 8:</strong> Recursion Tree with a length = 4.</p>
 <p>Below is the bottom-up approach. Like memoization this uses an array to store our recursive and adds for loops to quickly run the function.</p>
 <div class="cell docutils container">
@@ -646,7 +646,7 @@ the time complexity.</p>
 </div>
 </div>
 <p>Time complexity is <span class="math notranslate nohighlight">\(O(n^2)\)</span></p>
-<p><img alt="BU Rod Cut L=4" src="https://raw.githubusercontent.com/roybibek/Dynamic-Programming-Project/main/img/RTFourBU.jpg" /></p>
+<p><img alt="BU Rod Cut L=4" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Dynamic%20Programming/imgDyPr/RTFourBU.jpg" /></p>
 <p><strong>Figure 9:</strong> Bottom-Up Tree with a length = 4.</p>
 <p>    Finally, based on the image above, the run time is reduced significantly because now the recursive subproblems are only being ran once, and are now being stored into memory. Now, the program can go back and review the subproblem that are now stored in an array.</p>
 <p>    Dynamic programming is a method to increase functionality by optimizing and improving time complexity in code that makes recursive calls. Because the values are not being stored, the recursive calls are constantly being repeated. This performance can slow down run time in a program based on the number of calculations that are being repeated. Using memoization, allows a program to store recursive calls into arrays and store the data. The recursive calls are now stored in memory which eliminates multiple functions calls of the same value. Memoization is effective in increasing time complexity and performance, but it still makes recursive calls and depending on the program can create an error based on the number of calls. To correct issues of recursing, performance can be further increased by changing the approach from top-down to a bottom-up approach. Bottom-up looks at subproblems and composes the program from the bottom to the root. This reduces redundancies and provides clearer communication for the program. Ultimately, increasing performance and functionality, allowing applications to call bigger or larger values quickly and effectively.</p>

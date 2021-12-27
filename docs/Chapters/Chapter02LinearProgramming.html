@@ -428,7 +428,7 @@ x+3y\leq 540\\
 <p>To graph this properly, we’ll find the corner points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1370</span><span class="p">,</span><span class="mi">540</span><span class="p">,</span><span class="mi">1540</span><span class="p">])</span>
@@ -445,7 +445,7 @@ x+3y\leq 540\\
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,:],</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,:],</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -457,7 +457,7 @@ x+3y\leq 540\\
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],:],</span><span class="n">b</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],:],</span><span class="n">b</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -470,7 +470,7 @@ x+3y\leq 540\\
 <p>Three lines will have three intersections <span class="math notranslate nohighlight">\(\binom32=3\)</span> We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
@@ -514,7 +514,7 @@ P= 3x+2y
 <p>We can pick some values for <span class="math notranslate nohighlight">\(P\)</span> and see what happens.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
@@ -562,7 +562,7 @@ P = 3x + 2y = 3\cdot100+2\cdot110 = 520
 <p>We’ll graph that one and see!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
@@ -629,8 +629,7 @@ x+3y +s_2 = 540\\
 <p>Since I have three equations, I’ll be able to get a unique solution if I have three variables.  Currently I have 5, <span class="math notranslate nohighlight">\(x,y,s_1,s_2,s_3\)</span>.  If we set two of them equal to zero then we will be able to solve the system!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">550</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">550</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">540</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1370</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span>
@@ -675,7 +674,7 @@ x+3y +s_2 = 540\\
 <p>I’ll need to expand <span class="math notranslate nohighlight">\(A\)</span> to include the slack variables.  Just remeber there will be a lot of zeros!  If I don’t need <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(s_1\)</span>, I’ll only need the <span class="math notranslate nohighlight">\(y, s_2,\)</span> and <span class="math notranslate nohighlight">\(s_3\)</span> variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
 
 <span class="n">A</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
 </pre></div>
@@ -692,7 +691,7 @@ x+3y +s_2 = 540\\
 <p>Now I solve it with the original <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -705,7 +704,7 @@ x+3y +s_2 = 540\\
 <p>The issue is that the second slack variable <span class="math notranslate nohighlight">\(s_2\)</span> is negative!  The slack is about how much extra we have, if we don’t have extra but used too much, we’ll get negatives and that is not allowed.  Let’s write a little code to reassemble our variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buildFullList</span><span class="p">(</span><span class="n">indexref</span><span class="p">,</span><span class="n">solution</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buildFullList</span><span class="p">(</span><span class="n">indexref</span><span class="p">,</span><span class="n">solution</span><span class="p">):</span>
   <span class="n">newlist</span> <span class="o">=</span><span class="p">[]</span>
   <span class="n">solutioncounter</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
@@ -734,7 +733,7 @@ x+3y +s_2 = 540\\
 <p>Now I want to check for negatives!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testForFeasible</span><span class="p">(</span><span class="n">list1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testForFeasible</span><span class="p">(</span><span class="n">list1</span><span class="p">):</span>
   <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list1</span><span class="p">])</span>
 
 <span class="n">testForFeasible</span><span class="p">(</span><span class="n">allVariables</span><span class="p">)</span>
@@ -750,7 +749,7 @@ x+3y +s_2 = 540\\
 <p>We see this is not in the feasible set.  Let’s do one more thing and compute the profit from this list.  I know this isn’t possible but we’ll need this function soon!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
   <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="nb">list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">profit</span><span class="p">(</span><span class="n">allVariables</span><span class="p">)</span>
@@ -766,7 +765,7 @@ x+3y +s_2 = 540\\
 <p>Now I am going to put it all together and build a little table that looks at all 10 points in the order I presented them above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span> <span class="c1">#which variables are not zero</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span> <span class="c1">#which variables are not zero</span>
 <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;large&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s1">&#39;slackFabric&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s1">&#39;slackSewing&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s1">&#39;slackfill&#39;</span><span class="p">}</span> <span class="c1">#dictionary for keeping variable labels straight</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
@@ -781,7 +780,7 @@ x+3y +s_2 = 540\\
 <p>I’ll print the data in a nice table with headers</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variables Used&#39;</span><span class="p">,</span><span class="s1">&#39;Solution&#39;</span><span class="p">,</span><span class="s1">&#39;Profit&#39;</span><span class="p">,</span><span class="s1">&#39;In Feasible&#39;</span><span class="p">])</span>
 <span class="n">X</span>
@@ -891,7 +890,7 @@ x+3y +s_2 = 540\\
 <p>Lastly I’ll use some manipulation to print the maximum inside the feasible set.  First I restrict to in the feasible set, then I’ll search for the maximum entry of profit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XFeasible</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;In Feasible&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XFeasible</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;In Feasible&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
 
 <span class="n">XFeasible</span>
 </pre></div>
@@ -964,7 +963,7 @@ x+3y +s_2 = 540\\
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">XFeasible</span><span class="p">[</span><span class="n">XFeasible</span><span class="p">[</span><span class="s1">&#39;Profit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">==</span><span class="n">XFeasible</span><span class="p">[</span><span class="s1">&#39;Profit&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XFeasible</span><span class="p">[</span><span class="n">XFeasible</span><span class="p">[</span><span class="s1">&#39;Profit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">==</span><span class="n">XFeasible</span><span class="p">[</span><span class="s1">&#39;Profit&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1015,7 +1014,7 @@ x+3y +s_2 = 540\\
 <p>Repeat the original question using python’s tools for solving <em>Linear Programming</em> or <strong>LP</strong> problems.  I’ll use a tool from <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code>  The first issue is that it only minimizes!  So I’ll need to convert my statement to minimize but this is easy, just multiply your objective function by negative one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
 
 <span class="n">linprog</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span><span class="n">A</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="n">b</span><span class="p">)</span>
 </pre></div>

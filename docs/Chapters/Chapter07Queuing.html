@@ -339,7 +339,7 @@ Erlang’s switchboard problem laid the path for modern queuing theory.</p>
 <p>We will start by installing the package first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ciw</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ciw</span>
 </pre></div>
 </div>
 </div>
@@ -380,7 +380,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>Let’s import the ciw package now.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ciw</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ciw</span>
 </pre></div>
 </div>
 </div>
@@ -396,7 +396,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>Notice that the 3 x 3 matrix named routing represents the overall model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span>
     <span class="n">arrival_distributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="c1"># 45 customers arrive every hour</span>
                              <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span> <span class="c1">#No arrivals at the other nodes</span>
                              <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">()],</span>
@@ -415,7 +415,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>Now we will calculate the wait times for the model. We will run the simulation 20 times and calculate the average to get the best representation of wait times. Moreover, we will run the simulation for a period of 180 minutes. Notice that the parameter we have provided is 200 instead of 180. This is to give some cool down time to take some customers out of the queue who are already in there.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">average_waits</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average_waits</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
   <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
   <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -438,7 +438,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>In the above code, we can easily change the number of servers and see what kind of difference do they make in the system. We can also calculate how many customers passed through the system after receiving the service within the given time frame. To calculate that we will see how many records lie at node 3 which is our last node since we can be sure that the individuals that go through node 3 have completed the queue. Note that there are certain constraints on our resources as there is a certain amount of time that our resources(booth, cashier, server) take to provide their respective services and only 45 customers come into the drivethru every hour.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">completed_custs</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">completed_custs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
   <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
   <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -452,7 +452,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -469,7 +469,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>For this part of the problem, we will be adding a designated parking spot so that the customer that have larger orders have to wait at the spot to keep the queue moving. Since it is complex to have multiple parking spots like Mc Donald’s usually do, we will be using a single parking spot to makes things easier. We will assume that 30% of the customers have large orders and have to go through the parking spot before leaving the queue. We will be using the same parameters that we used in previous problem to keep the comparisons fair.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span>
     <span class="n">arrival_distributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="c1"># 45 customers arrive every hour</span>
                              <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span> <span class="c1">#No arrivals at the other nodes</span>
                              <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span>
@@ -494,7 +494,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>Lets simulate this for one shift of breakfast of 3 hours (180 mins). At the beginning of breakfast, the store opens from an empty system. Therefore, no warm-up is required. We will use 20 minutes of cool-down time. We will run 10 trials to get a measure of average number of customers that pass through the system. To find the average number of customers that pass through the system, we ca count the number of data that have passed through node</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">average_waits</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average_waits</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
   <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
   <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -516,7 +516,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 <p>This shows how much of a difference does it make for Mc Donalds to have a designated parking spot for customers waiting due to large orders. The wait time in this condition goes down to approximately <strong>10 minutes</strong> whereas it was around 23 minutes in the last condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">completed_custs</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">completed_custs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
   <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
   <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -530,7 +530,7 @@ Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
