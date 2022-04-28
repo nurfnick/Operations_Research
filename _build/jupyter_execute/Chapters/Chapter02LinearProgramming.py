@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapter2LinearProgramming.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter02LinearProgramming.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # # Linear Programming
 # 
@@ -55,7 +55,7 @@
 # 
 # To graph this properly, we'll find the corner points.
 
-# In[15]:
+# In[1]:
 
 
 import numpy as np
@@ -66,13 +66,13 @@ b = np.array([1370,540,1540])
 np.linalg.solve(A[0:2,:],b[0:2])
 
 
-# In[16]:
+# In[2]:
 
 
 np.linalg.solve(A[1:3,:],b[1:3])
 
 
-# In[17]:
+# In[3]:
 
 
 np.linalg.solve(A[[0,2],:],b[[0,2]])
@@ -80,7 +80,7 @@ np.linalg.solve(A[[0,2],:],b[[0,2]])
 
 # Three lines will have three intersections $\binom32=3$ We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below. 
 
-# In[29]:
+# In[4]:
 
 
 import matplotlib.pyplot as plt
@@ -120,7 +120,7 @@ plt.fill_between(x3,0,y3, color = "yellow")
 # 
 # We can pick some values for $P$ and see what happens.  
 
-# In[30]:
+# In[5]:
 
 
 x1= np.arange(0,30,.1)
@@ -166,7 +166,7 @@ plt.show()
 # 
 # We'll graph that one and see!
 
-# In[31]:
+# In[6]:
 
 
 x1= np.arange(0,30,.1)
@@ -215,12 +215,15 @@ plt.show()
 # ### Slack
 
 # All of the inequalities in the constraint must be met but some will not be on their strict bounds.  This leaves **slack** in those inequalities.  Using our original problem as an example, we see that the sewing equation has some slack.  We could have done more sewing with the maximum profit $(100,110)$. 
+# 
 # $$
 # x+3y = 100 +330 = 430\leq 540
 # $$
+# 
 # The inequality is solved but 100 more hours of sewing are available each week.  This is slack in our solution.  
 
 # The previous problem can actually be restated in terms of slack with the inequalities replaced with equalities.  
+# 
 # $$
 # \left\{
 # \begin{array}{l}
@@ -239,7 +242,7 @@ plt.show()
 # 
 # 
 
-# In[57]:
+# In[7]:
 
 
 
@@ -283,7 +286,7 @@ plt.show()
 # 
 # I'll need to expand $A$ to include the slack variables.  Just remeber there will be a lot of zeros!  If I don't need $x$ and $s_1$, I'll only need the $y, s_2,$ and $s_3$ variables.
 
-# In[43]:
+# In[8]:
 
 
 A = np.array([[6,7,1,0,0],[1,3,0,1,0],[11,4,0,0,1]])
@@ -293,7 +296,7 @@ A[:,[1,3,4]]
 
 # Now I solve it with the original $b$.
 
-# In[44]:
+# In[9]:
 
 
 np.linalg.solve(A[:,[1,3,4]],b)
@@ -301,7 +304,7 @@ np.linalg.solve(A[:,[1,3,4]],b)
 
 # The issue is that the second slack variable $s_2$ is negative!  The slack is about how much extra we have, if we don't have extra but used too much, we'll get negatives and that is not allowed.  Let's write a little code to reassemble our variables.
 
-# In[53]:
+# In[10]:
 
 
 def buildFullList(indexref,solution):
@@ -325,7 +328,7 @@ allVariables
 
 # Now I want to check for negatives!
 
-# In[47]:
+# In[11]:
 
 
 def testForFeasible(list1):
@@ -336,7 +339,7 @@ testForFeasible(allVariables)
 
 # We see this is not in the feasible set.  Let's do one more thing and compute the profit from this list.  I know this isn't possible but we'll need this function soon!
 
-# In[48]:
+# In[12]:
 
 
 def profit(list):
@@ -347,7 +350,7 @@ profit(allVariables)
 
 # Now I am going to put it all together and build a little table that looks at all 10 points in the order I presented them above.
 
-# In[59]:
+# In[13]:
 
 
 index = [[i,j,k] for i in range(5) for j in range(i+1,5) for k in range(j+1,5)] #which variables are not zero
@@ -362,7 +365,7 @@ for i in index:
 
 # I'll print the data in a nice table with headers
 
-# In[61]:
+# In[14]:
 
 
 import pandas as pd
@@ -373,7 +376,7 @@ X
 
 # Lastly I'll use some manipulation to print the maximum inside the feasible set.  First I restrict to in the feasible set, then I'll search for the maximum entry of profit.
 
-# In[65]:
+# In[15]:
 
 
 XFeasible = X[X['In Feasible'] == True]
@@ -381,7 +384,7 @@ XFeasible = X[X['In Feasible'] == True]
 XFeasible
 
 
-# In[66]:
+# In[16]:
 
 
 XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
@@ -393,11 +396,13 @@ XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
 
 # ### Example 1
 
-# Repeat the original question using python's tools for solving *Linear Programming* or **LP** problems.  I'll use a tool from ```scipy.optimize```  The first issue is that it only minimizes!  So I'll need to convert my statement to minimize but this is easy, just multiply your objective function by negative one.
+# Repeat the original question using python's tools for solving *Linear Programming* or **LP** problems.  
+# 
+# I'll use a tool from `scipy.optimize`  The first issue is that it only minimizes!  So I'll need to convert my statement to minimize but this is easy, just multiply your objective function by negative one.
 # 
 # 
 
-# In[69]:
+# In[17]:
 
 
 from scipy.optimize import linprog
@@ -407,11 +412,96 @@ linprog([-3,-2],A[:,[0,1]],b)
 
 # We can see that there is some ambiguity with the results being what we expected **if** we round.  We consider that as part of the quickness and allow for that, afterall we could not create less than a full pillow!
 
-# 
-
 # ### Example 2
 
+# A manufacturer of downhill and cross-country skis reports that manufacturing time is 1 hours and 2 hours, respectively, per ski and that finishing time is 7 hours for each downhill and 6 hours for each cross-crountry ski. There are only 16 hours per week available for the manufacturing process and 56 hours for the finishing process. The average profit is \$73 for downhill ski and \$68 for cross-country ski. The manufacturer wants to know how many of each type of ski should be made to maximize the weekly profit.
+
+# We first create the system of inequalities.  Let $d$ be the number of downhill skis and $c$ be the number of cross country skis.  Then
 # 
+# $$
+# \left\{
+# \begin{array}{l}
+# 1d+2c\leq 16\\
+# 7d+6c\leq 56
+# \end{array}
+# \right.
+# $$
+# 
+# And the objective function to maximize is
+# 
+# $$
+# P= 73d+68c
+# $$
+
+# In[18]:
+
+
+A = np.array([[1,2],[7,6]])
+b = np.array([16,56])
+
+np.linalg.solve(A,b)
+
+
+# In[19]:
+
+
+d1= np.arange(0,2.1,.1)
+d2= np.arange(2,8,.1)
+x7 = np.arange(0,8,.1)
+
+
+c1 = (16-1*d1)/2
+c2 = (56-7*d2)/6
+
+
+plt.plot(d1,c1, color = "black")
+plt.plot(d2,c2, color = "black")
+plt.plot(d1,np.zeros(21),d2,np.zeros(60), color = "black")
+plt.plot(np.zeros(80),np.arange(0,8,.1),color = "black")
+plt.scatter(2, 7, s = 100, color = "black")
+plt.scatter(0, 8, s = 100, color = "black")
+plt.scatter(8, 0, s = 100, color = "black")
+
+plt.fill_between(d1,0,c1, color = "yellow")
+plt.fill_between(d2,0,c2, color = "yellow")
+
+plt.plot(x7,(622-73*x7)/68,linestyle = "dashed", label = "622")
+
+plt.legend()
+plt.show()
+
+
+# From the picture above, looks like the corner point $(2,7)$ maximizes the profit of \$622.  Let's see if our other tools agree!
+
+# In[20]:
+
+
+A = np.array(np.array([[1,2,1,0],[7,6,0,1]]))
+
+def profit(list):
+  return 73*list[0]+68*list[1]
+
+index = [[i,j] for i in range(4) for j in range(i+1,4)] #which variables are not zero
+d = {0:'downhill',1:'cross',2:'Slack_Manufacturing',3:'Slack_Finishing'} #dictionary for keeping variable labels straight
+
+X = []
+for i in index:
+  solution = [round(i,5) for i in np.linalg.solve(A[:,i],b)]
+  list1 = buildFullList(i,solution)
+  X.append([(d[i[0]],d[i[1]]),solution,profit(list1),testForFeasible(list1)])
+
+X = pd.DataFrame(X,columns = ['Variables Used','Solution','Profit','In Feasible'])
+XFeasible = X[X['In Feasible'] == True]
+XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
+
+
+# Or with the built ins
+
+# In[21]:
+
+
+linprog([-73,-68],A[:,[0,1]],b)
+
 
 # ## References
 # 
@@ -421,18 +511,18 @@ linprog([-3,-2],A[:,[0,1]],b)
 # 
 # *Grit: The Power of Passion and Perseverance* **A. Duckworth** ‎ Scribner Book Company 2016
 # 
+# Examples adopted from the Open Problem Library of WeBWorK.
+# 
 # 
 
 # ## Problems
 
+# 1. A couple wants to invest up to \$60000. They can purchase a type A bond yielding 8.75% return and a type B bond yielding a 10.25% return on the amount invested. They also want to invest at least as much in the type A bond as in the type B bond. They will also invest at least \$30000 in type A and no more than \$33000 in type B bond.  How much should they invest in each type of bond to maximize their return?
 # 
-
-# In[22]:
-
-
-
-
+# 2. A diet is to contain at least 1023 units of carbohydrates, 1566 units of proteins, and 1431 calories. Two foods are available: F1 which costs \$ 0.02 per unit and F2, which costs \$ 0.05 per unit. A unit of food F1 contains 1 units of carbohydrates, 2 units of proteins and 7 calories. A unit of food F2 contains 9 units of carbohydrates, 8 units of proteins and 3 calories.  Minimize the cost of the diet.
+# 
+# 3. Blink Appliances plans to order microwaves and stoves. Each microwave requires 2 hours to unpack and set up in the storeroom, and each stove requires 4 hours. The storeroom space is limited to 42 items. The budget of the store allows only 148 hours of employee time for unpacking and setup. Microwaves yields a profit of \$147 each, and stoves yields a profit of \$162 each. How many of each should the store order to maximize profit?
 
 # ## Project Idea
 
-# 
+# Create a linear programming problem from your life.  Consider diet, exercise, grades, time, relationships, and family.  Can you maximize your life quantitativly?

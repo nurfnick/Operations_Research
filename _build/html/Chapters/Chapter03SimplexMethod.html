@@ -1,0 +1,1591 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simplex Method &#8212; Operations Research OER</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Goal Programming" href="Chapter04GoalProgramming.html" />
+    <link rel="prev" title="Linear Programming" href="Chapter02LinearProgramming.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/JuliaSetECUColors.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Operations Research OER</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction to Operations Research
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter01Modeling.html">
+   Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter02LinearProgramming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Simplex Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter04GoalProgramming.html">
+   Goal Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter05NetworkModels.html">
+   Network Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter06Transport.html">
+   Transportation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter07Queuing.html">
+   Queuing Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter09DynamicProgramming.html">
+   Dynamic Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10GameTheory.html">
+   Game Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11MonteCarlo.html">
+   Monte Carlo Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13GradientDescent.html">
+   Gradient Descent
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Chapters/Chapter03SimplexMethod.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/nurfnick/Operations_Research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/nurfnick/Operations_Research/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter03SimplexMethod.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/nurfnick/Operations_Research/master?urlpath=tree/Chapters/Chapter03SimplexMethod.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/master/Chapters/Chapter03SimplexMethod.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#historical-background">
+     Historical Background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theory">
+     Theory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplex-method-in-real-life">
+     Simplex Method In Real Life
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Theory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slack">
+     Slack
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schematic-diagram-flowchart-of-simplex-method-algorithm">
+     Schematic Diagram(Flowchart) of Simplex Method Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problems-to-solve">
+   Problems to solve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-idea">
+   Project Idea
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authors">
+     Authors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="simplex-method">
+<h1>Simplex Method<a class="headerlink" href="#simplex-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Before we head into the topic Simplex Method, it’s essential to know what is Simplex Method? It is a combination of two terms, simplex and method where simplex stands for simple/basic and method means a systematic procedure or technique to accomplish the goal. Basically, Simplex Method, here in operation research, is an approach to solve linear programming models simply by hands using various means such as slack variables, tableaus, and pivot variables as a motive to find the optimal solution of an optimization problem.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The Simplex Method can be defined as a method for entering inequalities into a matrix and the keys to row-reduce that matrix. This method  also is applicable to any number of independent variables , making graphing unnecessary(Todd O. P16).</p>
+</div></blockquote>
+<div class="section" id="historical-background">
+<h3>Historical Background<a class="headerlink" href="#historical-background" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>For linear programming problems involving two variables, the graphical solution method is convenient. However, for problems involving more than two variables or problems involving a large number of constraints, it is better to use solution methods that are adaptable to computers which is developed by George Dantzig in 1946, known as simplex method. Looking at the history of development of Simplex Method, George Dantzig is found to be working on planning methods for the US Army Air Force during World War II using a desk calculator . That’s when, the simplex method is invented .</p>
+</div></blockquote>
+<blockquote>
+<div><p>Dantzig’s simplex method should not be confused with the downhill simplex method(Spendely 1962, Nelder and Mead , 1965, Press et al.1992). The latter method solves an unconstrained  minimization problem in n dimensions by maintaining at each iteration  n+1 points that define a simplex. At each iteration , this simplex is updated by applying certain transformation to it so that it “rolls downhill” until it finds a minimum.</p>
+</div></blockquote>
+</div>
+<div class="section" id="theory">
+<h3>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>A linear program is a method of achieving the best outcome given a maximum or minimum equation with linear constraints.  Most linear programs can be solved using an online solver such as MatLab, but the Simplex method is a technique for solving linear programs by hand.
+To solve a linear programming model using the Simplex method the following steps are necessary:</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    	Standard form
+    	Introducing slack variables
+    	Creating the tableau
+    	Pivot variables
+    	Creating a new tableau
+    	Checking for optimality
+    	Identify optimal values&gt;
+</pre></div>
+</div>
+<p><strong>Step 1: Standard Form</strong></p>
+<blockquote>
+<div><p>It is considered as baseline format for all linear programs before solving for the optimal solution. While solving the problem, it must meet the three significant criteria:-</p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><ol class="simple">
+<li><p>The problem should be a maximization problem.</p></li>
+<li><p>All linear constraints must be in a less-than-or-equal-to inequality.</p></li>
+<li><p>All variables are in the problem should be non-negative.</p></li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div><p>To change minimization linear program model into a maximization linear program model, Multiply both sides of the problem i.e. LHS and RHS of an inequality by -1. It gives us form less-than-or-equal-to inequality.</p>
+</div></blockquote>
+<p><strong>Step 2: Introducing Slack Variables</strong></p>
+<blockquote>
+<div><p>Slack variables are introduced into the linear constraints of a linear program to transform them from inequality constraints to equality constraints. Coefficient of slack variables in the standard form is +1. The main motive to use slack variables is to transform constraints into solvable equalities with one definite answer.</p>
+</div></blockquote>
+<p><strong>Step 3: Tableau</strong></p>
+<blockquote>
+<div><p>Simplex tableau is used to perform row operations on the linear programming model. Tableau consists of the coefficient corresponding to the linear constraint variables and the
+coefficients of the objective function</p>
+</div></blockquote>
+<p><strong>Step 4: Check Optimality</strong></p>
+<blockquote>
+<div><p>Optimal solution are those values assigned to the variables in the objective function to give the largest zeta value. To check optimality using the tableau, all values in the last row must contain values greater than or equal to zero. For not optimal solution/negative values, the next step is to identify the pivot variable to base a new tableau on</p>
+</div></blockquote>
+<p><strong>Step 5: Identify Pivot Variables</strong></p>
+<blockquote>
+<div><p>Pivot variable is used in row operations to identify which variable will become the unit value and is a key factor in the conversion of the unit value.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Pivot Operation is performed on the Tableau wherever presence of most negative indicator is found in the last row. We take that specific column. We pivot by taking corresponding ratio: i.e. Taking constant diving by entry in pivot column. After that,compare which is the smallest non-negative entry in that ratio and we pivot on that entry making it 1 and rest of the entry in that column 0.</p>
+</div></blockquote>
+<p><strong>Step 6: Creation of New Tableau</strong></p>
+<blockquote>
+<div><p>We write down all the result in the new table with changes in the rows and columns after pivot operation. Identify a new possible optimal solution.
+If last row still has negative, we process/ continue pivot operation till last row have positive values.</p>
+</div></blockquote>
+<p><strong>Step 7: Check Optimality and Identify optimal values</strong></p>
+<blockquote>
+<div><p>After our all non-negative values are presented in the last row, the value of zeta(the one optimal solution) we are seeking for can be found.</p>
+</div></blockquote>
+</div>
+<div class="section" id="simplex-method-in-real-life">
+<h3>Simplex Method In Real Life<a class="headerlink" href="#simplex-method-in-real-life" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>With the simplex method you could minimize (find out what to produce and at what quantities) to make the most of your resources which means you spend less making the products and maximize the specific sector you want as earnings, production, and so on.If you’re worried about profits then you could maximize given the profit you make for each product and this (Simplex Method) will give you suggestions on what what to produce and at what quantities.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>There are lot’s of examples you can work on. However, lets try with this basic three decision variables.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Use the simplex method to find the maximum value of
+$<span class="math notranslate nohighlight">\(
+z=2x_1-x_2+2x_3 (Objective Function)
+\)</span><span class="math notranslate nohighlight">\(
+Subject to the constraints
+\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+</div></blockquote>
+<p>\begin{array}{l}
+2x_1+x_2\leq 10\
+x_1+2x_2-2x_3\leq 20\
+x_2+2x_3\leq 5
+\end{array}</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<blockquote>
+<div><p>where <span class="math notranslate nohighlight">\(x_1,x_2,x_3\geq 0\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Solution</strong></p>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>Using the basic feasible solution</p>
+</div></blockquote>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+(x_1,x_2,x_3,s_1,s_2,s_3)=(0,0,0,10,20,5)
+\]</div>
+<blockquote>
+<div><blockquote>
+<div><p>Here, <span class="math notranslate nohighlight">\(s_1, s_2, s_3\)</span> are slack variables which just helped us to convert inequality contraints into an equality.italicized text</p>
+</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div><blockquote>
+<div><p>The following is the initial simplex tableau for this problem. (Try checking these computations, and note the “tie” that occurs when choosing the first entering variable.)</p>
+</div></blockquote>
+</div></blockquote>
+<p><img alt="SMImg1" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Simplex%20Method/SMImg/SMImg1.png" /></p>
+<blockquote>
+<div><p>In the example shown above, -2 is the smallest negative in the last row. This will designate the <span class="math notranslate nohighlight">\(x_3\)</span> column to contain the pivot variable. Solving for the indicator gives us a value of 10/0 for the first constraint, and a value of 5/2 for the second constraint.Due to 5/2 being the smallest non-negative indicator, the pivot value will be in the second row and have a value of 2.</p>
+</div></blockquote>
+<p><img alt="SMImg2" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Simplex%20Method/SMImg/SMImg2.png" /></p>
+<blockquote>
+<div><p>There is still least negative value in last row, so we have to undergo same previous operation to eliminate the negative value from last row. To optimize the pivot variable, it will need to be transformed into a value of 2.</p>
+</div></blockquote>
+<p><img alt="SMImg3" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Simplex%20Method/SMImg/SMImg3.png" /></p>
+<blockquote>
+<div><p>The last row now is all positive, claiming there is no any negative number left to perform any row operation anymore.</p>
+</div></blockquote>
+<blockquote>
+<div><p>This implies that the optimal solution is
+$<span class="math notranslate nohighlight">\(
+(x_1,x_2,x_3,s_1,s_2,s_3)=(5,0,5/2,0,20,0)
+\)</span>$
+and the maximum value of z is 15.</p>
+</div></blockquote>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>A local pillow company designs pillows especially for pregnant and nursing mothers.  There are two pillows that they produce referred here as large and small.  The large pillow requires six yards of fabric, one hour of sewing and eleven pounds of fill.  The small pillow requires seven yards of fabric, three hours of sewing and four pounds of fill.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The manager, trying to keep all of this straight creates a table.</p>
+</div></blockquote>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Pillow</p></th>
+<th class="text-align:center head"><p>Fabric</p></th>
+<th class="text-align:center head"><p>Sewing</p></th>
+<th class="text-align:center head"><p>Fill</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Large</p></td>
+<td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>11</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Small</p></td>
+<td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>4</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>The manager being an astute business man, wants to limit inventory and labor.  Each week they can source 1370 yards of fabric and 1540 pounds of fill.  With a work crew that can do at most 540 hours of labour each week.  He adds this information to his table feeling very satisfied.</p>
+</div></blockquote>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Pillow</p></th>
+<th class="text-align:center head"><p>Fabric</p></th>
+<th class="text-align:center head"><p>Sewing</p></th>
+<th class="text-align:center head"><p>Fill</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Large</p></td>
+<td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>11</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Small</p></td>
+<td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Weekly Max</p></td>
+<td class="text-align:center"><p>1370</p></td>
+<td class="text-align:center"><p>540</p></td>
+<td class="text-align:center"><p>1540</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>Using some hueristics, the manager cranks out some pillows of each type every week.  One day an intrept intern asks, “Are we maximizing our profit?”  The large pillow sells for a <span class="math notranslate nohighlight">\(\$ \)</span>3 profit, while the small pillow sells for a <span class="math notranslate nohighlight">\(\$ \)</span>2 profit.  The intern adds this to the table but still does not know if they are maximizing profit.</p>
+</div></blockquote>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Pillow</p></th>
+<th class="text-align:center head"><p>Fabric</p></th>
+<th class="text-align:center head"><p>Sewing</p></th>
+<th class="text-align:center head"><p>Fill</p></th>
+<th class="text-align:center head"><p>Profit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Large</p></td>
+<td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>11</p></td>
+<td class="text-align:center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Small</p></td>
+<td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Weekly Max</p></td>
+<td class="text-align:center"><p>1370</p></td>
+<td class="text-align:center"><p>540</p></td>
+<td class="text-align:center"><p>1540</p></td>
+<td class="text-align:center"><p>???</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Solution</strong></p>
+<blockquote>
+<div><p>The intern continues down this line of thought and comes up with a way to maximize the number of pillows produced.  They let <span class="math notranslate nohighlight">\(x\)</span> be the number of large pillows and <span class="math notranslate nohighlight">\(y\)</span> be the number of small pillows.  They create a system of inequalities. Now, rewrote the given question into an objective function and the constraints.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The problem is executed in following way:
+$<span class="math notranslate nohighlight">\(
+\left\{
+\begin{array}{l}
+6x+7y\leq 1370\\
+x+3y\leq 540\\
+11x+4y\leq 1540
+\end{array}
+\right.
+\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>To graph this properly, we’ll find the corner points.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1370</span><span class="p">,</span><span class="mi">540</span><span class="p">,</span><span class="mi">1540</span><span class="p">])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,:],</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 30., 170.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,:],</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 84.82758621, 151.72413793])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],:],</span><span class="n">b</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([100., 110.])
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Three lines will have three intersections <span class="math notranslate nohighlight">\(\binom32=3\)</span> We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">540</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1370</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1540</span><span class="o">-</span><span class="mi">11</span><span class="o">*</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span><span class="n">x2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">700</span><span class="p">),</span><span class="n">x3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">400</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7fb3529e7fd0&gt;
+</pre></div>
+</div>
+<img alt="../_images/Chapter03SimplexMethod_34_1.png" src="../_images/Chapter03SimplexMethod_34_1.png" />
+</div>
+</div>
+<blockquote>
+<div><p>We should also note that there are corner points at the intersection of the vertical line <span class="math notranslate nohighlight">\(x = 0\)</span> and the horizontal line <span class="math notranslate nohighlight">\(y=0\)</span> including where those two lines intersect.  The <span class="math notranslate nohighlight">\(y\)</span>-intercept is found by solving for <span class="math notranslate nohighlight">\(y\)</span> in the sewing equation when <span class="math notranslate nohighlight">\(x=0\)</span>.  The <span class="math notranslate nohighlight">\(x\)</span>-intercept is found by solving for <span class="math notranslate nohighlight">\(y\)</span> in the fill equation when <span class="math notranslate nohighlight">\(y=0\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>So the intern now knows that any point inside this region is what is possible in any given week!  Now we ask, how to maximize the profit?  Let’s get an equation in terms of our set up!</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+P= 3x+2y
+\]</div>
+<blockquote>
+<div><p>We can pick some values for <span class="math notranslate nohighlight">\(P\)</span> and see what happens.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x4</span><span class="p">,(</span><span class="mi">210</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x4</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;210&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x5</span><span class="p">,(</span><span class="mi">300</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x5</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;300&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x6</span><span class="p">,(</span><span class="mi">390</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x6</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;390&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x7</span><span class="p">,(</span><span class="mi">480</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x7</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dashed&quot;</span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">540</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1370</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1540</span><span class="o">-</span><span class="mi">11</span><span class="o">*</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span><span class="n">x2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">700</span><span class="p">),</span><span class="n">x3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">400</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;480&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-45-fd086f185daf&gt;&quot;</span><span class="gt">, line </span><span class="mi">9</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x7</span><span class="p">,(</span><span class="mi">480</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x7</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dashed&quot;</span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+                                                  <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>We can see that for each of the <span class="math notranslate nohighlight">\(P\)</span> values I selected there are some options for the day.  We should also notice that the corner point looks like it will produce a line that just touches it!</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+P = 3x + 2y = 3\cdot100+2\cdot110 = 520
+\]</div>
+<blockquote>
+<div><p>We’ll graph that one and see!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">540</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">x1</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1370</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1540</span><span class="o">-</span><span class="mi">11</span><span class="o">*</span><span class="n">x3</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span><span class="n">x2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">700</span><span class="p">),</span><span class="n">x3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">400</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1800</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x7</span><span class="p">,(</span><span class="mi">520</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x7</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;520&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Chapter03SimplexMethod_39_0.png" src="../_images/Chapter03SimplexMethod_39_0.png" />
+</div>
+</div>
+<blockquote>
+<div><p>Triuphantly the intern tells the boss that we can maximize profits by making 100 large pillows and 110 small pillows!</p>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h3>Theory<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The theory of linear programming can be stated in terms of the contraints and the objective function.  For a system of linear constraints and linear objective functions, the optimum values (minimum or maximum) will occur on the corner points of the feasible set described by the contraining function.</p>
+</div></blockquote>
+<blockquote>
+<div><p>If we consider that the feasible set of the constraining lines, it will create a polygon with sharp corners.  The linear objective function will cut through the polygon.  Any optimum point will be at one of the corners as the objective function just kisses the edge.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Some care must be taken for unbounded feasible sets, an optimum solution may not be possible with the maximum (or minimum) going to infinity (negative infinity).</p>
+</div></blockquote>
+</div>
+<div class="section" id="slack">
+<h3>Slack<a class="headerlink" href="#slack" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>All of the inequalities in the constraint must be met but some will not be on their strict bounds.  This leaves <strong>slack</strong> in those inequalities.  Using our original problem as an example, we see that the sewing equation has some slack.  We could have done more sewing with the maximum profit <span class="math notranslate nohighlight">\((100,110)\)</span>.
+$<span class="math notranslate nohighlight">\(
+x+3y = 100 +330 = 430\leq 540
+\)</span>$
+The inequality is solved but 100 more hours of sewing are available each week.  This is slack in our solution.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The previous problem can actually be restated in terms of slack with the inequalities replaced with equalities.<br />
+$<span class="math notranslate nohighlight">\(
+\left\{
+\begin{array}{l}
+6x+7y+s_1 =  1370\\
+x+3y +s_2 = 540\\
+11x+4y+ s_3 =  1540
+\end{array}
+\right.
+\)</span>$</p>
+</div></blockquote>
+<blockquote>
+<div><p>In the optimum solution <span class="math notranslate nohighlight">\(s_2=110\)</span> and <span class="math notranslate nohighlight">\(s_1=s_3=0\)</span>.  For the inequalities to continue to hold we must ask that <span class="math notranslate nohighlight">\(s_1,s_2,s_3\geq 0\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Actually this insight gives us an alternative approach to solve linear programming problems.  If we restate the contraint in equation form with slack variables, we can formulate the theory as solutions to the system of equations with some of the slack variables set to zero.  Let’s see that in action here.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Since I have three equations, I’ll be able to get a unique solution if I have three variables.  Currently I have 5, <span class="math notranslate nohighlight">\(x,y,s_1,s_2,s_3\)</span>.  If we set two of them equal to zero then we will be able to solve the system!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">550</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">540</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1370</span><span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1540</span><span class="o">-</span><span class="mi">11</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5500</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5500</span><span class="p">),</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">170</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">140</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">195.7</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;pink&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">550</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">400</span><span class="p">])</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Chapter03SimplexMethod_46_0.png" src="../_images/Chapter03SimplexMethod_46_0.png" />
+</div>
+</div>
+<blockquote>
+<div><ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(x=y=0\)</span> This is the orgin in my graph, each slack is it’s value and we achieve no profit, <span class="math notranslate nohighlight">\(P = \$0\)</span></p></li>
+</ol>
+</div></blockquote>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(x = s_1 = 0\)</span> This is the <em>pink</em> point that falls outside of the feasible set.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x= s_2 = 0\)</span> This is the <em>orange</em> point falling inside the feasible set with a profit of <span class="math notranslate nohighlight">\(P = 180*2 = \$360\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x = s_3 =0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = s_1 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = s_2 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y = s_3 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_1 = s_2 = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_1 = s_3 = 0\)</span> This was the optimal <em>blue</em> point</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_2 = s_3 =0\)</span> Intersection of lines outside the feasible set</p></li>
+</ol>
+<blockquote>
+<div><p>How do we know we got them all?  We had 5 variables <span class="math notranslate nohighlight">\((x,y,s_1,s_2,s_3)\)</span> and were trying to solve 3 equations.  So we were able to have <span class="math notranslate nohighlight">\(\binom 52 = \binom 53 =10\)</span>.  Let’s write up a little program that evaluates each of these for us!</p>
+</div></blockquote>
+<blockquote>
+<div><p>Before we proceed, we should ask is there a quick way to tell if an intersection is outside of the feasible set.  Let’s look at the <em>pink</em> point.  It has <span class="math notranslate nohighlight">\(x = s_1 = 0\)</span>  Let’s ask python to solve that.</p>
+</div></blockquote>
+<blockquote>
+<div><p>I’ll need to expand <span class="math notranslate nohighlight">\(A\)</span> to include the slack variables.  Just remeber there will be a lot of zeros!  If I don’t need <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(s_1\)</span>, I’ll only need the <span class="math notranslate nohighlight">\(y, s_2,\)</span> and <span class="math notranslate nohighlight">\(s_3\)</span> variables.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">11</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">A</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[7, 0, 0],
+       [3, 1, 0],
+       [4, 0, 1]])
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Now I solve it with the original <span class="math notranslate nohighlight">\(b\)</span>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([195.71428571, -47.14285714, 757.14285714])
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>The issue is that the second slack variable <span class="math notranslate nohighlight">\(s_2\)</span> is negative!  The slack is about how much extra we have, if we don’t have extra but used too much, we’ll get negatives and that is not allowed.  Let’s write a little code to reassemble our variables.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buildFullList</span><span class="p">(</span><span class="n">indexref</span><span class="p">,</span><span class="n">solution</span><span class="p">):</span>
+  <span class="n">newlist</span> <span class="o">=</span><span class="p">[]</span>
+  <span class="n">solutioncounter</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">indexref</span><span class="p">:</span>
+      <span class="n">newlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">newlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">solution</span><span class="p">[</span><span class="n">solutioncounter</span><span class="p">])</span>
+      <span class="n">solutioncounter</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="n">newlist</span>
+
+<span class="n">indexref</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">allVariables</span> <span class="o">=</span> <span class="n">buildFullList</span><span class="p">(</span><span class="n">indexref</span><span class="p">,</span><span class="n">solution</span><span class="p">)</span>
+
+<span class="n">allVariables</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 195.71428571428572, 0, -47.14285714285711, 757.1428571428572]
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Now I want to check for negatives!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testForFeasible</span><span class="p">(</span><span class="n">list1</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">list1</span><span class="p">])</span>
+
+<span class="n">testForFeasible</span><span class="p">(</span><span class="n">allVariables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>We see this is not in the feasible set.  Let’s do one more thing and compute the profit from this list.  I know this isn’t possible but we’ll need this function soon!</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+  <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="nb">list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">profit</span><span class="p">(</span><span class="n">allVariables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>391.42857142857144
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Now I am going to put it all together and build a little table that looks at all 10 points in the order I presented them above.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span> <span class="c1">#which variables are not zero</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;large&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s1">&#39;slackFabric&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s1">&#39;slackSewing&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s1">&#39;slackfill&#39;</span><span class="p">}</span> <span class="c1">#dictionary for keeping variable labels straight</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>
+  <span class="n">solution</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span><span class="n">b</span><span class="p">)]</span>
+  <span class="n">list1</span> <span class="o">=</span> <span class="n">buildFullList</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">solution</span><span class="p">)</span>
+  <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]]),</span><span class="n">solution</span><span class="p">,</span><span class="n">profit</span><span class="p">(</span><span class="n">list1</span><span class="p">),</span><span class="n">testForFeasible</span><span class="p">(</span><span class="n">list1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>I’ll print the data in a nice table with headers.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variables Used&#39;</span><span class="p">,</span><span class="s1">&#39;Solution&#39;</span><span class="p">,</span><span class="s1">&#39;Profit&#39;</span><span class="p">,</span><span class="s1">&#39;In Feasible&#39;</span><span class="p">])</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variables Used</th>
+      <th>Solution</th>
+      <th>Profit</th>
+      <th>In Feasible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(large, small, slackFabric)</td>
+      <td>[84.82759, 151.72414, -201.03448]</td>
+      <td>557.93105</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(large, small, slackSewing)</td>
+      <td>[100.0, 110.0, 110.0]</td>
+      <td>520.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(large, small, slackfill)</td>
+      <td>[30.0, 170.0, 530.0]</td>
+      <td>430.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(large, slackFabric, slackSewing)</td>
+      <td>[140.0, 530.0, 400.0]</td>
+      <td>420.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(large, slackFabric, slackfill)</td>
+      <td>[540.0, -1870.0, -4400.0]</td>
+      <td>1620.00000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>(large, slackSewing, slackfill)</td>
+      <td>[228.33333, 311.66667, -971.66667]</td>
+      <td>684.99999</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>(small, slackFabric, slackSewing)</td>
+      <td>[385.0, -1325.0, -615.0]</td>
+      <td>770.00000</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>(small, slackFabric, slackfill)</td>
+      <td>[180.0, 110.0, 820.0]</td>
+      <td>360.00000</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>(small, slackSewing, slackfill)</td>
+      <td>[195.71429, -47.14286, 757.14286]</td>
+      <td>391.42858</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>(slackFabric, slackSewing, slackfill)</td>
+      <td>[1370.0, 540.0, 1540.0]</td>
+      <td>0.00000</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<blockquote>
+<div><p>Lastly I’ll use some manipulation to print the maximum inside the feasible set. First I restrict to in the feasible set, then I’ll search for the maximum entry of profit.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XFeasible</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;In Feasible&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+
+<span class="n">XFeasible</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variables Used</th>
+      <th>Solution</th>
+      <th>Profit</th>
+      <th>In Feasible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>(large, small, slackSewing)</td>
+      <td>[100.0, 110.0, 110.0]</td>
+      <td>520.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(large, small, slackfill)</td>
+      <td>[30.0, 170.0, 530.0]</td>
+      <td>430.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(large, slackFabric, slackSewing)</td>
+      <td>[140.0, 530.0, 400.0]</td>
+      <td>420.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>(small, slackFabric, slackfill)</td>
+      <td>[180.0, 110.0, 820.0]</td>
+      <td>360.0</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>(slackFabric, slackSewing, slackfill)</td>
+      <td>[1370.0, 540.0, 1540.0]</td>
+      <td>0.0</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">XFeasible</span><span class="p">[</span><span class="n">XFeasible</span><span class="p">[</span><span class="s1">&#39;Profit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">==</span><span class="n">XFeasible</span><span class="p">[</span><span class="s1">&#39;Profit&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variables Used</th>
+      <th>Solution</th>
+      <th>Profit</th>
+      <th>In Feasible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>(large, small, slackSewing)</td>
+      <td>[100.0, 110.0, 110.0]</td>
+      <td>520.0</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<blockquote>
+<div><p>This gives us exactly the solution we found graphically but an algorithmic
+way to find it!</p>
+</div></blockquote>
+</div>
+<div class="section" id="schematic-diagram-flowchart-of-simplex-method-algorithm">
+<h3>Schematic Diagram(Flowchart) of Simplex Method Algorithm<a class="headerlink" href="#schematic-diagram-flowchart-of-simplex-method-algorithm" title="Permalink to this headline">¶</a></h3>
+<p><img alt="SMImg4" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Simplex%20Method/SMImg/SMImg4.png" /></p>
+<ol class="simple">
+<li><p>Use the simplex method to solve the given
+linear programming problem. (In each case the objective function
+is to be maximized.)</p></li>
+</ol>
+<blockquote>
+<div><p>a)Objective function:
+$<span class="math notranslate nohighlight">\(
+z=5x_1+2x_2+8x_3
+\)</span><span class="math notranslate nohighlight">\(
+Contraints: 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{array}{l}
+2x_1-4x_2+x_3\leq 42\\
+2x_1+3x_2-x_3\leq 42\\
+6x_1-x_2+3x_3\leq 42\\
+x_1,x_2,x_3\geq 0\\
+\end{array}
+\)</span>$</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>b)Objective function:
+$<span class="math notranslate nohighlight">\(
+z=x_1+2x_2-x_4
+\)</span><span class="math notranslate nohighlight">\(
+Contraints: 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{array}{l}
+x_1+2x_2+3x_3\leq 24\\
+3x_2+7x_3+x_4\leq 42\\
+x_1,x_2,x_3\geq 0\\
+\end{array}
+\)</span>$</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>c)Objective function:
+$<span class="math notranslate nohighlight">\(
+z=x_1+2x_2+x_3-x_4
+\)</span><span class="math notranslate nohighlight">\(
+Contraints: 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{array}{l}
+x_1+x_2+3x_3_4x_4\leq 60\\
+x_2+2x_3+5x_4\leq 50\\
+2x_1+3x_2+6x_4\leq 72\\
+x_1,x_2,x_3,x_4\geq 0\\
+\end{array}
+\)</span>$</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">lhs_eq</span><span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">rhs_eq</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">24</span><span class="p">],</span>
+          <span class="p">[</span><span class="mi">42</span><span class="p">]]</span>            
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span> <span class="n">A_ub</span><span class="o">=</span><span class="n">lhs_eq</span><span class="p">,</span> <span class="n">b_ub</span><span class="o">=</span><span class="n">rhs_eq</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;revised simplex&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     con: array([], dtype=float64)
+     fun: -24.0
+ message: &#39;Optimization terminated successfully.&#39;
+     nit: 1
+   slack: array([0., 6.])
+  status: 0
+ success: True
+       x: array([ 0., 12.,  0.,  0.,  0.,  0.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">opt</span><span class="o">.</span><span class="n">fun</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>#References</p>
+<blockquote>
+<div><ol class="simple">
+<li><p>Moyer, Todd O. “The Simplex Method for Systems of Linear Inequalities.” Ohio Journal of School Mathematics, <a class="reference external" href="https://library.osu.edu/ojs/index.php/OJSM/article/view/5302/4540">https://library.osu.edu/ojs/index.php/OJSM/article/view/5302/4540</a>.</p></li>
+</ol>
+</div></blockquote>
+<blockquote>
+<div><ol class="simple">
+<li><p>Linear Inequalities.” Ohio Journal of School Mathematics, <a class="reference external" href="https://library.osu.edu/ojs/index.php/OJSM/article/view/5302/4540">https://library.osu.edu/ojs/index.php/OJSM/article/view/5302/4540</a>.</p></li>
+</ol>
+</div></blockquote>
+<blockquote>
+<div><ol class="simple">
+<li><p>Carreira-Perpiñán, Miguel Á. “Simplex Method.” From <em><strong>MathWorld</strong></em>–A Wolfram Web Resource, created by Eric W. Weisstein. <a class="reference external" href="https://mathworld.wolfram.com/SimplexMethod.html">https://mathworld.wolfram.com/SimplexMethod.html</a></p></li>
+</ol>
+</div></blockquote>
+<blockquote>
+<div><ol class="simple">
+<li><p>Coutinho, Demétrios &amp; Xavier-de-Souza, Samuel. (2013). Multicore Scalability and Efficiency Analysis of the standard simplex algorithm.</p></li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="problems-to-solve">
+<h2>Problems to solve<a class="headerlink" href="#problems-to-solve" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>write the simplex tableau for the given linear programming problem. You do not need to solve the problem. (In each
+case the objective function is to be maximized.)</p></li>
+</ol>
+<blockquote>
+<div><p>a)Objective function:
+$<span class="math notranslate nohighlight">\(
+z=x_1+2x_2
+\)</span><span class="math notranslate nohighlight">\(
+Contraints: 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{array}{l}
+2x_1+x_2\leq 8\\
+x_1+x_2-2x_3\leq 5\\
+x_1,x_2\geq 5\\
+\end{array}
+\)</span>$</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>b)Objective function:
+$<span class="math notranslate nohighlight">\(
+z=2x_1+3x_2+4x_3
+\)</span><span class="math notranslate nohighlight">\(
+Contraints: 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{array}{l}
+x_1+2x_2\leq 12\\
+x_1+x_3\leq 8\\
+x_1,x_2,x_3\geq 0\\
+\end{array}
+\)</span>$</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>c)Objective function:
+$<span class="math notranslate nohighlight">\(
+z=6x_1-9x_2
+\)</span><span class="math notranslate nohighlight">\(
+Contraints: 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{array}{l}
+2x_1-3x_2\leq 6\\
+x_1+x_2\leq 20\\
+x_1,x_2\geq 0\\
+\end{array}
+\)</span>$</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>A grower has 50 acres of land for which she plans to raise
+three crops. It costs USD200 to produce an acre of carrots and
+the profit is USD60 per acre. It costs USD80 to produce an acre of
+celery and the profit is USD20 per acre. Finally, it costs USD140 to
+produce an acre of lettuce and the profit is USD30 per acre. Use
+the simplex method to find the number of acres of each crop
+she should plant in order to maximize her profit. Assume that
+her cost cannot exceed USD10,000.</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="simple">
+<li><p>A fruit juice company makes two special drinks by blending
+apple and pineapple juices. The first drink uses 30% apple
+juice and 70% pineapple, while the second drink uses 60%
+apple and 40% pineapple. There are 1000 liters of apple and
+1500 liters of pineapple juice available. If the profit for the
+first drink is USD0.60 per liter and that for the second drink is
+USD0.50, use the simplex method to find the number of liters of
+each drink that should be produced in order to maximize the
+profit</p></li>
+</ol>
+<hr class="docutils" />
+<ol class="simple">
+<li><p>A manufacturer produces three models of bicycles. The time
+(in hours) required for assembling, painting, and packaging
+each model is as follows.</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p></p></th>
+<th class="text-align:center head"><p>Model A</p></th>
+<th class="text-align:center head"><p>Model B</p></th>
+<th class="text-align:center head"><p>Model C</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Assembling</p></td>
+<td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>2.5</p></td>
+<td class="text-align:center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Painting</p></td>
+<td class="text-align:center"><p>1.5</p></td>
+<td class="text-align:center"><p>2</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>packaging</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0.75</p></td>
+<td class="text-align:center"><p>1.25</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>The total time available for assembling, painting, and packaging is 4006 hours, 2495 hours and 1500 hours, respectively. The profit per unit for each model is USD45 (Model A), USD50 (Model B), and USD55 (Model C). How many of each type
+should be produced to obtain a maximum profit?</p>
+</div></blockquote>
+</div>
+<div class="section" id="project-idea">
+<h2>Project Idea<a class="headerlink" href="#project-idea" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>Linear Program</strong> is a model used to achieve the best outcome given a maximum or minimum equation with its linear constraints.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Optimal solution</strong> of a maximization linear programming model are the values assigned to the variables in the objective function to give the largest zeta value.  The optimal solution would exist on the corner points of the graph of the entire model.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Pivot variable</strong> is used in row operations to identify which variable will become the unit value and is a key factor in the conversion of the unit value.</p>
+</div></blockquote>
+<div class="section" id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Principal authors of this chapter were:</p>
+</div></blockquote>
+<ol class="simple">
+<li><p>Gulsan Rai</p></li>
+<li><p>Chiran Rayamajhi</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Chapter02LinearProgramming.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Linear Programming</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter04GoalProgramming.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Goal Programming</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

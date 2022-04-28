@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queuing Theory &#8212; Operations Research OER</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dynamic Programming" href="Chapter09DynamicProgramming.html" />
+    <link rel="prev" title="Transportation Theory" href="Chapter06Transport.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/JuliaSetECUColors.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Operations Research OER</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction to Operations Research
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter01Modeling.html">
+   Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter02LinearProgramming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter03SimplexMethod.html">
+   Simplex Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter04GoalProgramming.html">
+   Goal Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter05NetworkModels.html">
+   Network Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter06Transport.html">
+   Transportation Theory
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Queuing Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter09DynamicProgramming.html">
+   Dynamic Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10GameTheory.html">
+   Game Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11MonteCarlo.html">
+   Monte Carlo Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13GradientDescent.html">
+   Gradient Descent
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Chapters/Chapter07Queuing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/nurfnick/Operations_Research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/nurfnick/Operations_Research/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter07Queuing.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/nurfnick/Operations_Research/master?urlpath=tree/Chapters/Chapter07Queuing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/master/Chapters/Chapter07Queuing.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1">
+   Problem 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authors">
+     Authors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/dhirajbbasnet/Operations_Research/blob/main/Chapters/Chapter7Queuing.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="queuing-theory">
+<h1>Queuing Theory<a class="headerlink" href="#queuing-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This project is a research on queuing process. In this project we go through the basic idea of how queuing process works. We also go through some of the simple mathematical problems. Python programming language has been used for solving math problems in this project. We will be utilising necessary packages in python to demonstrate our problem and solve it.</p>
+<p>##Theory</p>
+<p>###Queue
+Queue is a line or sequence of people or vehicles awaiting their turn to be attended to or to proceed.(Shortle, J. F., Thompson, J. M., Gross, D., &amp; Harris, C. M., 2018)
+The simplest example of a queue is the typical line that we all participate in from time to time. We wait in a line for a movie, we wait in the check-out line at a grocery store, and we wait in the cafeteria line. Well-behaved lines, or queues, are very restrictive in that they have only one way in and only one way out. These queues must be managed and organized properly; this is where Queuing theory comes in.</p>
+<p>###Queuing Theory</p>
+<p>![Blank diagram.png](data:image/png;base64,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)</p>
+<p>Queueing theory is the mathematical study of how line is form, how it functions (Shortle, <a class="reference external" href="http://et.al">et.al</a>, 2018). Queuing theory scrutinizes the entire system of waiting in line, including elements like the customer arrival rate, number of servers, number of customers, capacity of the waiting area, average service completion time, and queuing discipline. The Queuing Theory is concerned with studying all the various dynamics of lines – or “queues” – and how they may be made to operate more efficiently.  In other words, Queuing theory is the study of queues and the random processes that characterize them. It deals with making mathematical sense of real-life scenarios.</p>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Queuing theory is used in our everyday life. Just by knowing a basic knowledge of queueing theory, life can be much easier and convenient.
+In library queuing theory is used to organize collection of books, and some special materials like audio or visual materials.
+A queuing system helps minimizing the waiting time of patients and maximizing the utilization of the servers in hospitals.
+The capability of these systems can have an important result on the quality of human life and productivity of the process. We have all been in a situation of waiting in line. This process is more common where areas are more congested meaning places with large number of people. We basically must wait in line for everything and every day. We wait in line in our cars in jams or at checkout counters in our grocery stores, So queuing is a model of waiting in lines.
+Queuing systems are successfully used for the performance analysis of different systems such as computer, communications, transportation networks and manufacturing. (Bhat, U. N., 2015)
+In easy words, a queuing system consists of customers arriving for a service and waiting if the service is not provided immediately and leaving the system as soon as they are served. Customer does not just mean people here. For instance, it could be an airplane waiting in line for take-off, or a computer program waiting to be run.</p>
+<p>#Historical information about queuing theory</p>
+<p>Queueing theory was developed to predict the behavior of systems that provide service for randomly arising demands. This does not include unnatural demands. The earliest problems that were studied were of telephone traffic congestion. The investigator was a <strong>Danish mathematician, A. K. Erlang</strong>. He worked towards analyzing telephone traffic congestion with a goal of satisfying the randomly arising demand for the services of the Telephone exchange. Queuing theory was first introduced in the early 20th century.(Shortle, <a class="reference external" href="http://et.al">et.al</a>, 2018)</p>
+<p>Erlang worked for the Copenhagen Telephone Exchange and wanted to analyze and optimize its operations. He sought to determine how many circuits were needed to provide an acceptable level of telephone service, for people not to be “on hold” (or in a telephone queue) for too long. He was also curious to find out how many telephone operators were needed to process a given volume of calls.
+The first paper on queuing theory, “The Theory of Probabilities and Telephone Conversations” was published in 1909 by A.K. Erlang, now considered the father of the field. His work with the Copenhagen Telephone Company is what prompted his initial foray into the field. He pondered the problem of determining how many telephone circuits were necessary to provide phone service that would prevent customers from waiting too long for an available circuit. In developing a solution to this problem, he began to realize that the problem of minimizing waiting time was applicable to many fields, and began developing the theory further.(Shortle, <a class="reference external" href="http://et.al">et.al</a>, 2018)
+Erlang’s switchboard problem laid the path for modern queuing theory.</p>
+</div>
+<div class="section" id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a></h2>
+<p>The main project that we are working on is the queueing system of Mc Donalds. If we have ever noticed how the drive thru system of Mc Donald’s works, most locations have two lines leading up to the ordering booth. The lines later merge into one as they move through the payment window and serving window. Moreover, the server suggests some customers to park at a designated spot to keep the queue moving. So, we will be modelling the queueing system of Mc Donald’s and figure out why most locations are constructed in that way.</p>
+<p>We will be using the “ciw” package to demonstrate the queue system which is a python package which makes our tasks a lot easier to model queues.</p>
+<p>We will start by installing the package first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ciw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ciw
+  Downloading Ciw-2.2.1.tar.gz (99 kB)
+     |████████████████████████████████| 99 kB 4.8 MB/s 
+?25hCollecting PyYAML&gt;=5.1
+  Downloading PyYAML-6.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (596 kB)
+     |████████████████████████████████| 596 kB 49.0 MB/s 
+?25hRequirement already satisfied: networkx&gt;=2.3 in /usr/local/lib/python3.7/dist-packages (from ciw) (2.6.3)
+Collecting tqdm==4.14.0
+  Downloading tqdm-4.14.0-py2.py3-none-any.whl (46 kB)
+     |████████████████████████████████| 46 kB 661 kB/s 
+?25hBuilding wheels for collected packages: ciw
+  Building wheel for ciw (setup.py) ... ?25l?25hdone
+  Created wheel for ciw: filename=Ciw-2.2.1-py3-none-any.whl size=69690 sha256=72657a7eeb7e74e8ca04e350e11634cf6fb4c6b8cc54019ad01e06a47d2313e9
+  Stored in directory: /root/.cache/pip/wheels/54/55/07/2c1188b3796b819757608d4a12f1eabcc2ee8f04ec34602fa7
+Successfully built ciw
+Installing collected packages: tqdm, PyYAML, ciw
+  Attempting uninstall: tqdm
+    Found existing installation: tqdm 4.62.3
+    Uninstalling tqdm-4.62.3:
+      Successfully uninstalled tqdm-4.62.3
+  Attempting uninstall: PyYAML
+    Found existing installation: PyYAML 3.13
+    Uninstalling PyYAML-3.13:
+      Successfully uninstalled PyYAML-3.13
+<span class=" -Color -Color-Red">ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.</span>
+<span class=" -Color -Color-Red">spacy 2.2.4 requires tqdm&lt;5.0.0,&gt;=4.38.0, but you have tqdm 4.14.0 which is incompatible.</span>
+<span class=" -Color -Color-Red">panel 0.12.1 requires tqdm&gt;=4.48.0, but you have tqdm 4.14.0 which is incompatible.</span>
+<span class=" -Color -Color-Red">fbprophet 0.7.1 requires tqdm&gt;=4.36.1, but you have tqdm 4.14.0 which is incompatible.</span>
+Successfully installed PyYAML-6.0 ciw-2.2.1 tqdm-4.14.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s import the ciw package now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ciw</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will create a network to model the queueing system. Note that this model consists of only one server, one cashier and one server. This does not represent the designated parking spot. In other words, we have only 3 nodes. We have the following assumptions for the model:</p>
+<ol class="simple">
+<li><p>Every hour, about 45 customers arrive to the drivethru and get into the line</p></li>
+<li><p>There are no arrivals at any other part of the drivethru since it is a queue.</p></li>
+<li><p>For the service distribution, we assume that an order is made every 10 minutes.</p></li>
+<li><p>The cashier processes one payment every minute.</p></li>
+<li><p>The server serves one order in 2 to 6 minutes assuming that smaller orders take less time and some larger orders take more</p></li>
+</ol>
+<p>Notice that the 3 x 3 matrix named routing represents the overall model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span>
+    <span class="n">arrival_distributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="c1"># 45 customers arrive every hour</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span> <span class="c1">#No arrivals at the other nodes</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">()],</span>
+    <span class="n">service_distributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="c1">#1 order is made every 10 minutes</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span>  <span class="c1">#A cashier takes one payments every minute</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)],</span>  <span class="c1">#A server serves one order in 2 to 6 minutes   #Customer exits the queue</span>
+    <span class="n">routing</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>  <span class="c1">#The matrix for the network</span>
+               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]],</span>
+    <span class="n">number_of_servers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#Number of servers</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will calculate the wait times for the model. We will run the simulation 20 times and calculate the average to get the best representation of wait times. Moreover, we will run the simulation for a period of 180 minutes. Notice that the parameter we have provided is 200 instead of 180. This is to give some cool down time to take some customers out of the queue who are already in there.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average_waits</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+  <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
+  <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+  <span class="n">Q</span><span class="o">.</span><span class="n">simulate_until_max_time</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+  <span class="n">recs</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">get_all_records</span><span class="p">()</span>
+  <span class="n">waits</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">waiting_time</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span><span class="p">]</span>
+  <span class="n">mean_wait</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">waits</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">)</span>
+  <span class="n">average_waits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_wait</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">average_waits</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">average_waits</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.172945198218635
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, it looks like average wait times for customers at Mc Donalds is <strong>23.17 minutes</strong> according to our calculations. Like we discussed above, this wait time is in case we have only one ordering booth, one server and one cashier.</p>
+<p>In the above code, we can easily change the number of servers and see what kind of difference do they make in the system. We can also calculate how many customers passed through the system after receiving the service within the given time frame. To calculate that we will see how many records lie at node 3 which is our last node since we can be sure that the individuals that go through node 3 have completed the queue. Note that there are certain constraints on our resources as there is a certain amount of time that our resources(booth, cashier, server) take to provide their respective services and only 45 customers come into the drivethru every hour.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">completed_custs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+  <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
+  <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+  <span class="n">Q</span><span class="o">.</span><span class="n">simulate_until_max_time</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+  <span class="n">recs</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">get_all_records</span><span class="p">()</span>
+  <span class="n">num_completed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">node</span><span class="o">==</span><span class="mi">3</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">arrival_date</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">])</span>
+  <span class="n">completed_custs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_completed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.45
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that the Mc Donald’s location will be able to serve around <strong>47</strong> customers within 3 hours with the resources that they have in this situation.</p>
+<p>In the above example, we have only demonstrated a simple system without the designated parking spot.</p>
+<p>##Problem 2</p>
+<p>###Adding a designated parking spot</p>
+<p>For this part of the problem, we will be adding a designated parking spot so that the customer that have larger orders have to wait at the spot to keep the queue moving. Since it is complex to have multiple parking spots like Mc Donald’s usually do, we will be using a single parking spot to makes things easier. We will assume that 30% of the customers have large orders and have to go through the parking spot before leaving the queue. We will be using the same parameters that we used in previous problem to keep the comparisons fair.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">create_network</span><span class="p">(</span>
+    <span class="n">arrival_distributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="c1"># 45 customers arrive every hour</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span> <span class="c1">#No arrivals at the other nodes</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">(),</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">NoArrivals</span><span class="p">()],</span>
+    <span class="n">service_distributions</span> <span class="o">=</span> <span class="p">[</span><span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="c1">#1 order is made every 2 minutes</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span>  <span class="c1">#A cashier takes one payments every minute</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>  <span class="c1">#A server serves one order two minutes</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span>    <span class="c1">#1 order is given out every 4 minutes]2</span>
+                             <span class="n">ciw</span><span class="o">.</span><span class="n">dists</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)],</span>   <span class="c1">#Customer exits the queue</span>
+    <span class="n">routing</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>  <span class="c1">#The matrix for the network</span>
+               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.7</span><span class="p">],</span>
+               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span>
+               <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]],</span>
+    <span class="n">number_of_servers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1">#Number of servers</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets simulate this for one shift of breakfast of 3 hours (180 mins). At the beginning of breakfast, the store opens from an empty system. Therefore, no warm-up is required. We will use 20 minutes of cool-down time. We will run 10 trials to get a measure of average number of customers that pass through the system. To find the average number of customers that pass through the system, we ca count the number of data that have passed through node</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average_waits</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+  <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
+  <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+  <span class="n">Q</span><span class="o">.</span><span class="n">simulate_until_max_time</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+  <span class="n">recs</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">get_all_records</span><span class="p">()</span>
+  <span class="n">waits</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">waiting_time</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span><span class="p">]</span>
+  <span class="n">mean_wait</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">waits</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">)</span>
+  <span class="n">average_waits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_wait</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">average_waits</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">average_waits</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.39426161480664
+</pre></div>
+</div>
+</div>
+</div>
+<p>This shows how much of a difference does it make for Mc Donalds to have a designated parking spot for customers waiting due to large orders. The wait time in this condition goes down to approximately <strong>10 minutes</strong> whereas it was around 23 minutes in the last condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">completed_custs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+  <span class="n">ciw</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
+  <span class="n">Q</span> <span class="o">=</span> <span class="n">ciw</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+  <span class="n">Q</span><span class="o">.</span><span class="n">simulate_until_max_time</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+  <span class="n">recs</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">get_all_records</span><span class="p">()</span>
+  <span class="n">num_completed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">recs</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">node</span><span class="o">==</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">arrival_date</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">])</span>
+  <span class="n">completed_custs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num_completed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">completed_custs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>76.6
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have also found an improvement in how many customers can pass through the queue within 3 hours. The number is now <strong>76</strong> which is much higher than what we had in the first situation. So, by adding only a single parking spot, Mc Donalds can take a lot more customers and provide them with almost half wait times.</p>
+<p>##Problem Set</p>
+<ol class="simple">
+<li><p>In the above example, we have only demonstrated a simple system that includes 1 servers. what kind of difference do they make in the system if we had 2 servers?</p></li>
+<li><p>What does it mean to have an exponential distribution of 0.5 for customer arrival?</p></li>
+<li><p>How would you add a designated parking spot after the pickup window so that customers with large orders are made to wait separately?</p></li>
+<li><p>Compare the wait times for the two models with same number of servers. What kind of difference do you see?</p></li>
+<li><p>What kind of difference do they make in the system if we had 2 servers in the second model?</p></li>
+<li><p>For model two, what would be the best configuration for the queue given that we have 5 employees to work it that we can use for the ordering station, cashier and server? Try playing with different number of cashiers and servers.</p></li>
+<li><p>What queueing discipline does the two models follow?</p></li>
+<li><p>What kind of limitations do we have on the models above? Could we speed up the queues by making servers more efficient that is decreasing serving times?</p></li>
+<li><p>You replace cashier 1 with a cashier that is twice as fast (the new cashier services jobs at an average rate of 2 payments every minute). Does this “improve- ment” affect the average wait time in the system?</p></li>
+<li><p>What does a M/M/1 queue represent? (Kendall Notation)</p></li>
+</ol>
+<p>##Project Idea</p>
+<ol class="simple">
+<li><p>In ATM, bank customers arrive randomly and the service time i.e. the time customer takes to do transaction in ATM, is also random.Figure out how queuing can help bank ATM to increase its quality of service, by anticipating, if there are many customers in the queue.</p></li>
+<li><p>A basic model of vehicular traffic based on queuing theory. It will determine the best times of the red, amber, and green lights to be either on or off. Using queuing theory, explore to reduce the delay on the roads.</p></li>
+</ol>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Shortle, J. F., Thompson, J. M., Gross, D., &amp; Harris, C. M. (2018). Fundamentals of queueing theory. John Wiley &amp; Sons.</p>
+<p>Khinchin A. I︠A︡. (2013). Mathematical methods in the theory of queuing. Dover.</p>
+<p>Bhat, U. N. (2015). An introduction to queueing theory: Modeling and analysis in applications. Birkhäuser.</p>
+<div class="section" id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
+<p>Subin Manandhar</p>
+<p>Dhiraj Basnet</p>
+<p>Dichendra Shrestha</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Chapter06Transport.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Transportation Theory</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter09DynamicProgramming.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dynamic Programming</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

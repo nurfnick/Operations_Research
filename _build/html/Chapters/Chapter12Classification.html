@@ -1,0 +1,1164 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classification &#8212; Operations Research OER</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gradient Descent" href="Chapter13GradientDescent.html" />
+    <link rel="prev" title="Monte Carlo Simulation" href="Chapter11MonteCarlo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/JuliaSetECUColors.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Operations Research OER</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction to Operations Research
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter01Modeling.html">
+   Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter02LinearProgramming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter03SimplexMethod.html">
+   Simplex Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter04GoalProgramming.html">
+   Goal Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter05NetworkModels.html">
+   Network Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter06Transport.html">
+   Transportation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter07Queuing.html">
+   Queuing Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter09DynamicProgramming.html">
+   Dynamic Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10GameTheory.html">
+   Game Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11MonteCarlo.html">
+   Monte Carlo Simulation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13GradientDescent.html">
+   Gradient Descent
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Chapters/Chapter12Classification.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/nurfnick/Operations_Research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/nurfnick/Operations_Research/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter12Classification.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/nurfnick/Operations_Research/master?urlpath=tree/Chapters/Chapter12Classification.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/master/Chapters/Chapter12Classification.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nearest-neighbors">
+   K-Nearest Neighbors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-k-nearest-neighbors">
+     Examples of K-Nearest Neighbors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#answer">
+     Answer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#similar-problem">
+     Similar Problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-nearest-neighbors-python-implementation">
+     K-Nearest Neighbors Python Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions">
+     Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   Decision Tree
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#history">
+     History
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-decision-tree-work">
+     How Does Decision Tree Work?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gini-index">
+     Gini Index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-decision-tree">
+     Visualization of Decision Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pros-and-cons">
+     Pros And Cons
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authors">
+     Authors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="classification">
+<h1>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Classification has been used throughout all of human history. The food groups are an example of classification. Apples are fruits and cakes are desserts. Classification is used by humans to simplify the information that is needed to be remembered. From the previous example, fruits are generally healthy, whereas desserts are not. Therefore, if an unknown food can be classified into a fruit or dessert, then a person can have a general knowledge of the unknown food. The idea of classification plays an important role in machine learning algorithms.</p>
+<p>Classification is the systematic arrangement of objects into categories that have similar traits. Classification may be a simple easy to understand term; however, there are a plethora of different ways to go about classifying computationally. In this text, three specific types of computational classification are discussed, K-Nearest Neighbors, Decision Tree, and Logistic Regression. Note that there are several other types that are not mentioned. This types are not mentioned strickly because of the space constraint of this text.</p>
+</div>
+<div class="section" id="k-nearest-neighbors">
+<h2>K-Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this headline">¶</a></h2>
+<p>K-Nearest Neighbors (KNN) is one of the simplest and oldest methods of classification. In 1951, Evelyn Fix and J.L. Hodges Jr. wrote the first known technical report of what is now know as KNN. KNN classifies every unlabeled data points by the majority label among its K-Nearest Neighbors. To find the K-Nearest Neighbor, KNN uses the Euclidean distance to determine the closest set of data points to any example with an unknown label. The Euclidean distance is shown below.</p>
+<div class="math notranslate nohighlight">
+\[
+D = \sqrt{(a_1-a_0)^2+(b_1-b_0)^2+(c_1-c_0)^2+...} 
+\]</div>
+<p>The user tells KNN the number of data points that is needed to determine the unknown label. Then based on that number of closest data points, the unknown label is predicted to be the majority label.</p>
+<div class="section" id="examples-of-k-nearest-neighbors">
+<h3>Examples of K-Nearest Neighbors<a class="headerlink" href="#examples-of-k-nearest-neighbors" title="Permalink to this headline">¶</a></h3>
+<p>The following is an example of how KNN works in two dimensions. Given the table and graph below, determine the label of the unknown point <span class="math notranslate nohighlight">\((1.5,3)\)</span> for 1, 3, and 5 nearest neighbors. This problem can be done by using a programming language. However, this problem was design to be done by hand, or using a graphing software.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Table 1. Nearest Neighbors</span>
+<span class="c1">#Import Packages</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Circle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1">#Unknown Point</span>
+<span class="n">unknownPoint</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1">#Create Array</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">array</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span>
+<span class="c1">#Display Table</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">head</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">))</span>
+<span class="c1">#Scatter Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----+-----+---------+
+|   X |   Y |   Label |
++=====+=====+=========+
+| 0   |   0 |       0 |
++-----+-----+---------+
+| 1   |   2 |       0 |
++-----+-----+---------+
+| 1   |   4 |       0 |
++-----+-----+---------+
+| 3   |   4 |       1 |
++-----+-----+---------+
+| 2   |   3 |       1 |
++-----+-----+---------+
+| 2.5 |   2 |       1 |
++-----+-----+---------+
+</pre></div>
+</div>
+<img alt="../_images/Chapter12Classification_5_1.png" src="../_images/Chapter12Classification_5_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h3>
+<p>The first task is to determine the closest point to the unknown point. Using the table find all of the Euclidean distances from each point to the unknown point.</p>
+<p>For the first point (0,0)
+$<span class="math notranslate nohighlight">\(
+D = \sqrt{(1.5-0)^2+(3-0)^2}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 3.354 
+\)</span><span class="math notranslate nohighlight">\(
+The second point (1,2)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt{(1.5-1)^2+(3-2)^2}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.118
+\)</span><span class="math notranslate nohighlight">\(
+The third point (1,4)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt{(1.5-1)^2+(3-4)^2}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.118
+\)</span><span class="math notranslate nohighlight">\(
+The fourth point (3,4)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt{(1.5-3)^2+(3-4)^2}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.803
+\)</span><span class="math notranslate nohighlight">\(
+The fifth point (2,3)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt{(1.5-2)^2+(3-3)^2}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 0.5
+\)</span><span class="math notranslate nohighlight">\(
+The sixth point (2.5,2)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt{(1.5-2.5)^2+(3-2)^2}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.414
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Table 2. Euclidean Distance Table</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">distances</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">0</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Point&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">,</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">head</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---------+------------+---------+
+|   Point |   Distance |   Label |
++=========+============+=========+
+|       1 |    3.3541  |       0 |
++---------+------------+---------+
+|       2 |    1.11803 |       0 |
++---------+------------+---------+
+|       3 |    1.11803 |       0 |
++---------+------------+---------+
+|       4 |    1.80278 |       1 |
++---------+------------+---------+
+|       5 |    0.5     |       1 |
++---------+------------+---------+
+|       6 |    1.41421 |       1 |
++---------+------------+---------+
+</pre></div>
+</div>
+</div>
+</div>
+<p>The table above shows that point 5 is the closest point to the unknown point. Based off only using one nearest neighbor, the label of the unknown point would be 1. However, if the three closest neighbors are used, points 2, 3, and 5, then the label of the unknown point would be 0. This result happens because a majority of the nearest neighbors have a zero label. For the five nearest neighbors, all points except point 1, the label of the unknown point is 1. This is the process that the K-Nearest Neighbors algorithm is designed to do. Below are visual representations of the three different numbers of nearest neighbors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title One Nearest Neighbor</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">unknownPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">0.55</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Chapter12Classification_10_0.png" src="../_images/Chapter12Classification_10_0.png" />
+</div>
+</div>
+<p>The graph above shows the closest nearest neighbor. If KNN is used the label for the unknown point would be 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Three Nearest Neighbors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">unknownPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">1.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Chapter12Classification_12_0.png" src="../_images/Chapter12Classification_12_0.png" />
+</div>
+</div>
+<p>The graph above shows the closest nearest neighbor. If KNN is used the label for the unknown point would be 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Five Nearest Neighbors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">unknownPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">unknownPoint</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">1.84</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Chapter12Classification_14_0.png" src="../_images/Chapter12Classification_14_0.png" />
+</div>
+</div>
+<p>The graph above shows the closest five nearest neighbor. If KNN is used the label for the unknown point would be 1. The circles in each graph give a visualization of the bounded area of the closest points, since the distance from the center to the edge of the circle remains constant in all directions. Throughout this example the label of the unknown point changed depending on the number of nearest neighbors. Therefore, the number of neighbors plays an important role in how the label is determined. Another important factor is the number of data points in a dataset is import. If there are not enough data points, as seen in the previous example, then the label prediction is more likely to be subject to change.</p>
+</div>
+<div class="section" id="similar-problem">
+<h3>Similar Problem<a class="headerlink" href="#similar-problem" title="Permalink to this headline">¶</a></h3>
+<p>The following is an example is similar to the one above. Use the same data and the same unknown point to solve. However, instead of using the stardard Euclidean distance formula. Use the following formula to calculate the distancances. The overall label will be the same, but the distances will be different.</p>
+<div class="math notranslate nohighlight">
+\[
+D = \sqrt[3]{|(x_2-x_1)|^3+|(y_2-y_1)|^3}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Table 1 Reshown</span>
+<span class="c1">#Unknown Point</span>
+<span class="n">unknownPoint</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1">#Create Array</span>
+<span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">array</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span>
+<span class="c1">#Display Table</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">head</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">))</span>
+<span class="c1">#Scatter Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----+-----+---------+
+|   X |   Y |   Label |
++=====+=====+=========+
+| 0   |   0 |       0 |
++-----+-----+---------+
+| 1   |   2 |       0 |
++-----+-----+---------+
+| 1   |   4 |       0 |
++-----+-----+---------+
+| 3   |   4 |       1 |
++-----+-----+---------+
+| 2   |   3 |       1 |
++-----+-----+---------+
+| 2.5 |   2 |       1 |
++-----+-----+---------+
+</pre></div>
+</div>
+<img alt="../_images/Chapter12Classification_19_1.png" src="../_images/Chapter12Classification_19_1.png" />
+</div>
+</div>
+<p>The first task is to determine the closest point to the unknown point. Using the table find all of the Euclidean distances from each point to the unknown point.</p>
+<p>For the first point (0,0)
+$<span class="math notranslate nohighlight">\(
+D = \sqrt[3]{|(1.5-0)|^3+|(3-0)|^3}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 3.120 
+\)</span><span class="math notranslate nohighlight">\(
+The second point (1,2)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt[3]{|(1.5-1)|^3+|(3-2)|^3}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.040
+\)</span><span class="math notranslate nohighlight">\(
+The third point (1,4)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt[3]{|(1.5-1)|^3+|(3-4)|^3}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.040
+\)</span><span class="math notranslate nohighlight">\(
+The fourth point (3,4)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt[3]{|(1.5-3)|^3+|(3-4)|^3}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.636
+\)</span><span class="math notranslate nohighlight">\(
+The fifth point (2,3)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt[3]{|(1.5-2)|^3+|(3-3)|^3}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 0.5
+\)</span><span class="math notranslate nohighlight">\(
+The sixth point (2.5,2)
+\)</span><span class="math notranslate nohighlight">\(
+D = \sqrt[3]{|(1.5-2.5)|^3+|(3-2)|^3}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+D = 1.260
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Table 3. Cubic Distance Formula Distances</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">distances</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="mi">3</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)),</span><span class="mi">0</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="mi">3</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)),</span><span class="mi">1</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span><span class="mi">1</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cbrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">((</span><span class="mf">1.5</span><span class="o">-</span><span class="mf">2.5</span><span class="p">))</span><span class="o">**</span><span class="mi">3</span><span class="o">+</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Point&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">,</span><span class="s1">&#39;Label&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">head</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---------+------------+---------+
+|   Point |   Distance |   Label |
++=========+============+=========+
+|       1 |   3.12013  |       0 |
++---------+------------+---------+
+|       2 |   1.04004  |       0 |
++---------+------------+---------+
+|       3 |  -0.956466 |       0 |
++---------+------------+---------+
+|       4 |  -1.63553  |       1 |
++---------+------------+---------+
+|       5 |  -0.5      |       1 |
++---------+------------+---------+
+|       6 |   0        |       1 |
++---------+------------+---------+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="k-nearest-neighbors-python-implementation">
+<h3>K-Nearest Neighbors Python Implementation<a class="headerlink" href="#k-nearest-neighbors-python-implementation" title="Permalink to this headline">¶</a></h3>
+<p>The next example shows an implementation of KNN in a real world dataset. The dataset being used is from credit card loan applications. The dataset can be found at <a class="reference external" href="https://datahub.io/machine-learning/credit-approval#resource-credit-approval">https://datahub.io/machine-learning/credit-approval#resource-credit-approval</a>.</p>
+<p>The dataset is comprised of 690 rows. Each row represents an individual’s application entries. In each row, there is 11 features and a label. The label is represent as 0 if not approved, and 1 if approved.</p>
+<p>The first step is to import the desired packages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pa</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The second step is to upload the dataset, randomize it rowise, and label the columns. The dataset is saved on GitHub for easy upload access into Colab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/estrickler1/OperationsResearchClassification/main/data.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>     <span class="c1">#Randomizer</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>     <span class="c1">#Labels Columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next step is to clean the dataset. The dataset upload had strings, which the Euclidean distance cannot be calculated from. Since each column with strings only had twp different strings, they were converted to 0 and 1. The third column is dropped due to an unknown error within the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>        <span class="c1">#Reindexer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function below is the KNN algorithm. The first step is to divide the dataset into features and corresponding labels. Next, the features and labels are divided into training and testing arrays. The StandardScaler is used to normalize the features. Then the KNN algorithm is trained on the traing features and labels. Next, the KNN algorithm uses the testing features to predict the testing labels. The accuracy for the testing data is calculated and returned. The accuracy is measure on the testing data to cross-validate K-Nearest Neighbors. Cross-validation is used to measure the preformance of any implentation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">KNNAlgorithm</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">testPercent</span><span class="p">,</span> <span class="n">neighbors</span><span class="p">):</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">xTrain</span><span class="p">,</span> <span class="n">xTest</span><span class="p">,</span> <span class="n">labelTrain</span><span class="p">,</span> <span class="n">labelTest</span><span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span> <span class="n">testPercent</span><span class="p">)</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+  <span class="n">s</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTrain</span><span class="p">)</span>
+  <span class="n">xTrain</span><span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xTrain</span><span class="p">)</span>
+  <span class="n">s</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTest</span><span class="p">)</span>
+  <span class="n">xTest</span><span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xTest</span><span class="p">)</span>
+
+  <span class="n">knn</span><span class="o">=</span> <span class="n">KNN</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">neighbors</span><span class="p">)</span>
+  <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xTrain</span><span class="p">,</span><span class="n">labelTrain</span><span class="p">)</span>
+  <span class="n">labelPredict</span><span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xTest</span><span class="p">)</span>
+  <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">labelTest</span><span class="p">,</span><span class="n">labelPredict</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next funtion is not necessarliy needed. However, due to the way KNN is calculated the function allows the user to find the best number of nearest neighbors and its accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maxAccuracy</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">testPercent</span><span class="p">,</span> <span class="n">maxNeighbors</span><span class="p">):</span>
+  <span class="n">best</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">maxNeighbors</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">KNNAlgorithm</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span><span class="n">testPercent</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">:</span>
+      <span class="n">best</span> <span class="o">=</span> <span class="n">score</span>
+      <span class="n">bestNeighbors</span> <span class="o">=</span> <span class="n">i</span>
+  <span class="k">return</span> <span class="n">best</span><span class="p">,</span> <span class="n">bestNeighbors</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following lines are calling the functions to run on the inputted datset.The following lines are calling the functions to run on the inputted datset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">KNNAlgorithm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.75
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maxAccuracy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9, 4)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="questions">
+<h3>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>What does the k in k-Nearest Neighbors stand for?</p></li>
+<li><p>Would k-Nearest Neighbors work for a binary system, if so how?</p></li>
+<li><p>What are the advantages of k-Nearest Neighbors compared to other classification techniques?</p></li>
+<li><p>Find the 1, 3, and 5 nearest neighbors using Table 1, and the unknown point <span class="math notranslate nohighlight">\((2,2.5)\)</span>.</p></li>
+<li><p>Using the code provided above, find a dataset that can be implemented to find the nearest neighbors.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="decision-tree">
+<h2>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">¶</a></h2>
+<p>Decision tree is a widely used supervised machine learning algorithm. This algorithm can used for regression and classification problems, yet most widely used for classification problems. A decission tree follows a bunch of if-else conditions to picture the n=information and characterize it as per the conditions. For example:</p>
+<p><img alt="B03905_05_01-compressor.png" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Classification/ClassImg/ClassImg1.png" /></p>
+<div class="section" id="history">
+<h3>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h3>
+<p>When we look at the history of decision tree it comes from long way back and when it comes to algorithm it becomes difficult to pinpoint who invented what.When it comes to decision tree it is relatively new however their root can betraced all the way back to Babylonians.When we talked about babylonians they used to  use very advanced civilization who founded many mathematical concepts. One of these concepts was the quadratic(<span class="math notranslate nohighlight">\(x^2\)</span>+bx=c) and cubic equations(a<span class="math notranslate nohighlight">\(x^3\)</span>+b<span class="math notranslate nohighlight">\(x^2\)</span>=c) where babylonians thrived somewhere around 2000BC to 500BC</p>
+<p>When we come more closer to the civilization history we see more cool innovations such as Aristotle’s “categories”. He has included text like  “man arges”,”horse runs” which looks more like decision tree machine learning.
+When it comes to modern days in 1963 the department of Statistics at the University of Wisconsin-Madison writes first regression tree. It had an impurity measureand recursively split data into two subjects. In 1966(by Hunt) the Institute of Computing Science in the Pozan University of technology states that one of the first publications on decision <a class="reference external" href="http://tree.In">tree.In</a> 1972 the first classification tree appeared in the THAID project by Messenger and Mandell, it worked via splitting data to maximize the sum of cases in the modal category.
+In 1974 statistics professor Leo Breiman and Charles Stone from Berkeley and Jerome Friedman and Richard Olshen from Stanford started developing the classification and regression tree(CART) algorithm. In 1977 Breiman, Stone, Friedman, and Olshen invented the first cart version. In 1984 the official publication with a CART software which was a revalotion in the world of algorithms.Later in 1986 John Ross Quinlan proposed a new concept; tree with multiple answers. Quinal invented ID3(Iterative Dichotomiser 3) using an impurity criterion called gain ratio.</p>
+</div>
+<div class="section" id="how-does-decision-tree-work">
+<h3>How Does Decision Tree Work?<a class="headerlink" href="#how-does-decision-tree-work" title="Permalink to this headline">¶</a></h3>
+<p>Decision tree also works like a human mind whenever we try to solve any problem our first step starts with a question. In a similar way in a decision tree the datas are seperated step by step. Here data would isolate in remarkable pieces and, at long last, we would divide tests which is the pitch of whole concept.
+Here are some terminology in order to understand concept fo data mining better:</p>
+<ol class="simple">
+<li><p>Node: Nodes are every oblect in a tree. It contains subest of data, and excluding leaf nodes, a question splits the subset.</p></li>
+<li><p>Parent node: Parent node is a node that makes a data split.</p></li>
+<li><p>Child Node: Child node is a resulting node. It can also be a parent for its children.</p></li>
+<li><p>Leaf node: Leaf node is a final node with no other final questions.</p></li>
+<li><p>Branch: Branch is a unique line of the questions with answers that flow to a leaf node</p></li>
+<li><p>Root: It is the top node.</p></li>
+</ol>
+</div>
+<div class="section" id="gini-index">
+<h3>Gini Index<a class="headerlink" href="#gini-index" title="Permalink to this headline">¶</a></h3>
+<p>Gini Index, otherwise called Gini impurity, works out the measure of probability of a particular component that is grouped erroneously when chosen arbitrarily. In the event that every one of the components are connected with a solitary class, it very well may be called pure.</p>
+<p>Lets see the measure of the Gini Index, similar to the properties of entropy, the Gini list changes between values 0 and 1, where 0 expresses the purity of arrangement, for example, Every one of the components have a place with a predefined class or just one class exists there. Also, 1 demonstrates the irregular dissemination of components across different classes. The worth of 0.5 of the Gini Index shows an equivalent circulation of components over certain classes.</p>
+<p>While planning the choice tree, the highlights having minimal worth of the Gini Index would get preferred. We can become familiar with another tree-based algorithm(Random Forest).
+The Gini Index is dictated by deducting the amount of squared of probabilities of each class from one, numerically, Gini Index can be shown as:</p>
+<p>\begin{align}
+\mathbf{Gini Index} =1- \sum_{i=1}^n (P_i)^2
+\end{align}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pa</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span> 
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pregnant&#39;</span><span class="p">,</span> <span class="s1">&#39;glucose&#39;</span><span class="p">,</span> <span class="s1">&#39;bp&#39;</span><span class="p">,</span> <span class="s1">&#39;skin&#39;</span><span class="p">,</span> <span class="s1">&#39;insulin&#39;</span><span class="p">,</span> <span class="s1">&#39;bmi&#39;</span><span class="p">,</span> <span class="s1">&#39;pedigree&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rajatlamsalecok/OperationsResearchClassification/main/diabetes.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pregnant</th>
+      <th>glucose</th>
+      <th>bp</th>
+      <th>skin</th>
+      <th>insulin</th>
+      <th>bmi</th>
+      <th>pedigree</th>
+      <th>age</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>148</td>
+      <td>72</td>
+      <td>35</td>
+      <td>0</td>
+      <td>33.6</td>
+      <td>0.627</td>
+      <td>50</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>85</td>
+      <td>66</td>
+      <td>29</td>
+      <td>0</td>
+      <td>26.6</td>
+      <td>0.351</td>
+      <td>31</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8</td>
+      <td>183</td>
+      <td>64</td>
+      <td>0</td>
+      <td>0</td>
+      <td>23.3</td>
+      <td>0.672</td>
+      <td>32</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>89</td>
+      <td>66</td>
+      <td>23</td>
+      <td>94</td>
+      <td>28.1</td>
+      <td>0.167</td>
+      <td>21</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>137</td>
+      <td>40</td>
+      <td>35</td>
+      <td>168</td>
+      <td>43.1</td>
+      <td>2.288</td>
+      <td>33</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pregnant&#39;</span><span class="p">,</span> <span class="s1">&#39;insulin&#39;</span><span class="p">,</span> <span class="s1">&#39;bmi&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span><span class="s1">&#39;glucose&#39;</span><span class="p">,</span><span class="s1">&#39;bp&#39;</span><span class="p">,</span><span class="s1">&#39;pedigree&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="c1"># Features</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">label</span> <span class="c1"># Target variable</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split dataset into training set and test set</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># 70% training and 30% test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Decision Tree classifer object</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+
+<span class="c1"># Train Decision Tree Classifer</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict the response for test dataset</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model Accuracy, how often is the classifier correct?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.6666666666666666
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualization-of-decision-tree">
+<h3>Visualization of Decision Tree<a class="headerlink" href="#visualization-of-decision-tree" title="Permalink to this headline">¶</a></h3>
+<p>We are planning to show how our decision tree would look like for the dataset we used above. It is difficult to show the whole portion of the tree using the type of dataset we are using. So, we will limit the max_depth of the tree to be 5 which sets the height of the tree to be 3 from the root node. In the decision tree chart, each internal node has a decision rule that splits the data. Gini referred as Gini ratio, which measures the impurity of the node. You can say a node is pure when all of its records belong to the same class, such nodes known as the leaf node. By the use of max_depth, we have pruned the data which eventually makes the tree more readable and understandable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">feature_names</span><span class="o">=</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Ellipsis]
+</pre></div>
+</div>
+<img alt="../_images/Chapter12Classification_54_1.png" src="../_images/Chapter12Classification_54_1.png" />
+</div>
+</div>
+<p>We will optimize our decision tree again, but this time pre-prune it by using max_depth = 3 but will still use gini as attribute selection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Decision Tree classifer object</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Train Decision Tree Classifer</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#Predict the response for test dataset</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.7575757575757576
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the classification rate increased to 75.75% which is better accuracy than our previous model used above.</p>
+</div>
+<div class="section" id="pros-and-cons">
+<h3>Pros And Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h3>
+<p>Pros.</p>
+<ol class="simple">
+<li><p>Decision trees are easy to interpret and visualize.</p></li>
+<li><p>It can easily capture Non-linear patterns.</p></li>
+<li><p>It requires fewer data preprocessing from the user, for example, there is no need to normalize columns.</p></li>
+</ol>
+<p>Cons.</p>
+<ol class="simple">
+<li><p>Sensitive to noisy data. It can overfit noisy data.</p></li>
+<li><p>The small variation(or variance) in data can result in the different decision tree. This can be reduced by bagging and boosting algorithms.</p></li>
+<li><p>Decision trees are biased with imbalance dataset, so it is recommended that balance out the dataset before creating the decision tree.</p></li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h3>Questions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Does Decision Tree always have to be binary?</p></li>
+<li><p>What does Gini Index mean?</p></li>
+<li><p>Is there any other way to split data beside Gini Index?</p></li>
+<li><p>What are the advantages of dision tree over other classification methods?</p></li>
+<li><p>What does low Gini Index mean?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Fix, E., Hodges, J.L. Discriminatory analysis, nonparametric discrimination: Consistency properties. Technical Report 4, USAF School of Aviation Medicine, Randolph Field, Texas, 1951.</p>
+<p>Merriam-Webster. (n.d.). Classification. Merriam-Webster. Retrieved October 26, 2021, from <a class="reference external" href="https://www.merriam-webster.com/dictionary/classification">https://www.merriam-webster.com/dictionary/classification</a>.</p>
+<p>Weinberger, K. Q., Blitzer, J., &amp; Saul, L. K. (n.d.). Distance metric learning for large margin … - neurips. Retrieved October 26, 2021, from <a class="reference external" href="https://proceedings.neurips.cc/paper/2005/file/a7f592cef8b130a6967a90617db5681b-Paper.pdf">https://proceedings.neurips.cc/paper/2005/file/a7f592cef8b130a6967a90617db5681b-Paper.pdf</a>.</p>
+<div class="section" id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
+<p>Principal authors of this chapter were: Avishu Lamsal, Rajat Lamsal, &amp; Ethan Strickler</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Chapter11MonteCarlo.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Monte Carlo Simulation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter13GradientDescent.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gradient Descent</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

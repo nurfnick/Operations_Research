@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Theory &#8212; Operations Research OER</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monte Carlo Simulation" href="Chapter11MonteCarlo.html" />
+    <link rel="prev" title="Dynamic Programming" href="Chapter09DynamicProgramming.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/JuliaSetECUColors.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Operations Research OER</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction to Operations Research
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter01Modeling.html">
+   Modeling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter02LinearProgramming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter03SimplexMethod.html">
+   Simplex Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter04GoalProgramming.html">
+   Goal Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter05NetworkModels.html">
+   Network Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter06Transport.html">
+   Transportation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter07Queuing.html">
+   Queuing Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter09DynamicProgramming.html">
+   Dynamic Programming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Game Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11MonteCarlo.html">
+   Monte Carlo Simulation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13GradientDescent.html">
+   Gradient Descent
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Chapters/Chapter10GameTheory.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/nurfnick/Operations_Research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/nurfnick/Operations_Research/issues/new?title=Issue%20on%20page%20%2FChapters/Chapter10GameTheory.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/nurfnick/Operations_Research/master?urlpath=tree/Chapters/Chapter10GameTheory.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/master/Chapters/Chapter10GameTheory.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Game Theory
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#history-of-game-thoery">
+     HISTORY OF GAME THOERY
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theory">
+     Theory
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-1">
+       Example 1
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-2">
+       Example 2
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example-3">
+       Example 3
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems">
+     Problems
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-1">
+       Problem 1
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-2">
+       Problem 2
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-3">
+       Problem 3
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-4">
+       Problem 4
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-5">
+       Problem 5
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-6">
+       Problem 6
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-7">
+       Problem 7
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-8">
+       Problem 8
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-9">
+       Problem 9
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#thomas-vs-changretta">
+         <strong>
+          Thomas vs Changretta
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-10">
+       Problem 10
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#colleague-vs-you">
+         Colleague vs You
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project-idea">
+     <strong>
+      Project Idea
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#authors">
+       Authors
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter10GameTheory.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="game-theory">
+<h1>Game Theory<a class="headerlink" href="#game-theory" title="Permalink to this headline">¶</a></h1>
+<p><img alt="GAMR THEORY.png" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Game%20Theory/GTImg1.png" /></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>It is a branch of mathmatics concerned with the analysis of decision-making and strategy. It is applied in economics,biology and behavioral science. Game theory is used to determine different strategy to compete with one another. Game theory is also used in everyday life to make decision like when to change lanes in traffic, when to cross the road or even when to do your assignment.</p>
+<p>Game theory gained widespread recognition in early <span class="math notranslate nohighlight">\(1940's\)</span> when it was applied to the theoretical study of economics by mathematician John Von Newmann and the economist Oskar Morgenstern in their book theory of games and economic behaviors. since then its scopes broadened to co-operative interaction as well as in applied theoretical aspects of social sciences.</p>
+<p>the Nash equilibrium is a decision that does not deviate no matter what the other player chooses. It benefits person A no matter what person B does. Although it is not necessarily the optimal decision for both.</p>
+<p>On the other word, game theory can also be defined as the mathmatical study of decision-making, of conflict and strategy in social situations.</p>
+<p>Applications of game theory is very broad. It is used in various sectors like, Philosophy, Resource Allocation and Networking, Biology, Economics, Politics and more. As in regular life, we used Game Theory in repeated games, bargaining, reputation, equilibrium refinements, industrial organization, contract theory and mechanism/market design</p>
+<p>What motivated us to work on this subject is that none of us really knew what game theory was! We didn’t really know how to use it or what it’s applications were. So our main driving force was the pursuit of knowledge!</p>
+<div class="section" id="history-of-game-thoery">
+<h2>HISTORY OF GAME THOERY<a class="headerlink" href="#history-of-game-thoery" title="Permalink to this headline">¶</a></h2>
+<p>In 1921, a French mathematician and politician <em>Émile Borel (1871–1956)</em> published several papers on the <span class="math notranslate nohighlight">\(Theory\)</span> <span class="math notranslate nohighlight">\(Of\)</span> <span class="math notranslate nohighlight">\(Games\)</span>. He was known as the forgotten father of game theory and famous for his founding work in the areas of measure theory and probability. <em>Émile Borel</em> wrote several papers on games of chance and theories of play. Even The acknowledged father of <strong>Game Theory</strong> is <em>Émile Borel</em>, A Hungarian-American mathematician <em>John von Neumann</em>, who in a series of papers in the 1920s and ’30s established the mathematical framework for all subsequent theoretical developments. During World War II, he was a military strategists in such areas as logistics, submarine warfare, and air defense he drew on ideas that were directly related to game theory. Game theory thereafter developed within the context of the social sciences. Despite such empirically related interests, it is essentially a product of mathematicians.</p>
+<p><strong>DIFFERENT DEVELOPMENT AND MODELS DEVELOPED RELATED TO GAME THEORY</strong></p>
+<p><strong>Cournot (1838): Quantity Setting Duopoly</strong></p>
+<p>A French economist <em>Antoine Augustin Cournot (1801-1877)</em>. He created a economic model called as <span class="math notranslate nohighlight">\(Carnot\)</span> <span class="math notranslate nohighlight">\(Competition\)</span> used to describe an industry structure in which companies compete on the amount of output of prducts, which they decide on independently of each other and at the same time. He was inspired by observing competition in spring water duopoly. They used <span class="math notranslate nohighlight">\(Nash\)</span> <span class="math notranslate nohighlight">\(equilibrium\)</span> to claculate equilibrium from cost structure and price function for the best response function in firms.</p>
+<p><strong>Zermelo (1913): Backward Induction</strong></p>
+<p>This theorem is developed by  <em>Ernst Zermelo(1871-1953)</em>, a German mathematician and logician which is related to two players game. It talk about chess or tic-tac-toe which are two player games. That is, either there is a way for player 1 to force a win, or there is a way for player 1 to force a tie, or there is a way for player 2 to force a win which can be proof by induction. It define and informally discuss both perfect information and strategies in such games. This allows us to find <span class="math notranslate nohighlight">\(Nash\)</span> <span class="math notranslate nohighlight">\(Equilibria\)</span> in sequential games.</p>
+<p><strong>von Neumann and Morgenstern(1944): zero-sum games</strong></p>
+<p>Zero sum games is developed by <em>John Von Neumann(1903-1957)</em>, a Hungarian-American mathematician, physicist, computer scientist, engineer and polymath, who was also described as pratical joker and <em>Emile Borel</em>,a French mathematician. They describe zero-sum game is one in which no wealth is created or destroyed. So, in a two-player zero-sum game, whatever one player wins, the other loses. Therefore, the player share no common interests. There are two general types of zero-sum games: those with perfect information and those without.</p>
+<p><strong>Flood and Dresher (1950): Experiments</strong></p>
+<p>This experiment is developed by <em>Merrill Meeks Flood (1908 – 1991)</em>, a American Mathmatician and <em>Melvin Dresher(1911-1992)</em>, a Polish-born American mathematician. The Flood-Dresher Experiment was a prisoner’s dilemma game run 100 times between 2 players. In this case, the game was unfair one of the players had an inherent advantage over the other player, but the payoff matrix layout was still a prisoner’s dilemma. This experiment is done down in our example.</p>
+<p><strong>Nash (1950): Equilibrium</strong></p>
+<p>The Nash Equilibrium is a way of optimizing an outcome named after <em>John Forbes Nash Jr.</em> However it was first utilized by <em>Antoine Augustin Cournot</em> who was a French philosopher and mathematician. We will talk more about this in our theory.</p>
+<p><strong>Selten (1965): Dynamic Games</strong></p>
+<p><em>Reinhard Justus Reginald Selten(1930-2016)</em>, a German economist who won  Nobel Memorial Prize in Economic Sciences through his work in Game theory. It also described as the subgame perfect Nash equilibrium with its emphasis on the difficulty of commitment and on credible plans of action, remains the main concept for the strategic analysis of dynamic games. It has been applied myriad times in diverse models ranging over all social sciences, but also in biology and computer science.</p>
+<p><strong>Harsanyi (1967): Incomplete Information</strong></p>
+<p><em>John Charles Harsanyi(1920-2000)</em>, a Hungarian Nobel Prize laureate economist developed a new theory for the analysis of games with incomplete information where the players are uncertain about some important parameters of the game situation, such as the payoff functions, the strategies available to various players, the information other players have about the game, etc. However, each player has a subjective probability distribution over the alternative possibilities.</p>
+<p><strong>Akerlof, Spence, Stiglitz: first applications</strong></p>
+<p>This is also known as The Theory of Asymmetric Information in Economics which is developed by  <em>George Akerlof(1940)</em>, an American economist , <em>Michael Spence(1943)</em>, a Canadian-American economist and Nobel laureate, and <em>Joseph Stiglitz(1943)</em>,an American economist and public policy analyst. The three shared the Nobel Prize in economics in 2001 for their contributions.This theory was about the market effects of quality variability and uncertainty have classically been studied in the particular context of asymmetric information,
+focusing on the sellers’ expected behavior and the phenomenon of adverse selection.</p>
+<p><strong>1990s: parallel development of behavioral economics</strong></p>
+<p><em>Richard Thaler(1945)</em>, an American economist relate Game thoery with behavioral economics which is a relatively new field that combines insights from psychology, judgment, and decision making, and economics to generate a more accurate understanding of human behavior</p>
+</div>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>Our main focus of game theory has been the <strong>Nash Equilibrium</strong>.</p>
+<p>The <strong>Nash Equilibrium</strong> is a way of optimizing an outcome named after John Forbes Nash Jr. However it was first utilized by Antoine Augustin Cournot who was a French philosopher and mathematician.</p>
+<p>The <strong>Nash Equilibrium</strong> is a very unique way of observing decisions in a very absolute way.A pair of strategies is said to be <strong>Nash Equilibrium</strong> (NE), if the optimal choice of Player A given Player B’s choice coincides with optimal choice of Player B given Player A’s choice. In simple terms, initially neither player knows what the other player will do when deciding or making a choice. Hence NE is a pair of choices/strategies/expectations where neither player wants to change their behaviour even after the strategy/choice of the other player is revealed.</p>
+<p>As you can see the <strong>Nash Equilibrium</strong> is fairly straightforward. It is simple in a sense that each individual always tries to maximize their own outcome. However, in the real world it isn’t always absolute or predictable. It is very hard to predict people!</p>
+<p>Another one of the main ideas we have looked at is dominant strategy. In <strong>Dominant Strategy</strong> there is one optimal strategy for each player irrespective of what strategy the other player adopts. Whatever choice B makes, A should always choose Bottom and whatever choice A makes B should always choose Left.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Let’s Consider the following bargaining problem: 20 dollars needs to be split between Jack and Mac. Mac gets to make an initial offer.</p>
+<p>Jack then gets to respond by either accepting Mac’s initial offer or offering a counter offer. Finally, Mac can respond by either accepting Jacks offer or making a final offer.</p>
+<p>If Jack does not accept Mac’s final offer both Jack and Mac get nothing. Jack discounts the future at 10% (i.e. future earnings are with 10% less than current earnings while Mac discounts the future at 20%. Calculate the Nash equilibrium of this bargaining problem.</p>
+<p>The key to each of these games is as follows: At any stage, the offer made needs to be acceptable to both parties.</p>
+<p>We need to work backwards:</p>
+<p>Stage 3: Note that if Jack rejects Mac’s offer at this stage, the money disappears. Therefore, Jack will accept anything positive. Mac offers: 20 dollar to herself, 0 dollar to Jack.</p>
+<p>Stage 2: Now, Jack must make an offer that Mac will accept (if the game gets to stage three, Jack gets nothing).Mac is indifferent between 20 dollars in one year and 16 dollars today (she discounts the future at 20%). Jack offers: 16 dollars to Mac, 4 dollars to Himself</p>
+<p>Stage 1: Now, Mac must make an offer that Jack will accept (and is preferable to her – if this is not possible, then she will make an offer jack rejects and the game goes to stage 2).</p>
+<p>Jack is indifferent between 4 dollars in one year and 3.6 dollars today (he discounts the future at 10%). Note that 16.40 is preferred by Mac to  16 in one year. Mac offer 16.40 to herself, 3.60 to Jack.</p>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>We will compute Nash equilibria for a simple two player rock-paper-scissor game!</p>
+<p>i. First, we need to creat a payoff matrix for each player. We will start with the first player.<br />
+ii. The payoff matrix for the second players is the transpose of p2.<br />
+iii. We create the game object to represent the game.<br />
+iv. We compute the Nash equilibria for the game using the support enumeration algorithm.<br />
+v. We iterate over the equilibria and print the profile for each player.</p>
+<p><strong>Lets do this problem in python</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>apt-get -qq install -y graphviz <span class="o">&amp;&amp;</span> pip install nashpy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nashpy in /usr/local/lib/python3.7/dist-packages (0.0.21)
+Requirement already satisfied: numpy&gt;=1.12.1 in /usr/local/lib/python3.7/dist-packages (from nashpy) (1.19.5)
+Requirement already satisfied: scipy&gt;=0.19.0 in /usr/local/lib/python3.7/dist-packages (from nashpy) (1.4.1)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nashpy</span> <span class="k">as</span> <span class="nn">nash</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>   <span class="c1">#rock payoff</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>   <span class="c1">#paper payoff</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>    <span class="c1">#scissors payoff      </span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>   <span class="c1">#rock payoff</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>   <span class="c1">#paper payoff</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>    <span class="c1">#scissors payoff      </span>
+<span class="p">])</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">rock_paper_scissors</span> <span class="o">=</span> <span class="n">nash</span><span class="o">.</span><span class="n">Game</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+<span class="n">equilibria</span> <span class="o">=</span> <span class="n">rock_paper_scissors</span><span class="o">.</span><span class="n">support_enumeration</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="n">equilibria</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player 1&quot;</span><span class="p">,</span> <span class="n">p1</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player 2&quot;</span><span class="p">,</span> <span class="n">p2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Player 1 [0.33333333 0.33333333 0.33333333]
+Player 2 [0.33333333 0.33333333 0.33333333]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Essentially this equates to the fact that no matter what you choose your odds of winning will be 33% or one in three. Of course this is also true with losing and tying. As long as you are completely random. If you just choose rock every single time then ofcourse your strategy would become predictable, the other person will know to throw paper every time and you will lose every time!</p>
+</div>
+<div class="section" id="example-3">
+<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[PRISONER$$ $$DILEMMA\]</div>
+<p>It is also called as interrogation room problem or Flood-Dresher Experiment.
+This game was widely studied and used in social science.</p>
+<p>lets imagine, pato and babu were arrested and suspected to be in connection with a certain robbery. The prosecution has enough evdience to convict them for tresspasing but the prosecution beleived they carried out the robery. Now the DA comes in and puts them in seprate rooms where they cannot see each other or hear each other and starts the interrogation. DA wants to put them each behind bars for 8 months.</p>
+<p>The conditions for outcomes given by district attorney for pato and babu were:</p>
+<p>if either of  the two people confess they can charged with robery. if one confess’s but the other doesn’t the one who didn’t will go to jail for 12 months and the person who confess’s will go free .</p>
+<p>if both confess, both are going to jail for 8 month each.</p>
+<p>if they do not confess, both will be charged with trasspassing and get 1 month of jail time.</p>
+<hr class="docutils" />
+<p>check out this table</p>
+<p>###Pato vs Babu</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CONFESS</p></th>
+<th class="head"><p>LIE</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(-8,-8)</p></td>
+<td><p>(0,-12)</p></td>
+</tr>
+<tr class="row-odd"><td><p>(-12,0)</p></td>
+<td><p>(-1,-1)</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>According to <strong>NASH EQUILIBLIUM</strong> which gives optimal outcome of a game, they both will confess and get 8 months each of jail time.</p>
+<p>But <strong>DOMINANT STRAGTEGY</strong> which explains the optimal move for any player regardless of how the other player acts, it then gives the outcome of someone going to jail for 12 months and rather then none.</p>
+<p><strong>Lets do this problem in python</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install nashpy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting nashpy
+  Downloading nashpy-0.0.22.tar.gz (11 kB)
+<span class=" -Color -Color-Yellow">WARNING: Discarding https://files.pythonhosted.org/packages/93/1c/9005c6a0a3a3b183b5b216cc02cef14bb080fd3ee8733a1006fbcd81fffc/nashpy-0.0.22.tar.gz#sha256=9378fd492f01163ac01a7384dd94f7ffa3ce40e31fe2a08844a2e34576b3d8db (from https://pypi.org/simple/nashpy/). Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.</span>
+  Downloading nashpy-0.0.21.tar.gz (11 kB)
+Requirement already satisfied: numpy&gt;=1.12.1 in /usr/local/lib/python3.7/dist-packages (from nashpy) (1.19.5)
+Requirement already satisfied: scipy&gt;=0.19.0 in /usr/local/lib/python3.7/dist-packages (from nashpy) (1.4.1)
+Building wheels for collected packages: nashpy
+  Building wheel for nashpy (setup.py) ... ?25l?25hdone
+  Created wheel for nashpy: filename=nashpy-0.0.21-py3-none-any.whl size=15281 sha256=b1c2d49c4f69d38cf66a5e8ed2fd4b52295de1ccf984d3b42434333dc0c47ce6
+  Stored in directory: /root/.cache/pip/wheels/02/08/62/cf4fa931e0a317d180936b266169a57f4bb4eb801465bbe8a1
+Successfully built nashpy
+Installing collected packages: nashpy
+Successfully installed nashpy-0.0.21
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nashpy</span> <span class="k">as</span> <span class="nn">nash</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>I am going to make a non-zero sum game representing the prisoner’s dilema!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="o">-</span><span class="mi">12</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">rps</span> <span class="o">=</span> <span class="n">nash</span><span class="o">.</span><span class="n">Game</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bi matrix game with payoff matrices:
+
+Row player:
+[[ -8   0]
+ [-12  -1]]
+
+Column player:
+[[ -8 -12]
+ [  0  -1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eqs</span> <span class="o">=</span> <span class="n">rps</span><span class="o">.</span><span class="n">support_enumeration</span><span class="p">()</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="n">eqs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(array([1., 0.]), array([1., 0.]))]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">play_counts</span> <span class="o">=</span> <span class="n">rps</span><span class="o">.</span><span class="n">fictitious_play</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row_play_count</span><span class="p">,</span> <span class="n">column_play_count</span> <span class="ow">in</span> <span class="n">play_counts</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">row_play_count</span><span class="p">,</span> <span class="n">column_play_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 0] [0 0]
+[0. 1.] [1. 0.]
+[1. 1.] [2. 0.]
+[2. 1.] [3. 0.]
+[3. 1.] [4. 0.]
+[4. 1.] [5. 0.]
+[5. 1.] [6. 0.]
+[6. 1.] [7. 0.]
+[7. 1.] [8. 0.]
+[8. 1.] [9. 0.]
+[9. 1.] [10.  0.]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>What if I play the game randomly. Player 1 only snitches 10% of the time. But player 2 always snitches</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">rps</span><span class="p">[</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-11.6,  -0.8])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Player 1 is going to average 11.6 months in the pokey but player 2 less than a month!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">play_counts</span> <span class="o">=</span> <span class="n">rps</span><span class="o">.</span><span class="n">stochastic_fictitious_play</span><span class="p">(</span><span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">row_play_count</span><span class="p">,</span> <span class="n">column_play_count</span> <span class="ow">in</span> <span class="n">play_counts</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">row_play_count</span><span class="p">,</span> <span class="n">column_play_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([0, 0]), array([0, 0])] (None, None)
+[array([1., 0.]), array([1., 0.])] [array([1.00000000e+00, 1.38901788e-11]), array([1.00000000e+00, 1.44403994e-11])]
+[array([2., 0.]), array([2., 0.])] [array([1.00000000e+00, 3.95700286e-18]), array([1.00000000e+00, 4.22142047e-18])]
+[array([3., 0.]), array([3., 0.])] [array([1.00000000e+00, 4.09830948e-18]), array([1.00000000e+00, 4.29696302e-18])]
+[array([4., 0.]), array([4., 0.])] [array([1.00000000e+00, 3.97398014e-18]), array([1.00000000e+00, 3.99818184e-18])]
+[array([5., 0.]), array([5., 0.])] [array([1.0000000e+00, 4.3804744e-18]), array([1.00000000e+00, 4.53917857e-18])]
+[array([6., 0.]), array([6., 0.])] [array([1.00000000e+00, 4.07996071e-18]), array([1.00000000e+00, 4.14904687e-18])]
+[array([7., 0.]), array([7., 0.])] [array([1.0000000e+00, 4.3177387e-18]), array([1.00000000e+00, 4.27446727e-18])]
+[array([8., 0.]), array([8., 0.])] [array([1.00000000e+00, 4.24639563e-18]), array([1.00000000e+00, 4.45254266e-18])]
+[array([9., 0.]), array([9., 0.])] [array([1.0000000e+00, 4.0760351e-18]), array([1.00000000e+00, 4.53869921e-18])]
+[array([10.,  0.]), array([10.,  0.])] [array([1.00000000e+00, 4.59295866e-18]), array([1.00000000e+00, 4.14205587e-18])]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problems">
+<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-1">
+<h3>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a></h3>
+<p>Assume you are trying to buy a car. The best outcome for you is to get the car as cheap as possible for instance at cost to the company. The best outcome for the Dealer is going to be to get you to pay above sticker price for the car.</p>
+<p>Let’s say the salesman tries to get you to pay 40,000 for a car that cost the dealership 30,000 to get on the lot and sell. Ideally you would want to know exactly how much they paid for it so you could get it for that price. But in the real world the salesman won’t tell you how much he needs out of the car. However, you also have power in this situation because the dealer doesn’t know how much you are willing to pay for the car.</p>
+<p>Ideally you would meet exactly in the middle so each party leaves happy. That is not how buying a car works though. There is always a winner and a loser and the dealership wins the majority of the time. The dealership has the most power because they get the last say in what price the car is sold for.However, in reality you will never buy a vehicle for what the dealer buys it for.</p>
+</div>
+<div class="section" id="problem-2">
+<h3>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a></h3>
+<p>It is finals week and you and your closest friend Bob haven’t studied at all. You don’t want to fail so you have devised a devious plan to steal the proffesors answer sheet! You and Bob sneak in late at night after office hours into Dr. Jacobs office and just as you pull the answers out of his desk the light flips on! Dr. Jacob is standing behind you and Bob. Now Dr. Jacob is not happy one bit. He doesn’t like cheaters! But Dr. Jacob is a whimsical man so he offers you both an out. He says “Listen I know one of you thought of this idea and the other just taged along so I will give you both one opportunity to save your skin. If one of you comes forward I will spare you and allow you to take the final anyways but I will have the silent party expelled! If neither of you comes forward I will allow you both to take the exam but I will only give you half of the points that you would have scored. Finally if you both come forward I will award you both a 0 for your final.” You look at Bob nervously not knowing what you should do. What do you do?</p>
+<p>In this scenario what would be the Nash equilibrium?</p>
+<p>In this scenario what would be the dominant strategy?</p>
+</div>
+<div class="section" id="problem-3">
+<h3>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this headline">¶</a></h3>
+<p>It is spring break. You and your best bud Bob are ready to go out on the town and enjoy life! However, disaster strikes! There is an ice storm and a terrible one at that. The power is out and the roads are much too slick to go out. You and Bob reluctantly dust off your oil lantern and look around for something that can pass the time. You find an ancient deck of cards and decide to play a game. But this deck of cards no longer is a full deck. Instead you have 6 cards. 2 red 5’s a red 3 a black 5 a blue 3 and a black 8. You shuffle all 6 cards and divy them out equally. The rules you decide on are as follows. You and Bob both play a card from your hand. If the two numbers match bob wins the round. If the colors match you win the round. If both the color and the number match you both win the round. If nothing matches you both lose. The deck is shuffled and you have a black 5 a red 5 and a black 8. What do you play on your first round?</p>
+<p>What card should you play as the dominant strategy?</p>
+<p>What card should be played to garuntee a nash equilibrium?</p>
+</div>
+<div class="section" id="problem-4">
+<h3>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this headline">¶</a></h3>
+<p>It is Summer finally! You are hanging out with your best pal Bob walking through the woods when you stumble upon a treasure chest! Yet again your friendship is tested. You both want to keep all of the gold and jewels to yourselves. Seeing no end to the squabbling you and bob decide to let chance decide who gets the lions share of the treasure and who walks away a sad broken husk of a human. You remember that you have brought dice with you and decide this is the best way to determine the winner. You will both roll a single die and whoever rolls the highest number wins. The two dice that you have are very odd to say the least. They are both 6 sided die, however the numbers are a bit peculiar. One die has 3 faces with the number 4 and the other 3 faces with the number 2. The other die has 2 faces with a 1 2 faces with the number 3 and finally 2 faces with the number five. Bob says since they are your dice you should get first pick on which die you get. Bob will roll the die you do not chose.</p>
+<p>Which die do you chose for a dominant strategy?</p>
+</div>
+<div class="section" id="problem-5">
+<h3>Problem 5<a class="headerlink" href="#problem-5" title="Permalink to this headline">¶</a></h3>
+<p>Everyone has played rock, paper, scissors before. The rules are simple: Each individual can choose one among rock, paper, or scissors. Rock beats scissors, but rock is beaten by paper. Paper beats rock, but paper is beaten by scissor. Scissors beats paper, but scissors is beaten by rock. In any game if both players get the same choice then it will be a draw. Compute the Nash Equilibria for this two-player game.</p>
+<p>(Answer for this problem is in example 2)</p>
+</div>
+<div class="section" id="problem-6">
+<h3>Problem 6<a class="headerlink" href="#problem-6" title="Permalink to this headline">¶</a></h3>
+<p>Each individual owner of two bars charges its own price for a beer, either 2, 4, or 5 dollars. We can neglect the cost of obtaining and serving the beer. It is expected that 6000 beers every month are drunk in the bar by customers, who choose one of the two bars randomly, and 4000 beers per
+month are drunk by natives who go to the bar with the lowest price, and split evenly in case both bars
+offer the same price. What prices would the bars select?</p>
+</div>
+<div class="section" id="problem-7">
+<h3>Problem 7<a class="headerlink" href="#problem-7" title="Permalink to this headline">¶</a></h3>
+<p>Babu and Pato have robbed a bank and have been arrested. They are interrogated individually in diffirent room. Babu and Pato have the option to confess (move C) or to remain silent (move S).
+The police have little evidence, and if both remain silent they will be sentenced to one year on a minor
+charge. Therefore the police interrogators propose a deal: if one confesses while the other remains
+silent, the one confessing goes free while the other is sentenced to three years. However, if both talk,
+both will still be sentenced to two years. If each player’s payoff is 3 minus the number of years served
+in jail.
+Draw payoff bimatrix for this problem.</p>
+</div>
+<div class="section" id="problem-8">
+<h3>Problem 8<a class="headerlink" href="#problem-8" title="Permalink to this headline">¶</a></h3>
+<p>Bob and Sam are bargaining over how to split $10. Each player names an amount si, between 0 and 10.The choices are made simultaneously. Each player’s payoff is equal to his own money payoff.</p>
+<p>(a) In the first case, if s1+s2&gt;10, then both get zero and the money is gone.</p>
+<p>(b) In the second case, if s1+s2&gt;10 and the amounts named are different, then the person who names the smaller amount gets that amount and the other person gets the remaining money. If s1+s2&gt;10 and s1=s2, then both players get $5.</p>
+<p>(c) In the third case, the games (a) and (b) must be played such that only integer dollar amounts can be named by both players.</p>
+<p>Determine the pure strategy Nash Equilibria for all games (a) - (c)</p>
+</div>
+<div class="section" id="problem-9">
+<h3>Problem 9<a class="headerlink" href="#problem-9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="thomas-vs-changretta">
+<h4><strong>Thomas vs Changretta</strong><a class="headerlink" href="#thomas-vs-changretta" title="Permalink to this headline">¶</a></h4>
+<p>Mr. Thomas and Mr. changretta are betting on horses in horse race in Birmingham.The table below is the chances for the bet they will place on each horse.
+Find the Nash Equilibrium.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thomas vs Changretta</p></th>
+<th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>(3,2)</p></td>
+<td><p>(2,1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>(4,3)</p></td>
+<td><p>(1,4)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="problem-10">
+<h3>Problem 10<a class="headerlink" href="#problem-10" title="Permalink to this headline">¶</a></h3>
+<p>You and your collegue have to write some code for a client. You collegue thinks that they could write it in C faster but you think you can write it faster in python.You think you can write the python code four times faster than in C language. You write C with speed 1 and python with speed 4. Your colleague can write C slightly faster than python. They can write the code at the speed 3 and Python with speed 2.If both agreed, then you write code at the speed you predicted, but if you disagree, then productivity of the faster programmer is reduced by 1. The question is which language should you choose for the project?</p>
+<div class="section" id="colleague-vs-you">
+<h4>Colleague vs You<a class="headerlink" href="#colleague-vs-you" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Colleague vs You</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>Python</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>(3/1)</p></td>
+<td><p>(3/2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Python</p></td>
+<td><p>(2/1)</p></td>
+<td><p>(2/4)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="project-idea">
+<h2><strong>Project Idea</strong><a class="headerlink" href="#project-idea" title="Permalink to this headline">¶</a></h2>
+<p>A fun way to demonstrate <strong>Game Theory</strong> would be to have students group off into pairs of two. Give each group 5 marbles,2 scraps of paper and explain the rules as follows. If both contestants choose to share then they each get 2 marbles and the remaining marble is lost to the game master. If contestant 1 chooses to share but contestant 2 chooses to steal then contestant 2 gets all 5 marbles. If both contestants choose to steal then 3 marbles go to the game master and each contestant gets a single marble. Give the players a timer for how long they can talk and how long they have to make a decision. Or you could simply take away the ability to talk all together and only give them time to make a decision. Have them write their decision on the scrap paper. You could play this for a few rounds and award either bonus points or candy based on how many marbles each player gained in total!</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Game Theory concepts with application in Python using Nashpy Krishnan, Mythili. “Game Theory Concepts with Application in Python Using Nashpy (Part 1).” Medium, 16 Nov. 2020, <a class="reference external" href="http://towardsdatascience.com/game-theory-in-python-with-nashpy-cb5dceab262c">towardsdatascience.com/game-theory-in-python-with-nashpy-cb5dceab262c</a>.</p></li>
+<li></li>
+</ol>
+<p>Nash Equilibrium “Nash Equilibrium.” Investopedia, 3 Mar. 2021, <a class="reference external" href="http://www.investopedia.com/terms/n/nash-equilibrium.asp">www.investopedia.com/terms/n/nash-equilibrium.asp</a>.
+“Game Theory.” Funk &amp; Wagnalls New World Encyclopedia, Jan. 2018, p. 1; EBSCOhost, <a class="reference external" href="http://0-search-ebscohost-com.library.ecok.edu/login.aspx?direct=true&amp;db=funk&amp;AN=ga010500&amp;site=eds-live&amp;scope=site">0-search-ebscohost-com.library.ecok.edu/login.aspx?direct=true&amp;db=funk&amp;AN=ga010500&amp;site=eds-live&amp;scope=site</a>.
+3.
+Multi energy conversion based on game theory He, Jianjia, et al. “Multi-Energy Conversion Based on Game Theory in the Industrial Interconnection.” PloS One, vol. 16, no. 1, Jan. 2021, p. e0245622. EBSCOhost, doi:10.1371/journal.pone.0245622.
+4.
+Krishnan, Mythili. “Game Theory Concepts with Application in Python Using Nashpy (Part 1).” Medium, 16 Nov. 2020, <a class="reference external" href="http://towardsdatascience.com/game-theory-in-python-with-nashpy-cb5dceab262c">towardsdatascience.com/game-theory-in-python-with-nashpy-cb5dceab262c</a>.</p>
+<ol class="simple">
+<li><p>Research, Hkt. “Cournot Duopoly Model (1838).” HKT Consultant, 13 Jan. 2021, <a class="reference external" href="http://sciencetheory.net/cournot-duopoly-model-1838">sciencetheory.net/cournot-duopoly-model-1838</a>.</p></li>
+<li><p>“ECON 159 - Lecture 15 - Backward Induction: Chess, Strategies, and Credible Threats | Open Yale Courses.” OYC YALE, 2008, <a class="reference external" href="http://oyc.yale.edu/economics/econ-159/lecture-15">oyc.yale.edu/economics/econ-159/lecture-15</a>.</p></li>
+<li><p>Zero-Sum Games.” STANFORD, 1999, <a class="reference external" href="http://cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/zero.html">cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/zero.html</a>.</p></li>
+<li><p>“The Ideas of Reinhard Selten.” VOX, CEPR Policy Portal, 2016, <a class="reference external" href="http://voxeu.org/article/ideas-reinhard-selten">voxeu.org/article/ideas-reinhard-selten</a>.</p></li>
+<li><p>Harsanyi, John. “EconPapers: Games with Incomplete Information Played by ‘Bayesian’ Players, I-III Part I. The Basic Model.” John Harsanyi, 1967, <a class="reference external" href="http://econpapers.repec.org/article/inmormnsc/v_3a14_3ay_3a1967_3ai_3a3_3ap_3a159-182.htm">econpapers.repec.org/article/inmormnsc/v_3a14_3ay_3a1967_3ai_3a3_3ap_3a159-182.htm</a>.</p></li>
+</ol>
+<div class="section" id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
+<p>Principal authors of this chapter were:<a class="reference external" href="https://github.com/ashpou1">Ashok S. Poudel</a>, <a class="reference external" href="https://github.com/bidhan7">Bidhan Subedi</a>, &amp; <a class="reference external" href="https://github.com/James-rg">James Norman</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Chapter09DynamicProgramming.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Dynamic Programming</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter11MonteCarlo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Monte Carlo Simulation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
