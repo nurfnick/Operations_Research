@@ -1,0 +1,198 @@
+import numpy as np  #import numpy as np package for array
+
+from scipy.optimize import linprog  #import linprog from scipy.optimize for linear solving
+
+
+
+Minimize = [0,0,0,0,1,5,0,100,0]  ##Array listed as [X1,X2,X3,U1,E1,U2,E2,U3,E3]
+                             ## objective[Minimize=E1+5U2+100E3]
+
+Points = [[3000,800,250,1,-1,0,0,0,0], # Left hand values of matrix respectively represented in arrays.
+          [1000,500,200,0,0,1,-1,0,0],
+          [1,0,0,0,0,0,0,1,-1]]
+Value =[25000,                           #R.H.S values listed respectively in arrays.
+         30000,      
+         10]         
+
+opt = linprog (c=Minimize,
+              A_eq=Points, b_eq=Value, bounds=None,
+               method="revised simplex")
+
+
+np.float64(opt.x)  # Best solution for variables.
+
+np.round(opt.fun,decimals=3)  # Best Solution for minimize function
+
+import numpy as np  #import numpy as np package for array
+
+from scipy.optimize import linprog  #import linprog from scipy.optimize for linear solving
+
+
+obj = [0,0,-2.5,3.125,0,333.333,0,125,0,12.5]  ##Array listed as [x,y,U1,E1,U2,E2,U3,E3,U4,E4]
+                             ## objective[Minimize=3.125E1-2.5U1+333.333E2+125E3+12.5E4]
+
+lhs_eq = [[180,160,1,-1,0,0,0,0,0,0], # Left hand values of matrix respectively represented in arrays.
+          [6,1,0,0,0,-1,0,0,0,0],
+          [3,1,0,0,0,0,0,-1,0,0],
+          [4,6,0,0,0,0,0,0,0,-1]]
+rhs_eq =[800,                           #R.H.S values listed respectively in arrays.
+         12,      
+         8,
+        24]   
+
+Boundupto = [(0,5),    # Bound the variables x,y <= 5 and x,y, U1 , E1, U2, E2, U3, E3,U4,E4 >= 0
+       (0,5),
+       (0,float("inf")),
+       (0,float("inf")),
+       (0,float("inf")),
+       (0,float("inf")),
+       (0,float("inf")),
+       (0,float("inf")),
+       (0,float("inf")),
+       (0,float("inf"))]
+
+opt1 = linprog(c=obj, A_eq=lhs_eq, b_eq=rhs_eq, bounds=Boundupto, method="revised simplex")
+
+np.float64(opt1.x) # Best solution for variables.
+
+np.round(opt1.fun,decimals=3)  # Best Solution for minimize function
+
+import numpy as np  #import numpy as np package for array
+
+from scipy.optimize import linprog  #import linprog from scipy.optimize for linear solving
+
+obj1 = [0,0,-2.5,3.125,0,416.667,0,125,0,12.5]  ##Array listed as [x,y,U1,E1,U2,E2,U3,E3,U4,E4]
+                             ## objective[Minimize=3.125E1-2.5U1+416.667E2+125E3+12.5E4]
+
+lhs_eq1 = [[180,160,1,-1,0,0,0,0,0,0], # Left hand values of matrix respectively represented in arrays.
+          [6,1,0,0,0,-1,0,0,0,0],
+          [3,1,0,0,0,0,0,-1,0,0],
+          [4,6,0,0,0,0,0,0,0,-1]]
+rhs_eq1 =[800,                           #R.H.S values listed respectively in arrays.
+         12,      
+         8,
+        24] 
+
+opt2 = linprog(c=obj1, A_eq=lhs_eq1, b_eq=rhs_eq1, bounds=Boundupto, method="revised simplex")
+
+np.float64(opt2.x) # Best solution for variables.
+
+np.round(opt2.fun,decimals=3)  # Best Solution for minimize function
+
+import numpy as np  #import numpy as np package for array
+
+from scipy.optimize import linprog  #import linprog from scipy.optimize for linear solving
+
+
+
+Minimize1 = [0,0,1,0]  ##Array listed as [X1,X2,U1,U2]
+                             ## objective[Priority 1 Minimize=(V1 = U1)]
+Point1ub = [[2,1,0,0],  ##L.H.S of functional constraints.
+           [0,1,0,0],
+            [2,2,0,0]]
+
+Value1ub = [[2000],         #R.H.S of functional constraints.
+               [1000],
+               [2400]]           
+Point1 = [1,0,1,-1], # Left hand values of [Goal 1 : X1 + U1 - E1]
+         
+Value1 = [400]                         #R.H.S value of Goal 1.  
+
+result = linprog(c=Minimize1, A_ub=Point1ub, b_ub=Value1ub, A_eq=Point1, b_eq=Value1, bounds=None, method="revised simplex") #Code for performing simplex method on following constraints.
+
+
+np.round(result.x,decimals=3) #optimal value for (X1,X2,U2,E2).
+
+np.round(result.fun,decimals=3) #Value of V1.
+
+Minimize2 = [0,0,0,0,1,0]  ##Array listed as [X1,X2,U1,E2,U2,E2]
+                             ## objective[Priority 2: Minimize (V2 = U2)]
+Point2ub = [[2,1,0,0,0,0],  #L.H.S of functional constraints
+          [0,1,0,0,0,0],
+          [2,2,0,0,0,0]]
+Value2ub = [[2000],      #R.H.S of functional constraints.
+          [1000],
+          [2400]]            #Since we have to put priority 1 at best to find the best solution for priority 2.
+Point2 = [[1,0,1,-1,0,0],   #L.H.S of Goal 1: X1 + U1 - E1
+          [1,1,0,0,1,-1],      #L.H.S of Goal 2: X1 + X2 + U2 - E2
+          [0,0,1,0,0,0]]       #L.H.S of Priority 1: (V1=U1)
+        
+         
+Value2 = [400,            #R.H.S of Respectively values.
+          1000,
+          0]    
+
+result2 = linprog(c=Minimize2, A_ub=Point2ub, b_ub=Value2ub, A_eq=Point2, b_eq=Value2, bounds=None , method="revised simplex") #Code for performing simplex method on following constraints.
+
+np.round(result2.x,decimals=3)  #Optimal values of (X1,X2,U1,E1,U2,E2)
+
+np.round(result2.fun,decimals=3) #Value for V2.
+
+Minimize3 = [0,0,0,0,0,0,30,0,0,1]  ##Array listed as [X1,X2,U1,E1,U2,E2,U3,E3,U4,E4]
+                             ## objective[Priority 3: Minimize=(V3 = 30U3 + E4)]
+
+Point3ub = [[2,1,0,0,0,0,0,0,0,0], #L.H.S of functional constraints.
+          [0,1,0,0,0,0,0,0,0,0],
+          [2,2,0,0,0,0,0,0,0,0]]
+
+Value3ub = [[2000],                  #R.H.S of functional constraints.
+          [1000],
+          [2400]]
+                                         #Since we have to put priority 1 and priority 2 at best to find the best solution for priority 3.
+Point3 = [[1,0,1,-1,0,0,0,0,0,0],       #L.H.S of Goal 1: X1 + U1 - E1
+          [1,1,0,0,1,-1,0,0,0,0],        #L.H.S of Goal 2: X1 + X2 + U2 - E2 
+          [0.04,0.10,0,0,0,0,1,-1,0,0],   #L.H.S of Goal 3: 0.04X1 + 0.10X2 + U3 - E3
+          [2,3,0,0,0,0,0,0,1,-1],          #L.H.S of Goal 4: 2X1 + 3X2 + U4 - E4
+          [0,0,1,0,0,0,0,0,0,0],          #L.H.S of Priority 1: (U1)
+          [0,0,0,0,1,0,0,0,0,0]           #L.H.S of Priority 2: (U2)
+          ]
+          
+         
+Value3 = [400,
+          1000,
+          100,             #R.H.S of respective goals and priorities.
+          1600,
+          0,
+          0]  
+
+result3 = linprog(c=Minimize3, A_ub=Point3ub, b_ub=Value3ub, A_eq=Point3, b_eq=Value3, bounds=None , method="revised simplex") #Code for performing simplex method on following constraints.
+
+np.round(result3.x,decimals=3) #Value for [X1,X2,U1,E1,U2,E2,U3,E3,U4,E4]
+
+np.round(result3.fun,decimals=3) #value for V3.
+
+Minimize4 = [0,0,0,0,0,0,0,0,0,0,0,1,0,2]  ##Array listed as [X1,X2,U1,E1,U2,E2,U3,E3,U4,E4,U5,E5,U6,E6]
+                             ## objective[Priority 4:Minimize(V4 = E5 + 2E6 ]
+Point4ub = [[2,1,0,0,0,0,0,0,0,0,0,0,0,0],  #L.H.S of functional constraints.
+          [0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+          [2,2,0,0,0,0,0,0,0,0,0,0,0,0]]
+Value4ub = [[2000],                          #R.H.S of functional constraints.
+          [1000],
+          [2400]]
+                                               #Since we have to put priority 1,2 and 3 at best to find the best solution for priority 4.
+Point4 = [[1,0,1,-1,0,0,0,0,0,0,0,0,0,0],      #L.H.S of Goal 1: X1 + U1 - E1
+          [1,1,0,0,1,-1,0,0,0,0,0,0,0,0],      #L.H.S of Goal 2: X1 + X2 + U2 - E2
+          [0.04,0.10,0,0,0,0,1,-1,0,0,0,0,0,0],  #L.H.S of Goal 3: 0.04X1 + 0.10X2 + U3 - E3
+          [2,3,0,0,0,0,0,0,1,-1,0,0,0,0],         #L.H.S of Goal 4: 2X1 + 3X2 + U4 - E4
+          [2,2,0,0,0,0,0,0,0,0,1,-1,0,0],         #L.H.S of Goal 5: 2X1 + 2X2 + U5 - E5
+          [0,1,0,0,0,0,0,0,0,0,0,0,1,-1],          #L.H.S of Goal 6: X2 + U6 - E6
+          [0,0,1,0,0,0,0,0,0,0,0,0,0,0],          #L.H.S of Priority 1: (U1) 
+          [0,0,0,0,1,0,0,0,0,0,0,0,0,0],           #L.H.S of Priority 2: (U2)
+          [0,0,0,0,0,0,30,0,0,1,0,0,0,0]]          #L.H.S of Priority 3: (30U3 + E4)
+          # Left hand values of matrix respectively represented in arrays.
+         
+Value4 = [400,
+          1000,
+          100,
+          1600,
+          2200,
+          900,            ##R.H.S of respective goals and priorities.
+          0,
+          0,
+          1400]  
+
+result4 = linprog(c=Minimize4, A_ub=Point4ub, b_ub=Value4ub, A_eq=Point4, b_eq=Value4, bounds=None , method="revised simplex") ##Code for performing simplex method on following constraints.
+
+np.round(result4.x,decimals=3) #Value for [X1,X2,U1,E1,U2,E2,U3,E3,U4,E4,U5,E5,U6,E6]
+
+np.round(result4.fun,decimals=3) #Value of V4.

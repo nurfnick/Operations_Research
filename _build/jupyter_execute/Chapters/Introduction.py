@@ -15,7 +15,7 @@
 # 
 # 
 
-# This book was starteded in the Fall of 2021 at [East Central University](https://ecok.edu) for a course on Operations Research (CPSMA 3933).  All material here was created by the students and faculty member in hopes to create an OER (**O**pen **E**ducational **R**esource) for use in future classes.
+# This book was started in the Fall of 2021 at [East Central University](https://ecok.edu) for a course on Operations Research (CPSMA 3933).  All material here was created by the students and faculty member in hopes to create an OER (**O**pen **E**ducational **R**esource) for use in future classes.
 
 # ## Python
 
@@ -35,4 +35,4 @@
 
 # Compiler of this book was: [N.C.Jacob](https://github.com/nurfnick)
 # 
-# Contributions were made by:
+# Contributions were made by students in the CPSMA 3313 course during Fall 2021.

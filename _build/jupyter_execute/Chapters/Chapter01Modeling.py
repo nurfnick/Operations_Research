@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter1Modeling.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+# <a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter01Modeling.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
-# # Modeling 
+# # Modeling
 # 
 # 
 # 
@@ -88,7 +88,7 @@ plt.show()
 
 # So the function we want to maximize is $A(x) = 500x-\frac12x^2$.  Recalling our power rule of calculus
 # $$
-# A'(x) = 500 - x 
+# A'(x) = 500 - x
 # $$
 # So the critical $x^*$ is $500$.  The second derivative is
 # $$A''(x) = -1$$
@@ -183,6 +183,12 @@ sum
 # ### Moore's Law
 # 
 # Assume that the speed of new computers costing a certain amount of money grows exponentially over time, with the speed doubling every 18 months. Suppose you need to run a very time consuming program and are allowed to buy a new computer costing a fixed amount on which to run the program. If you start now, the program will take 12 years to finish. How long should you delay buying the computer and starting the program so that it will finish in the shortest amount of time from now? Also, what will the shortest finishing time be?
+
+# ### DIFUSE First Order System Project
+# 
+#  Use python to analize the data.  Differential Equations Models
+# 1. [Cart Path and Video Analysis](https://github.com/difuse-dartmouth/engineering-analyze-first-order-systems)  
+# 2. [Glucose Measuring](https://github.com/difuse-dartmouth/engineering-glucose-model-ode)
 
 # In[ ]:
 
