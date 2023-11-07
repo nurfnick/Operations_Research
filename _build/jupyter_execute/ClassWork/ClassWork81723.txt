@@ -1,0 +1,35 @@
+def RightHandSide(x):
+  return x**2/(x-5)
+
+RightHandSide(7)
+
+RightHandSide(14)
+
+for i in range(6,101):
+  print(i,RightHandSide(i))
+
+RightHandSide(10) == 20
+
+for i in range(-100,5):
+  print(i,RightHandSide(i))
+
+import numpy as np
+
+x = np.linspace(0,25,999)
+y = RightHandSide(x)
+
+twenties = np.ones(len(x))*20
+
+import matplotlib.pyplot as plt
+
+plt.plot(x,y)
+plt.plot(x,twenties)
+plt.ylim([0,25])
+
+def sumNParts(n):
+  return n*(n+1)/2
+
+for i in range(25):
+  print(i,sumNParts(i))
+
+

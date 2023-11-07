@@ -1,0 +1,55 @@
+import pandas as pa
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/Data_Sets_For_Stats/master/CuratedDataSets/hockey.csv')
+
+x = np.array(df[['G','A']])
+y = np.array(df.PTS)
+
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/Data_Sets_For_Stats/master/CuratedDataSets/Avengers')
+df.head()
+
+plt.scatter(df['Appearances'],df['Death1'])
+
+
+
+
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/Data_Sets_For_Stats/master/CuratedDataSets/100mOlympicRecords.csv')
+x = np.array(df)
+
+df.head()
+
+plt.scatter(df['Games'],df['Time'])
+
+y = np.array(df.Time.apply(lambda x: np.log(x)))
+
+from scipy import stats
+
+stats.linregress(df.Games,y)
+
+
+
+def predict(x):
+  return np.exp(-0.001134595*x+4.6125913)
+
+xs = np.linspace(1900,2020,100)
+ys = predict(xs)
+
+plt.plot(xs,ys)
+plt.scatter(df.Games,df.Time)
+
+y = np.array(df.Time.apply(lambda x: 1/x))
+
+stats.linregress(df.Games,y)
+
+def predict(x):
+  return 1/(0.00010288037*x-0.1096509491)
+
+xs = np.linspace(1900,2020,100)
+ys = predict(xs)
+
+plt.plot(xs,ys)
+plt.scatter(df.Games,df.Time)
+
+

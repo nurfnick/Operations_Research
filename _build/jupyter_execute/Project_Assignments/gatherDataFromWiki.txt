@@ -1,0 +1,44 @@
+import requests
+import pandas as pa
+from bs4 import BeautifulSoup
+
+
+r = requests.get('https://en.wikipedia.org/wiki/100_metres_at_the_Olympics')
+html_contents = r.text
+html_soup = BeautifulSoup(html_contents,"lxml")
+
+len(html_soup.find_all('table'))
+
+
+
+tables = html_soup.find_all('table',class_="wikitable sortable")
+
+
+
+df = pa.read_html(str(tables))[7]
+df['Gender'] = pa.Series(['Men' for x in range(len(df.index))])
+
+df1 = pa.read_html(str(tables))[8]
+
+df1['Gender'] = pa.Series(['Women' for x in range(len(df.index))])
+df1
+
+dfCombined = pa.concat([df,df1],ignore_index = True)
+
+dfCombined
+
+dfCombined.iloc[5,0]
+
+import re
+
+re.sub(r"[^0-9.]","",dfCombined.iloc[5,0])
+
+removeTheCitation = lambda s: re.sub(r"[^0-9.]","",s)
+
+dfCombined["Time"] = dfCombined["Time"].apply(lambda s: removeTheCitation(s))
+
+dfCombined.to_csv('100mOlympicRecords.csv',index = False)
+
+dfCombined.head()
+
+

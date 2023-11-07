@@ -1,17 +1,36 @@
 # In _toc.yml
 format: jb-book
 root: Chapters/Introduction.ipynb
-chapters:
-- file: Chapters/Chapter01Modeling.ipynb
-- file: Chapters/Chapter02LinearProgramming.ipynb
-- file: Chapters/Chapter03SimplexMethod.ipynb
-- file: Chapters/Chapter04GoalProgramming.ipynb
-- file: Chapters/Chapter05NetworkModels.ipynb
-- file: Chapters/Chapter06Transport.ipynb
-- file: Chapters/Chapter07Queuing.ipynb
-- file: Chapters/Chapter08GreedyHeuristics.ipynb
-- file: Chapters/Chapter09DynamicProgramming.ipynb
-- file: Chapters/Chapter10GameTheory.ipynb
-- file: Chapters/Chapter11MonteCarlo.ipynb
-- file: Chapters/Chapter12Classification.ipynb
-- file: Chapters/Chapter13GradientDescent.ipynb
+parts:
+ - caption: Problem Solving
+   chapters:
+     - file: Chapters/Chapter01Modeling.ipynb
+     - file: Chapters/ChapterRegression.ipynb
+     - file: Chapters/Chapter02LinearProgramming.ipynb
+     - file: Chapters/Chapter03SimplexMethod.ipynb
+     - file: Chapters/Chapter04GoalProgramming.ipynb
+ - caption: Models
+   chapters:
+     - file: Chapters/Chapter05NetworkModels.ipynb
+     - file: Chapters/Chapter06Transport.ipynb
+     - file: Chapters/Chapter07Queuing.ipynb
+     - file: Chapters/Chapter08GreedyHeuristics.ipynb
+ - caption: Recursion
+   chapters:
+     - file: Chapters/ChapterRecursion.ipynb
+     - file: Chapters/Chapter09DynamicProgramming.ipynb
+ - caption: Randomization
+   chapters:
+     - file: Chapters/Chapter10GameTheory.ipynb
+     - file: Chapters/Chapter11MonteCarlo.ipynb
+ - caption: Machine Learning Essentials
+   chapters:
+     - file: Chapters/Chapter12Classification.ipynb
+     - file: Chapters/Chapter13GradientDescent.ipynb
+ - caption: Project Examples
+   chapters:
+     - file: Project_Assignments/GettingStartedAssignment.ipynb
+     - file: Project_Assignments/LPAssignment.ipynb
+     - file: Project_Assignments/RegressionAssignment.ipynb
+     - file: Project_Assignments/RecursionAssignment.ipynb 
+     - file: Project_Assignments/RandomizationAssignment.ipynb

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# <a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter03SimplexMethod.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 # # Simplex Method
 
 # ## Introduction
@@ -10,15 +12,15 @@
 # 
 # 
 
-# >Before we head into the topic Simplex Method, it's essential to know what is Simplex Method? It is a combination of two terms, simplex and method where simplex stands for simple/basic and method means a systematic procedure or technique to accomplish the goal. Basically, Simplex Method, here in operation research, is an approach to solve linear programming models simply by hands using various means such as slack variables, tableaus, and pivot variables as a motive to find the optimal solution of an optimization problem.
+# Before we head into the topic Simplex Method, it's essential to know what is Simplex Method? It is a combination of two terms, simplex and method where simplex stands for simple/basic and method means a systematic procedure or technique to accomplish the goal. Basically, Simplex Method, here in operation research, is an approach to solve linear programming models simply by hands using various means such as slack variables, tableaus, and pivot variables as a motive to find the optimal solution of an optimization problem.
 # 
-#  >The Simplex Method can be defined as a method for entering inequalities into a matrix and the keys to row-reduce that matrix. This method  also is applicable to any number of independent variables , making graphing unnecessary(Todd O. P16). 
+#  The Simplex Method can be defined as a method for entering inequalities into a matrix and the keys to row-reduce that matrix. This method  also is applicable to any number of independent variables , making graphing unnecessary(Todd O. P16).
 
 # ### Historical Background
 
-# >For linear programming problems involving two variables, the graphical solution method is convenient. However, for problems involving more than two variables or problems involving a large number of constraints, it is better to use solution methods that are adaptable to computers which is developed by George Dantzig in 1946, known as simplex method. Looking at the history of development of Simplex Method, George Dantzig is found to be working on planning methods for the US Army Air Force during World War II using a desk calculator . That’s when, the simplex method is invented .
+# For linear programming problems involving two variables, the graphical solution method is convenient. However, for problems involving more than two variables or problems involving a large number of constraints, it is better to use solution methods that are adaptable to computers which is developed by George Dantzig in 1946, known as simplex method. Looking at the history of development of Simplex Method, George Dantzig is found to be working on planning methods for the US Army Air Force during World War II using a desk calculator . That’s when, the simplex method is invented .
 # 
-# >Dantzig’s simplex method should not be confused with the downhill simplex method(Spendely 1962, Nelder and Mead , 1965, Press et al.1992). The latter method solves an unconstrained  minimization problem in n dimensions by maintaining at each iteration  n+1 points that define a simplex. At each iteration , this simplex is updated by applying certain transformation to it so that it “rolls downhill” until it finds a minimum.
+# Dantzig’s simplex method should not be confused with the downhill simplex method(Spendely 1962, Nelder and Mead , 1965, Press et al.1992). The latter method solves an unconstrained  minimization problem in n dimensions by maintaining at each iteration  n+1 points that define a simplex. At each iteration , this simplex is updated by applying certain transformation to it so that it “rolls downhill” until it finds a minimum.
 # 
 # 
 # 
@@ -27,27 +29,28 @@
 
 # ### Theory
 
-# >A linear program is a method of achieving the best outcome given a maximum or minimum equation with linear constraints.  Most linear programs can be solved using an online solver such as MatLab, but the Simplex method is a technique for solving linear programs by hand. 
-# >To solve a linear programming model using the Simplex method the following steps are necessary:
+# A linear program is a method of achieving the best outcome given a maximum or minimum equation with linear constraints.  Most linear programs can be solved using an online solver such as MatLab, but the Simplex method is a technique for solving linear programs by hand.
 # 
-#         	Standard form
-#         	Introducing slack variables
-#         	Creating the tableau
-#         	Pivot variables
-#         	Creating a new tableau
-#         	Checking for optimality
-#         	Identify optimal values>
+# To solve a linear programming model using the Simplex method the following steps are necessary:
+# 
+# 1. Standard form
+# 2. Introducing slack variables
+# 3. Creating the tableau
+# 4. Pivot variables
+# 5. Creating a new tableau
+# 6. Checking for optimality
+# 7. Identify optimal values>
 
 # **Step 1: Standard Form**
 # 
-# > It is considered as baseline format for all linear programs before solving for the optimal solution. While solving the problem, it must meet the three significant criteria:-
+#  It is considered as baseline format for all linear programs before solving for the optimal solution. While solving the problem, it must meet the three significant criteria:-
 # 
 # 
-# >>1.   The problem should be a maximization problem. 
-# >>2.   All linear constraints must be in a less-than-or-equal-to inequality.
-# >>3.   All variables are in the problem should be non-negative.
+# 1.   The problem should be a maximization problem.
+# 2.   All linear constraints must be in a less-than-or-equal-to inequality.
+# 3.   All variables are in the problem should be non-negative.
 # 
-# >To change minimization linear program model into a maximization linear program model, Multiply both sides of the problem i.e. LHS and RHS of an inequality by -1. It gives us form less-than-or-equal-to inequality.
+# To change minimization linear program model into a maximization linear program model, Multiply both sides of the problem i.e. LHS and RHS of an inequality by -1. It gives us form less-than-or-equal-to inequality.
 # 
 # 
 # 
@@ -56,7 +59,7 @@
 # **Step 2: Introducing Slack Variables**
 # 
 # 
-# > Slack variables are introduced into the linear constraints of a linear program to transform them from inequality constraints to equality constraints. Coefficient of slack variables in the standard form is +1. The main motive to use slack variables is to transform constraints into solvable equalities with one definite answer.
+#  Slack variables are introduced into the linear constraints of a linear program to transform them from inequality constraints to equality constraints. Coefficient of slack variables in the standard form is +1. The main motive to use slack variables is to transform constraints into solvable equalities with one definite answer.
 #   
 # 
 # 
@@ -73,19 +76,19 @@
 # **Step 4: Check Optimality**
 # 
 # 
-# > Optimal solution are those values assigned to the variables in the objective function to give the largest zeta value. To check optimality using the tableau, all values in the last row must contain values greater than or equal to zero. For not optimal solution/negative values, the next step is to identify the pivot variable to base a new tableau on
-#  
+#  Optimal solution are those values assigned to the variables in the objective function to give the largest zeta value. To check optimality using the tableau, all values in the last row must contain values greater than or equal to zero. For not optimal solution/negative values, the next step is to identify the pivot variable to base a new tableau on
+# 
 # 
 # 
 
 # **Step 5: Identify Pivot Variables**
 # 
 # 
-# > Pivot variable is used in row operations to identify which variable will become the unit value and is a key factor in the conversion of the unit value.
+#  Pivot variable is used in row operations to identify which variable will become the unit value and is a key factor in the conversion of the unit value.
 # 
 # 
-# > Pivot Operation is performed on the Tableau wherever presence of most negative indicator is found in the last row. We take that specific column. We pivot by taking corresponding ratio: i.e. Taking constant diving by entry in pivot column. After that,compare which is the smallest non-negative entry in that ratio and we pivot on that entry making it 1 and rest of the entry in that column 0.
-#  
+#  Pivot Operation is performed on the Tableau wherever presence of most negative indicator is found in the last row. We take that specific column. We pivot by taking corresponding ratio: i.e. Taking constant diving by entry in pivot column. After that,compare which is the smallest non-negative entry in that ratio and we pivot on that entry making it 1 and rest of the entry in that column 0.
+# 
 # 
 # 
 # 
@@ -94,35 +97,35 @@
 # **Step 6: Creation of New Tableau**
 # 
 # 
-# > We write down all the result in the new table with changes in the rows and columns after pivot operation. Identify a new possible optimal solution.
+#  We write down all the result in the new table with changes in the rows and columns after pivot operation. Identify a new possible optimal solution.
 # If last row still has negative, we process/ continue pivot operation till last row have positive values.
-#  
+# 
 # 
 # 
 
 # **Step 7: Check Optimality and Identify optimal values**
 # 
 # 
-# > After our all non-negative values are presented in the last row, the value of zeta(the one optimal solution) we are seeking for can be found.
-#  
+#  After our all non-negative values are presented in the last row, the value of zeta(the one optimal solution) we are seeking for can be found.
+# 
 # 
 # 
 
-# ### Simplex Method In Real Life 
+# ### Simplex Method In Real Life
 
 # >With the simplex method you could minimize (find out what to produce and at what quantities) to make the most of your resources which means you spend less making the products and maximize the specific sector you want as earnings, production, and so on.If you're worried about profits then you could maximize given the profit you make for each product and this (Simplex Method) will give you suggestions on what what to produce and at what quantities.
 
-# ## Examples 
+# ## Examples
 
 # ### Example 1
 
-# >There are lot's of examples you can work on. However, lets try with this basic three decision variables.
+# There are lot's of examples you can work on. However, lets try with this basic three decision variables.
 # 
-# >Use the simplex method to find the maximum value of
+# Use the simplex method to find the maximum value of (Objective Function)
 # $$
-# z=2x_1-x_2+2x_3 (Objective Function)
+# z=2x_1-x_2+2x_3
 # $$
-# >Subject to the constraints
+# Subject to the constraints
 # $$
 # $$
 # 
@@ -134,20 +137,20 @@
 # 
 # $$
 # $$
-# >where $x_1,x_2,x_3\geq 0$.
+# where $x_1,x_2,x_3\geq 0$.
 # 
 
-# >**Solution**
+# **Solution**
 # 
-# >>Using the basic feasible solution
+# Using the basic feasible solution
 # 
 # $$
 # (x_1,x_2,x_3,s_1,s_2,s_3)=(0,0,0,10,20,5)
 # $$
 # 
-# >>Here, $s_1, s_2, s_3$ are slack variables which just helped us to convert inequality contraints into an equality.italicized text
+# Here, $s_1, s_2, s_3$ are slack variables which just helped us to convert inequality contraints into an equality.italicized text
 # 
-# >>The following is the initial simplex tableau for this problem. (Try checking these computations, and note the “tie” that occurs when choosing the first entering variable.)
+# The following is the initial simplex tableau for this problem. (Try checking these computations, and note the “tie” that occurs when choosing the first entering variable.)
 # 
 # 
 # 
@@ -170,11 +173,11 @@
 # $$
 # and the maximum value of z is 15.
 
-# ### Example 2
+# ### Repeating Example From Previous Chapter
 
-# >A local pillow company designs pillows especially for pregnant and nursing mothers.  There are two pillows that they produce referred here as large and small.  The large pillow requires six yards of fabric, one hour of sewing and eleven pounds of fill.  The small pillow requires seven yards of fabric, three hours of sewing and four pounds of fill.
+# A local pillow company designs pillows especially for pregnant and nursing mothers.  There are two pillows that they produce referred here as large and small.  The large pillow requires six yards of fabric, one hour of sewing and eleven pounds of fill.  The small pillow requires seven yards of fabric, three hours of sewing and four pounds of fill.
 # 
-# >The manager, trying to keep all of this straight creates a table.
+# The manager, trying to keep all of this straight creates a table.
 # 
 # |Pillow|Fabric|Sewing|Fill|
 # |:------:|:------:|:------:|:----:|
@@ -203,9 +206,9 @@
 # **Solution**
 # 
 # 
-# > The intern continues down this line of thought and comes up with a way to maximize the number of pillows produced.  They let $x$ be the number of large pillows and $y$ be the number of small pillows.  They create a system of inequalities. Now, rewrote the given question into an objective function and the constraints.
+#  The intern continues down this line of thought and comes up with a way to maximize the number of pillows produced.  They let $x$ be the number of large pillows and $y$ be the number of small pillows.  They create a system of inequalities. Now, rewrote the given question into an objective function and the constraints.
 # 
-# >The problem is executed in following way:
+# The problem is executed in following way:
 # $$
 # \left\{
 # \begin{array}{l}
@@ -216,7 +219,78 @@
 # \right.
 # $$
 # 
-# >To graph this properly, we'll find the corner points.
+# We now create the tableau with this information and our objective function, contraint and slack variables.  Here all our slack variables are positive (if you happened to have negatives, use -1 in that entry)
+# 
+# $$
+# \left\{
+# \begin{array}{l}
+# 6x+7y+s_1 =  1370\\
+# x+3y+s_2 = 540\\
+# 11x+4y+s_3 =  1540
+# \end{array}
+# \right.
+# $$
+# 
+# |Basic|Objective|Large|Small|Slack1|Slack2|Slack3|Solution
+# |:------:|:------:|:------:|:----:|:----:|:----:|:----:|:----:|
+# |Objective|1|-3|-2|0|0|0|0|
+# |Fabric |0|6|7|1|0|0|1370|
+# |Sewing|0|1|3|0|1|0|540|
+# |Fill|0|11|4|0|0|1|1540|
+
+# Using this table we need to identify the first pivot.  We take the coefficients of the `Large` and compare them to the `Solution`.  We will take the smallest ratio and make that the pivot.
+# 
+# |Basic|Large|Solution|Ratio
+# |:------:|:------:|:------:|:----:|
+# |Fabric |6|1370|1370/6 = 228.33
+# |Sewing|1|540|540/1 = 540
+# |Fill|11|1540|1540/11 = 140 (min)
+# 
+# We see that the fill equation gives us the smallest ratio.  We will use this as the pivot.  The tableau becomes
+# 
+# |Basic|Objective|Large|Small|Slack1|Slack2|Slack3|Solution
+# |:------:|:------:|:------:|:----:|:----:|:----:|:----:|:----:|
+# |Objective|1|-3|-2|0|0|0|0|
+# |Fill|0|1|$\frac{4}{11}$|0|0|$\frac{1}{11}$|140|
+# |Fabric |0|6|7|1|0|0|1370|
+# |Sewing|0|1|3|0|1|0|540|
+# 
+# We use the pivot to eliminate all the Large variables in that column.
+# 
+# |Basic|Objective|Large|Small|Slack1|Slack2|Slack3|Solution
+# |:------:|:------:|:------:|:----:|:----:|:----:|:----:|:----:|
+# |Objective|1|0|$-\frac{10}{11}$|0|0|$\frac3{11}$|420|
+# |Fill|0|1|$\frac{4}{11}$|0|0|$\frac{1}{11}$|140|
+# |Fabric |0|0|$\frac{53}{11}$|1|0|$-\frac6{11}$|530|
+# |Sewing|0|0|$\frac{29}{11}$|0|1|$-\frac1{11}$|300|
+# 
+# Now we'll find the next pivot.
+# 
+# |Basic|Small|Solution|Ratio
+# |:------:|:------:|:------:|:----:|
+# |Fill |$\frac4{11}$|140|140/(4/11) = 385
+# |Fabric|$\frac{53}{11}$|530|530/(53/11) = 110 (min)
+# |Sewing|$\frac{29}{11}$|300|300/(29/11) = 113.79
+# 
+# So `Fabric` will be the final pivot.  Make the pivot with
+# 
+# |Basic|Objective|Large|Small|Slack1|Slack2|Slack3|Solution
+# |:------:|:------:|:------:|:----:|:----:|:----:|:----:|:----:|
+# |Objective|1|0|$-\frac{10}{11}$|0|0|$\frac3{11}$|420|
+# |Fill|0|1|$\frac{4}{11}$|0|0|$\frac{1}{11}$|140|
+# |Fabric |0|0|1|$\frac{11}{53}$|0|$-\frac6{53}$|110|
+# |Sewing|0|0|$\frac{29}{11}$|0|1|$-\frac1{11}$|300|
+# 
+# Eliminate in that column.  I just simply do the `Objective` and `Fill` as I am finished there.
+# 
+# |Basic|Objective|Large|Small|Slack1|Slack2|Slack3|Solution
+# |:------:|:------:|:------:|:----:|:----:|:----:|:----:|:----:|
+# |Objective|1|0|0|$\frac{10}{53}$|0|$\frac9{53}$|520|
+# |Fill|0|1|0|$-\frac4{53}$|0|$\frac{7}{53}$|100|
+# |Fabric |0|0|1|$\frac{11}{53}$|0|$-\frac6{53}$|110|
+# |Sewing|0|0|0|$-\frac{29}{53}$|1|$\frac{11}{53}$|10|
+# 
+# We see the solutions appear!  \$520 was the max profit and that happened when we created 100 large and 110 small.  We also see that the slack on sewing is 10.  The tableau repeats all the previous solutions found!
 
 # In[ ]:
 
@@ -241,7 +315,7 @@ np.linalg.solve(A[1:3,:],b[1:3])
 np.linalg.solve(A[[0,2],:],b[[0,2]])
 
 
-# >Three lines will have three intersections $\binom32=3$ We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below. 
+# >Three lines will have three intersections $\binom32=3$ We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below.
 
 # In[ ]:
 
@@ -375,9 +449,9 @@ plt.show()
 # 
 # >Some care must be taken for unbounded feasible sets, an optimum solution may not be possible with the maximum (or minimum) going to infinity (negative infinity).
 
-# ### Slack 
+# ### Slack
 
-# >All of the inequalities in the constraint must be met but some will not be on their strict bounds.  This leaves **slack** in those inequalities.  Using our original problem as an example, we see that the sewing equation has some slack.  We could have done more sewing with the maximum profit $(100,110)$. 
+# >All of the inequalities in the constraint must be met but some will not be on their strict bounds.  This leaves **slack** in those inequalities.  Using our original problem as an example, we see that the sewing equation has some slack.  We could have done more sewing with the maximum profit $(100,110)$.
 # $$
 # x+3y = 100 +330 = 430\leq 540
 # $$
@@ -567,7 +641,7 @@ XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
 # $$
 # z=5x_1+2x_2+8x_3
 # $$
-# Contraints: 
+# Contraints:
 # $$
 # \begin{array}{l}
 # 2x_1-4x_2+x_3\leq 42\\
@@ -583,7 +657,7 @@ XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
 # $$
 # z=x_1+2x_2-x_4
 # $$
-# Contraints: 
+# Contraints:
 # $$
 # \begin{array}{l}
 # x_1+2x_2+3x_3\leq 24\\
@@ -600,7 +674,7 @@ XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
 # $$
 # z=x_1+2x_2+x_3-x_4
 # $$
-# Contraints: 
+# Contraints:
 # $$
 # \begin{array}{l}
 # x_1+x_2+3x_3_4x_4\leq 60\\
@@ -614,7 +688,7 @@ XFeasible[XFeasible['Profit'].max()==XFeasible['Profit']]
 # In[ ]:
 
 
-import numpy as np  
+import numpy as np
 from scipy.optimize import linprog
 
 
@@ -627,7 +701,7 @@ lhs_eq= [[1, 2, 3, 0, 1, 0],
          [0, 3, 7, 1, 0, 1]]
 
 rhs_eq = [[24],
-          [42]]            
+          [42]]
 
 
 # In[ ]:
@@ -657,7 +731,7 @@ opt
 # 
 # >3.   Carreira-Perpiñán, Miguel Á. "Simplex Method." From ***MathWorld***--A Wolfram Web Resource, created by Eric W. Weisstein. https://mathworld.wolfram.com/SimplexMethod.html
 # 
-# >4.   Coutinho, Demétrios & Xavier-de-Souza, Samuel. (2013). Multicore Scalability and Efficiency Analysis of the standard simplex algorithm. 
+# >4.   Coutinho, Demétrios & Xavier-de-Souza, Samuel. (2013). Multicore Scalability and Efficiency Analysis of the standard simplex algorithm.
 # 
 
 # ## Problems to solve
@@ -671,7 +745,7 @@ opt
 # $$
 # z=x_1+2x_2
 # $$
-# Contraints: 
+# Contraints:
 # $$
 # \begin{array}{l}
 # 2x_1+x_2\leq 8\\
@@ -686,7 +760,7 @@ opt
 # $$
 # z=2x_1+3x_2+4x_3
 # $$
-# Contraints: 
+# Contraints:
 # $$
 # \begin{array}{l}
 # x_1+2x_2\leq 12\\
@@ -701,7 +775,7 @@ opt
 # $$
 # z=6x_1-9x_2
 # $$
-# Contraints: 
+# Contraints:
 # $$
 # \begin{array}{l}
 # 2x_1-3x_2\leq 6\\
@@ -771,7 +845,7 @@ opt
 
 # ### Authors
 
-# >Principal authors of this chapter were: 
+# >Principal authors of this chapter were:
 # 
 # 1.   Gulsan Rai
-# 2.   Chiran Rayamajhi 
+# 2.   Chiran Rayamajhi

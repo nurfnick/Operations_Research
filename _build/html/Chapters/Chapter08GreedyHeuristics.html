@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Theory &#8212; Operations Research OER</title>
+    <title>Greedy Heuristics &#8212; Operations Research OER</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -134,7 +134,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Theory
+   Greedy Heuristics
   </a>
  </li>
  <li class="toctree-l1">
@@ -271,39 +271,39 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory">
    Theory
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction-motivation">
    Introduction/Motivation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-1">
      Example 1
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#problems">
      Problems
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#project-idea">
    Project Idea
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#authors">
      Authors
     </a>
@@ -322,12 +322,13 @@
               <div>
                 
   <p><a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter08GreedyHeuristics.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<p>#Greedy Heuristics</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="greedy-heuristics">
+<h1>Greedy Heuristics<a class="headerlink" href="#greedy-heuristics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="theory">
-<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="introduction-motivation">
-<h1>Introduction/Motivation<a class="headerlink" href="#introduction-motivation" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction/Motivation<a class="headerlink" href="#introduction-motivation" title="Permalink to this headline">¶</a></h2>
 <p><strong>INTRODUCTION</strong></p>
 <p>Heuristics are algorithms that are used to find good, approximate solutions to challenging combinatorial problems that would otherwise be impossible to solve with existing optimization strategies. A heuristic is a direct search method that use favorable rules of thumb to find a better solution. Heuristics have the advantage of being able to find(good) answers quickly.The main idea of Heuristics is rather than finding a optimal solution, it takes or finds a solution that is almost optimal or close to optimal.</p>
 <p><strong>Why is it greedy?</strong></p>
@@ -338,7 +339,7 @@
 <p>The greedy search rule, which requires increasing the value of the objective function with each search move, is used in the early stages of heuristic development. The search comes to a halt at a local optimum, beyond which no further advancement is feasible. The Dutch computer scientist and mathematician Edsger W. Dijkstra coined the term greedy algorithm for the first time when he wanted to calculate the minimum spanning tree. Back then, the greedy algorithms were primarily used to solve graph based problems. In the 1950s, the greedy algorithm first started to show around. During the same decade, the then scientist Prim and Kruksal also found the optimization techniques for reducing the costs of the graphs. In the 1970s, a few years later, many American researchers presented a recursive strategy for solving greedy problems. The NIST records filed the greedy algorithm as a different optimization strategy. Since that time, the greedy heuristics have been broadly used in numerous fields including the web protocols like open-shortest-path-first(OSPF) and several other network packet switching protocols.</p>
 <hr class="docutils" />
 <div class="section" id="example-1">
-<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
 <p><strong>TRAVELLING SALESMAN PROBLEM</strong></p>
 <p>The traveling salesman problem consists of a salesman and a set of cities. The salesman has to visit each one of the cities starting from a certain one (e.g. the hometown) and returning to the same city. The challenge of the problem is that the traveling salesman wants to minimize the total length of the trip.</p>
 <p>Greedy algorithm is the simplest improvement algorithm. It starts with
@@ -472,7 +473,7 @@ First, we make a random solution and calculate its route length. We then create 
 <p>After running the code multiple times (results can differ because the initial solution is random), We consistently see a best route length of 1400. That’s great! Our algorithm finds the best route although we are using greedy method,  we might be getting optimized result because the problem is very simple consisting of only 4 cities. I we increase the numbe rof cities the solution might not be optimal but close to optimal.</p>
 </div>
 <div class="section" id="problems">
-<h2>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h2>
+<h3>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Since on the above example we are using a matrix of 4 * 4 to plot our graph for the cities. Can you use the same  greedy algorithm to generate a graph using a 6 * 6 matrix and find the shortest path the salesman takes?</p></li>
 </ol>
@@ -490,7 +491,7 @@ First, we make a random solution and calculate its route length. We then create 
 </div>
 </div>
 <div class="section" id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Maciej Białogłowski, et al. “Dynamics of Stochastic vs. Greedy Heuristics in Traveling Salesman Problem.” Zeszyty Naukowe Warszawskiej Wyższej Szkoły Informatyki, vol. 12, no. 19, Dec. 2018, pp. 7–24. EBSCOhost, doi:10.26348/znwwsi.19.7.</p></li>
 <li><p>Bee. “Greedy Algorithms in Python.” Skerritt.blog (Alt + H), 1 Jan. 2021, skerritt.blog/greedy-algorithms/.</p></li>
@@ -503,11 +504,12 @@ Traveling Salesman Problem”, year = 2001.</p></li>
 </ul>
 </div>
 <div class="section" id="project-idea">
-<h1>Project Idea<a class="headerlink" href="#project-idea" title="Permalink to this headline">¶</a></h1>
+<h2>Project Idea<a class="headerlink" href="#project-idea" title="Permalink to this headline">¶</a></h2>
 <p>Since the greedy heuristics is not applicable to find the solution for every problem, but it can help to reach some level of solution for time consuming problems. So for the project idea Just like the travelling sales man problem can we find other real life example that can be solved using a greedy heuristics. For example one of the project would be finding a shortest hiking routes for a complex hiking trail of a national park, which consist of more than thousand routes. So finding a shortest routes to hit all the spot of the national park and return where you started maximizing the time and the spot visited.</p>
 <div class="section" id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h3>
 <p>Principal authors of this chapter were:Sagar Sitaula, Anjila Karki, Indra Thapa</p>
+</div>
 </div>
 </div>
 

@@ -1,0 +1,69 @@
+from scipy.signal import tf2ss
+num = [0,0,1]
+den = [1,1,0]
+
+A, B, C, D = tf2ss(num, den)
+
+A
+
+B
+
+C
+
+D
+
+import pandas as pa
+colnames=['TIME', 'X', 'Y', 'Z']
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/analyze-first-order-systems/main/data.txt', names = colnames)
+df = df.drop([0,1])
+df.head()
+
+df.X = pa.to_numeric(df.X)
+df.Y = pa.to_numeric(df.Y)
+df.TIME = pa.to_numeric(df.TIME)
+
+import numpy as np
+
+
+x = np.array(df)
+x
+
+
+dt = x[1,0] - x[0,0]
+dt
+
+L = len(x)
+L
+
+velocity = -1*(x[1:L,1]-x[0:L-1,1])/dt
+len(velocity)
+
+len(x[1:,0])
+
+import matplotlib.pyplot as plt
+
+plt.scatter(x[1:,0],velocity)
+
+from scipy.optimize import curve_fit
+def func(x, a, b, c):
+    return a * np.exp(-b * x) + c
+popt, pcov = curve_fit(func, x[1:,0],velocity)
+
+
+
+popt
+
+plt.plot(x[1:,0], func(x[1:,0], *popt), 'r-',label='fit: a=%5.3f, b=%5.3f, c=%5.3f' % tuple(popt))
+
+
+
+plt.plot(x[1:,0],velocity, 'b-', label='data')
+plt.xlabel('time')
+
+plt.ylabel('velocity')
+
+plt.legend()
+
+plt.show()
+
+

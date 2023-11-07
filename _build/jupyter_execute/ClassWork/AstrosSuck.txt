@@ -1,0 +1,86 @@
+def S(n):
+  if n==0:
+    return 1
+  else:
+    return S(n-1)+2*n+1
+
+
+slist =[1]
+def SM(n):
+  if len(slist)>n:
+    return slist[n]
+  else:
+    for i in range(len(slist),n+1):
+      slist.append(slist[i-1]+2*i+1)
+    return slist[n]
+
+
+slist
+
+SM(20)
+
+slist
+
+S(20)
+
+21**2
+
+[S(i) for i in range(21)]
+
+.4**2+2*.4**2*.6
+
+def RangersWin(n,m):
+  if n==0:
+    return 1
+  elif  m==0:
+    return 0
+  else:
+     return RangersWin(n-1,m)*0.4 + RangersWin(n,m-1)*0.6
+
+RangersWin(1,1)
+
+RangersWin(2,2)
+
+RangersWin(4,4)
+
+bills = [1,2,5,10,20,50,100]
+
+n = len(bills)
+
+def countTheBills(bills,n,sum):
+  if sum == 0:
+    return 1
+  elif n<=0:
+    return 0
+  elif sum <0:
+    return 0
+  else:
+    return countTheBills(bills,n, sum- bills[n-1]) + countTheBills(bills, n-1,sum)
+
+countTheBills(bills, n, 100)
+
+p = [0,1,5,8,9,10,17,17,20,24,30]
+
+def RodCutting(p,l):
+  if l==0:
+    return 0
+  else:
+   return max(p[i]+RodCutting(p,l-i) for i in range(1,l+1))
+
+RodCutting(p,10)
+
+r = [0]
+
+def RodCutMemo(p,r,l):
+  if len(r)>l:
+    return r[l]
+  else:
+    for j in range(len(r),l+1):
+      r.append(max(p[i]+RodCutMemo(p,r,j-i) for i in range(1,j+1)))
+    return r[l]
+
+RodCutMemo(p,r,5)
+
+r
+
+

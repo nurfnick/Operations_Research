@@ -1,0 +1,23 @@
+import pandas as pa
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/Data_Sets_For_Stats/master/CuratedDataSets/hockey.csv')
+
+x = np.array(df[['G','A']])
+y = np.array(df.PTS)
+
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/Data_Sets_For_Stats/master/CuratedDataSets/Avengers')
+df.head()
+
+plt.scatter(df['Appearances'],df['Death1'])
+
+
+
+
+df = pa.read_csv('https://raw.githubusercontent.com/nurfnick/Data_Sets_For_Stats/master/CuratedDataSets/100mOlympicRecords.csv')
+x = np.array(df)
+
+df.head()
+
+

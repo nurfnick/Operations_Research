@@ -110,6 +110,20 @@ plt.show()
 # ### How Tall is My Tree
 
 # There is a large tree in my yard that I would like to know the height of.  Unfortunately I am not a very good climber!  I do have a very large tape measurer, a partner and a good eye.
+# 
+# ![TwoPeopleAndATree](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Modeling/ModelingImg/meAndATree.jpg)
+# 
+# First I should try a rough estimate.  I could simply see how many stick figures it takes to get to the top of the tree.
+# 
+# ![StackOfPeople](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Modeling/ModelingImg/meAndATreeStack.jpg)
+# 
+# Roughly I could guess that the tree is four times the height of a person.  Often this would be enough.
+# 
+# If I wanted to get more acurate, I could apply some trigonometery and use my tape measurer.  First method I try is a similar triangles approach.
+# 
+# ![similarTriangle](https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Modeling/ModelingImg/treeSighted.jpg)
+# 
+# 
 
 # ### How Many Squares on the Checker Board
 

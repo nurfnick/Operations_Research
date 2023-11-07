@@ -78,7 +78,7 @@ np.linalg.solve(A[1:3,:],b[1:3])
 np.linalg.solve(A[[0,2],:],b[[0,2]])
 
 
-# Three lines will have three intersections $\binom32=3$ We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below. 
+# Three lines will have three intersections $\binom32=3$ We note that the intersection point of the first line and the third line is outside of the feasible region by the second line.  A graph of the feasible set is provided below.
 
 # In[4]:
 
@@ -214,7 +214,7 @@ plt.show()
 
 # ### Slack
 
-# All of the inequalities in the constraint must be met but some will not be on their strict bounds.  This leaves **slack** in those inequalities.  Using our original problem as an example, we see that the sewing equation has some slack.  We could have done more sewing with the maximum profit $(100,110)$. 
+# All of the inequalities in the constraint must be met but some will not be on their strict bounds.  This leaves **slack** in those inequalities.  Using our original problem as an example, we see that the sewing equation has some slack.  We could have done more sewing with the maximum profit $(100,110)$.
 # 
 # $$
 # x+3y = 100 +330 = 430\leq 540
@@ -410,7 +410,7 @@ from scipy.optimize import linprog
 linprog([-3,-2],A[:,[0,1]],b)
 
 
-# We can see that there is some ambiguity with the results being what we expected **if** we round.  We consider that as part of the quickness and allow for that, afterall we could not create less than a full pillow!
+# Interpreting this result is a little difficult.  `fun` returns the opposite of the value we were after (maximum of profit).  `x` is the number of pillows we should be producing to achieve the maximum.  `ineqlin: residuals` is giving the slack results.
 
 # ### Example 2
 

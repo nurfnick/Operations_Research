@@ -1,0 +1,12 @@
+def pain(n):
+  if n ==0:
+    return 1
+  elif n==1:
+    return 3
+  else:
+    return n**2-7*pain(n-1)+8*pain(n-2)
+
+[pain(i) for i in range(20)]
+
+
+

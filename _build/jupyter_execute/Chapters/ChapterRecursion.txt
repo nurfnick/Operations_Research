@@ -1,0 +1,54 @@
+def f_recursive(n):
+  if n>=1:
+    return 2*f_recursive(n-1)
+  elif n==0:
+    return 1
+
+def f_exponential(n):
+  return 1*2**n
+
+f_recursive(5)
+
+f_exponential(5)
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0,5,100)
+y = f_exponential(x)
+
+z = range(0,6)
+zz = [f_recursive(i) for i in z]
+
+plt.scatter(z,zz)
+plt.plot(x,y)
+
+def f(n):
+  if n>1:
+    return -3*f(n-1)+4*f(n-2)
+  if n==1:
+    return 2
+  if n==0:
+    return 1
+
+[f(i) for i in range(10)]
+
+def f(x):
+  return -1/5*(-4)**x+6/5
+
+[f(i) for i in range(10)]
+
+def f(n):
+  if n==0:
+    return 1
+  elif n==1:
+    return 1
+  else:
+    return 4*f(n-1)-4*f(n-2)
+
+[f(i) for i in range(10)]
+
+def f(x):
+  return 2**x-x/2*2**x
+
+[f(i) for i in range(10)]

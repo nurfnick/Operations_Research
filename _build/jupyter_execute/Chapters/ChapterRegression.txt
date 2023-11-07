@@ -1,0 +1,151 @@
+x = [0,3,7,2]
+y = [4,6,8,5]
+n = len(x)
+
+meanx = sum(x)/n
+meany = sum(y)/n
+sumsquarex = 0
+for i in range(n):
+  sumsquarex += x[i]**2
+sumsquarex /= n
+
+xy = 0
+for i in range(n):
+  xy +=x[i]*y[i]
+xy/=n
+
+
+b1 = (xy - meanx*meany)/(sumsquarex-meanx**2)
+b1
+
+b0 = meany - b1*meanx
+b0
+
+def line(x):
+  return b1*x+b0
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+xs = np.linspace(0,8,100)
+ys = line(xs)
+
+plt.plot(xs,ys)
+plt.scatter(x,y)
+
+from scipy import stats
+
+stats.linregress(x,y)
+
+sx = 0
+
+for i in x:
+  sx+= (i-meanx)**2
+
+sx/=len(x)-1
+sx = (sx)**(1/2)
+
+
+sy = 0
+
+for i in y:
+  sy+= (i-meany)**2
+
+sy/=len(y)-1
+sy = (sy)**(1/2)
+
+r = len(x)*(xy - meanx*meany)/((len(x)-1)*sx*sy)
+
+r
+
+SSR = 0
+SST = 0
+
+for i in x:
+  SSR += (line(i)-meany)**2
+for i in y:
+  SST += (i-meany)**2
+
+r = (SSR/SST)**(1/2)
+r
+
+x = np.array([[0,3,7,2],np.ones(4)]).T
+y = np.array([4,6,8,5])
+
+print(x)
+
+a,b = np.linalg.inv(x.T@x)@(x.T@y)
+print(a,b)
+
+x = np.array([[0,3,7,2],['yes','no','yes','no']]).T
+y = np.array([4,6,7,5])
+
+x
+
+allTheOptionsForCategrocial = np.unique(x[:,1])
+allTheOptionsForCategrocial
+
+for i in allTheOptionsForCategrocial:
+  x = np.append(x,1*(x[:,1] == i)[...,None], 1)
+
+x
+
+x = x[:,[0,2,3]]
+
+x
+
+
+x = np.float64(x)
+x
+
+result = np.linalg.inv(x.T@x)@(x.T@y)
+
+result
+
+def predict(x):
+  return sum(x[i]*result[i] for i in range(3))
+
+SSR = 0
+SST = 0
+meany = sum(y)/n
+
+for i in x:
+  SSR += (predict(i)-meany)**2
+for i in y:
+  SST += (i-meany)**2
+
+r = (SSR/SST)**(1/2)
+r
+
+x = np.array([[10],[5],[5],[1]])
+y = np.array([1,1,0,0])
+
+
+from sklearn.linear_model import LogisticRegression
+
+logreg = LogisticRegression()
+logreg.fit(x, y)
+
+xs = np.linspace(0,10,100)
+xs = xs.reshape(100,1)
+ys = logreg.predict_proba(xs)
+
+plt.plot(xs,ys)
+plt.scatter(x,y)
+
+x = [ 	0.50, 	0.75, 	1.00, 	1.25, 	1.50, 	1.75, 	1.75, 	2.00, 	2.25, 	2.50, 	2.75, 	3.00, 	3.25, 	3.50, 	4.00, 	4.25, 	4.50, 	4.75, 	5.00, 	5.50]
+y = [	0 ,	0 ,	0 ,	0 ,	0 ,	0 ,	1 ,	0 ,	1 ,	0 ,	1 ,	0 ,	1 ,	0 ,	1 ,	1 ,	1 ,	1, 	1, 	1 ]
+
+x = np.array(x).reshape(20,1)
+
+logreg = LogisticRegression()
+logreg.fit(x, y)
+
+xs = np.linspace(0,6,100)
+xs = xs.reshape(100,1)
+ys = logreg.predict_proba(xs)
+
+plt.plot(xs,ys)
+plt.scatter(x,y)
+
+

@@ -1,0 +1,16 @@
+from sympy import *
+
+x,a = symbols('x, a')
+
+f = a*log(a/x)-a+x
+f
+
+f.diff(x)
+
+f.diff(a)
+
+solve(f.diff(x),x)
+
+f.subs(x,2)
+
+

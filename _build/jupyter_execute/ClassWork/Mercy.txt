@@ -1,0 +1,13 @@
+from sympy import *
+
+x,a,b = symbols('x,a,b')
+
+A = x*sqrt(a**2-x**2)+x*sqrt(b**2-x**2)
+
+A
+
+A.diff(x)
+
+solve(A.diff(x),x)
+
+
