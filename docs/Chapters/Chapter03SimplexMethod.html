@@ -135,6 +135,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Chapter08GreedyHeuristics.html">
+   Greedy Heuristics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Chapter09DynamicProgramming.html">
    Dynamic Programming
   </a>
@@ -301,8 +306,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-2">
-     Example 2
+    <a class="reference internal nav-link" href="#repeating-example-from-previous-chapter">
+     Repeating Example From Previous Chapter
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -350,85 +355,56 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="simplex-method">
+  <p><a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/Chapters/Chapter03SimplexMethod.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="simplex-method">
 <h1>Simplex Method<a class="headerlink" href="#simplex-method" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Before we head into the topic Simplex Method, it’s essential to know what is Simplex Method? It is a combination of two terms, simplex and method where simplex stands for simple/basic and method means a systematic procedure or technique to accomplish the goal. Basically, Simplex Method, here in operation research, is an approach to solve linear programming models simply by hands using various means such as slack variables, tableaus, and pivot variables as a motive to find the optimal solution of an optimization problem.</p>
-</div></blockquote>
-<blockquote>
-<div><p>The Simplex Method can be defined as a method for entering inequalities into a matrix and the keys to row-reduce that matrix. This method  also is applicable to any number of independent variables , making graphing unnecessary(Todd O. P16).</p>
-</div></blockquote>
+<p>Before we head into the topic Simplex Method, it’s essential to know what is Simplex Method? It is a combination of two terms, simplex and method where simplex stands for simple/basic and method means a systematic procedure or technique to accomplish the goal. Basically, Simplex Method, here in operation research, is an approach to solve linear programming models simply by hands using various means such as slack variables, tableaus, and pivot variables as a motive to find the optimal solution of an optimization problem.</p>
+<p>The Simplex Method can be defined as a method for entering inequalities into a matrix and the keys to row-reduce that matrix. This method  also is applicable to any number of independent variables , making graphing unnecessary(Todd O. P16).</p>
 <div class="section" id="historical-background">
 <h3>Historical Background<a class="headerlink" href="#historical-background" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>For linear programming problems involving two variables, the graphical solution method is convenient. However, for problems involving more than two variables or problems involving a large number of constraints, it is better to use solution methods that are adaptable to computers which is developed by George Dantzig in 1946, known as simplex method. Looking at the history of development of Simplex Method, George Dantzig is found to be working on planning methods for the US Army Air Force during World War II using a desk calculator . That’s when, the simplex method is invented .</p>
-</div></blockquote>
-<blockquote>
-<div><p>Dantzig’s simplex method should not be confused with the downhill simplex method(Spendely 1962, Nelder and Mead , 1965, Press et al.1992). The latter method solves an unconstrained  minimization problem in n dimensions by maintaining at each iteration  n+1 points that define a simplex. At each iteration , this simplex is updated by applying certain transformation to it so that it “rolls downhill” until it finds a minimum.</p>
-</div></blockquote>
+<p>For linear programming problems involving two variables, the graphical solution method is convenient. However, for problems involving more than two variables or problems involving a large number of constraints, it is better to use solution methods that are adaptable to computers which is developed by George Dantzig in 1946, known as simplex method. Looking at the history of development of Simplex Method, George Dantzig is found to be working on planning methods for the US Army Air Force during World War II using a desk calculator . That’s when, the simplex method is invented .</p>
+<p>Dantzig’s simplex method should not be confused with the downhill simplex method(Spendely 1962, Nelder and Mead , 1965, Press et al.1992). The latter method solves an unconstrained  minimization problem in n dimensions by maintaining at each iteration  n+1 points that define a simplex. At each iteration , this simplex is updated by applying certain transformation to it so that it “rolls downhill” until it finds a minimum.</p>
 </div>
 <div class="section" id="theory">
 <h3>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>A linear program is a method of achieving the best outcome given a maximum or minimum equation with linear constraints.  Most linear programs can be solved using an online solver such as MatLab, but the Simplex method is a technique for solving linear programs by hand.
-To solve a linear programming model using the Simplex method the following steps are necessary:</p>
-</div></blockquote>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    	Standard form
-    	Introducing slack variables
-    	Creating the tableau
-    	Pivot variables
-    	Creating a new tableau
-    	Checking for optimality
-    	Identify optimal values&gt;
-</pre></div>
-</div>
+<p>A linear program is a method of achieving the best outcome given a maximum or minimum equation with linear constraints.  Most linear programs can be solved using an online solver such as MatLab, but the Simplex method is a technique for solving linear programs by hand.</p>
+<p>To solve a linear programming model using the Simplex method the following steps are necessary:</p>
+<ol class="simple">
+<li><p>Standard form</p></li>
+<li><p>Introducing slack variables</p></li>
+<li><p>Creating the tableau</p></li>
+<li><p>Pivot variables</p></li>
+<li><p>Creating a new tableau</p></li>
+<li><p>Checking for optimality</p></li>
+<li><p>Identify optimal values&gt;</p></li>
+</ol>
 <p><strong>Step 1: Standard Form</strong></p>
-<blockquote>
-<div><p>It is considered as baseline format for all linear programs before solving for the optimal solution. While solving the problem, it must meet the three significant criteria:-</p>
-</div></blockquote>
-<blockquote>
-<div><blockquote>
-<div><ol class="simple">
+<p>It is considered as baseline format for all linear programs before solving for the optimal solution. While solving the problem, it must meet the three significant criteria:-</p>
+<ol class="simple">
 <li><p>The problem should be a maximization problem.</p></li>
 <li><p>All linear constraints must be in a less-than-or-equal-to inequality.</p></li>
 <li><p>All variables are in the problem should be non-negative.</p></li>
 </ol>
-</div></blockquote>
-</div></blockquote>
-<blockquote>
-<div><p>To change minimization linear program model into a maximization linear program model, Multiply both sides of the problem i.e. LHS and RHS of an inequality by -1. It gives us form less-than-or-equal-to inequality.</p>
-</div></blockquote>
+<p>To change minimization linear program model into a maximization linear program model, Multiply both sides of the problem i.e. LHS and RHS of an inequality by -1. It gives us form less-than-or-equal-to inequality.</p>
 <p><strong>Step 2: Introducing Slack Variables</strong></p>
-<blockquote>
-<div><p>Slack variables are introduced into the linear constraints of a linear program to transform them from inequality constraints to equality constraints. Coefficient of slack variables in the standard form is +1. The main motive to use slack variables is to transform constraints into solvable equalities with one definite answer.</p>
-</div></blockquote>
+<p>Slack variables are introduced into the linear constraints of a linear program to transform them from inequality constraints to equality constraints. Coefficient of slack variables in the standard form is +1. The main motive to use slack variables is to transform constraints into solvable equalities with one definite answer.</p>
 <p><strong>Step 3: Tableau</strong></p>
 <blockquote>
 <div><p>Simplex tableau is used to perform row operations on the linear programming model. Tableau consists of the coefficient corresponding to the linear constraint variables and the
 coefficients of the objective function</p>
 </div></blockquote>
 <p><strong>Step 4: Check Optimality</strong></p>
-<blockquote>
-<div><p>Optimal solution are those values assigned to the variables in the objective function to give the largest zeta value. To check optimality using the tableau, all values in the last row must contain values greater than or equal to zero. For not optimal solution/negative values, the next step is to identify the pivot variable to base a new tableau on</p>
-</div></blockquote>
+<p>Optimal solution are those values assigned to the variables in the objective function to give the largest zeta value. To check optimality using the tableau, all values in the last row must contain values greater than or equal to zero. For not optimal solution/negative values, the next step is to identify the pivot variable to base a new tableau on</p>
 <p><strong>Step 5: Identify Pivot Variables</strong></p>
-<blockquote>
-<div><p>Pivot variable is used in row operations to identify which variable will become the unit value and is a key factor in the conversion of the unit value.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Pivot Operation is performed on the Tableau wherever presence of most negative indicator is found in the last row. We take that specific column. We pivot by taking corresponding ratio: i.e. Taking constant diving by entry in pivot column. After that,compare which is the smallest non-negative entry in that ratio and we pivot on that entry making it 1 and rest of the entry in that column 0.</p>
-</div></blockquote>
+<p>Pivot variable is used in row operations to identify which variable will become the unit value and is a key factor in the conversion of the unit value.</p>
+<p>Pivot Operation is performed on the Tableau wherever presence of most negative indicator is found in the last row. We take that specific column. We pivot by taking corresponding ratio: i.e. Taking constant diving by entry in pivot column. After that,compare which is the smallest non-negative entry in that ratio and we pivot on that entry making it 1 and rest of the entry in that column 0.</p>
 <p><strong>Step 6: Creation of New Tableau</strong></p>
-<blockquote>
-<div><p>We write down all the result in the new table with changes in the rows and columns after pivot operation. Identify a new possible optimal solution.
+<p>We write down all the result in the new table with changes in the rows and columns after pivot operation. Identify a new possible optimal solution.
 If last row still has negative, we process/ continue pivot operation till last row have positive values.</p>
-</div></blockquote>
 <p><strong>Step 7: Check Optimality and Identify optimal values</strong></p>
-<blockquote>
-<div><p>After our all non-negative values are presented in the last row, the value of zeta(the one optimal solution) we are seeking for can be found.</p>
-</div></blockquote>
+<p>After our all non-negative values are presented in the last row, the value of zeta(the one optimal solution) we are seeking for can be found.</p>
 </div>
 <div class="section" id="simplex-method-in-real-life">
 <h3>Simplex Method In Real Life<a class="headerlink" href="#simplex-method-in-real-life" title="Permalink to this headline">¶</a></h3>
@@ -441,18 +417,14 @@ If last row still has negative, we process/ continue pivot operation till last r
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="example-1">
 <h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>There are lot’s of examples you can work on. However, lets try with this basic three decision variables.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Use the simplex method to find the maximum value of
+<p>There are lot’s of examples you can work on. However, lets try with this basic three decision variables.</p>
+<p>Use the simplex method to find the maximum value of (Objective Function)
 $<span class="math notranslate nohighlight">\(
-z=2x_1-x_2+2x_3 (Objective Function)
+z=2x_1-x_2+2x_3
 \)</span><span class="math notranslate nohighlight">\(
 Subject to the constraints
 \)</span><span class="math notranslate nohighlight">\(
 \)</span>$</p>
-</div></blockquote>
 <p>\begin{array}{l}
 2x_1+x_2\leq 10\
 x_1+2x_2-2x_3\leq 20\
@@ -460,31 +432,15 @@ x_2+2x_3\leq 5
 \end{array}</p>
 <div class="math notranslate nohighlight">
 \[\]</div>
-<blockquote>
-<div><p>where <span class="math notranslate nohighlight">\(x_1,x_2,x_3\geq 0\)</span>.</p>
-</div></blockquote>
-<blockquote>
-<div><p><strong>Solution</strong></p>
-</div></blockquote>
-<blockquote>
-<div><blockquote>
-<div><p>Using the basic feasible solution</p>
-</div></blockquote>
-</div></blockquote>
+<p>where <span class="math notranslate nohighlight">\(x_1,x_2,x_3\geq 0\)</span>.</p>
+<p><strong>Solution</strong></p>
+<p>Using the basic feasible solution</p>
 <div class="math notranslate nohighlight">
 \[
 (x_1,x_2,x_3,s_1,s_2,s_3)=(0,0,0,10,20,5)
 \]</div>
-<blockquote>
-<div><blockquote>
-<div><p>Here, <span class="math notranslate nohighlight">\(s_1, s_2, s_3\)</span> are slack variables which just helped us to convert inequality contraints into an equality.italicized text</p>
-</div></blockquote>
-</div></blockquote>
-<blockquote>
-<div><blockquote>
-<div><p>The following is the initial simplex tableau for this problem. (Try checking these computations, and note the “tie” that occurs when choosing the first entering variable.)</p>
-</div></blockquote>
-</div></blockquote>
+<p>Here, <span class="math notranslate nohighlight">\(s_1, s_2, s_3\)</span> are slack variables which just helped us to convert inequality contraints into an equality.italicized text</p>
+<p>The following is the initial simplex tableau for this problem. (Try checking these computations, and note the “tie” that occurs when choosing the first entering variable.)</p>
 <p><img alt="SMImg1" src="https://raw.githubusercontent.com/nurfnick/Operations_Research/main/Drafts/Simplex%20Method/SMImg/SMImg1.png" /></p>
 <blockquote>
 <div><p>In the example shown above, -2 is the smallest negative in the last row. This will designate the <span class="math notranslate nohighlight">\(x_3\)</span> column to contain the pivot variable. Solving for the indicator gives us a value of 10/0 for the first constraint, and a value of 5/2 for the second constraint.Due to 5/2 being the smallest non-negative indicator, the pivot value will be in the second row and have a value of 2.</p>
@@ -505,14 +461,10 @@ $<span class="math notranslate nohighlight">\(
 and the maximum value of z is 15.</p>
 </div></blockquote>
 </div>
-<div class="section" id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>A local pillow company designs pillows especially for pregnant and nursing mothers.  There are two pillows that they produce referred here as large and small.  The large pillow requires six yards of fabric, one hour of sewing and eleven pounds of fill.  The small pillow requires seven yards of fabric, three hours of sewing and four pounds of fill.</p>
-</div></blockquote>
-<blockquote>
-<div><p>The manager, trying to keep all of this straight creates a table.</p>
-</div></blockquote>
+<div class="section" id="repeating-example-from-previous-chapter">
+<h3>Repeating Example From Previous Chapter<a class="headerlink" href="#repeating-example-from-previous-chapter" title="Permalink to this headline">¶</a></h3>
+<p>A local pillow company designs pillows especially for pregnant and nursing mothers.  There are two pillows that they produce referred here as large and small.  The large pillow requires six yards of fabric, one hour of sewing and eleven pounds of fill.  The small pillow requires seven yards of fabric, three hours of sewing and four pounds of fill.</p>
+<p>The manager, trying to keep all of this straight creates a table.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Pillow</p></th>
@@ -597,11 +549,8 @@ and the maximum value of z is 15.</p>
 </tbody>
 </table>
 <p><strong>Solution</strong></p>
-<blockquote>
-<div><p>The intern continues down this line of thought and comes up with a way to maximize the number of pillows produced.  They let <span class="math notranslate nohighlight">\(x\)</span> be the number of large pillows and <span class="math notranslate nohighlight">\(y\)</span> be the number of small pillows.  They create a system of inequalities. Now, rewrote the given question into an objective function and the constraints.</p>
-</div></blockquote>
-<blockquote>
-<div><p>The problem is executed in following way:
+<p>The intern continues down this line of thought and comes up with a way to maximize the number of pillows produced.  They let <span class="math notranslate nohighlight">\(x\)</span> be the number of large pillows and <span class="math notranslate nohighlight">\(y\)</span> be the number of small pillows.  They create a system of inequalities. Now, rewrote the given question into an objective function and the constraints.</p>
+<p>The problem is executed in following way:
 $<span class="math notranslate nohighlight">\(
 \left\{
 \begin{array}{l}
@@ -611,10 +560,331 @@ x+3y\leq 540\\
 \end{array}
 \right.
 \)</span>$</p>
-</div></blockquote>
-<blockquote>
-<div><p>To graph this properly, we’ll find the corner points.</p>
-</div></blockquote>
+<p>We now create the tableau with this information and our objective function, contraint and slack variables.  Here all our slack variables are positive (if you happened to have negatives, use -1 in that entry)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left\{
+\begin{array}{l}
+6x+7y+s_1 =  1370\\
+x+3y+s_2 = 540\\
+11x+4y+s_3 =  1540
+\end{array}
+\right.
+\end{split}\]</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Objective</p></th>
+<th class="text-align:center head"><p>Large</p></th>
+<th class="text-align:center head"><p>Small</p></th>
+<th class="text-align:center head"><p>Slack1</p></th>
+<th class="text-align:center head"><p>Slack2</p></th>
+<th class="text-align:center head"><p>Slack3</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Objective</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>-3</p></td>
+<td class="text-align:center"><p>-2</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1370</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>540</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>11</p></td>
+<td class="text-align:center"><p>4</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1540</p></td>
+</tr>
+</tbody>
+</table>
+<p>Using this table we need to identify the first pivot.  We take the coefficients of the <code class="docutils literal notranslate"><span class="pre">Large</span></code> and compare them to the <code class="docutils literal notranslate"><span class="pre">Solution</span></code>.  We will take the smallest ratio and make that the pivot.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Large</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+<th class="text-align:center head"><p>Ratio</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>1370</p></td>
+<td class="text-align:center"><p>1370/6 = 228.33</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>540</p></td>
+<td class="text-align:center"><p>540/1 = 540</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p>11</p></td>
+<td class="text-align:center"><p>1540</p></td>
+<td class="text-align:center"><p>1540/11 = 140 (min)</p></td>
+</tr>
+</tbody>
+</table>
+<p>We see that the fill equation gives us the smallest ratio.  We will use this as the pivot.  The tableau becomes</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Objective</p></th>
+<th class="text-align:center head"><p>Large</p></th>
+<th class="text-align:center head"><p>Small</p></th>
+<th class="text-align:center head"><p>Slack1</p></th>
+<th class="text-align:center head"><p>Slack2</p></th>
+<th class="text-align:center head"><p>Slack3</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Objective</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>-3</p></td>
+<td class="text-align:center"><p>-2</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{4}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{11}\)</span></p></td>
+<td class="text-align:center"><p>140</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>6</p></td>
+<td class="text-align:center"><p>7</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1370</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>3</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>540</p></td>
+</tr>
+</tbody>
+</table>
+<p>We use the pivot to eliminate all the Large variables in that column.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Objective</p></th>
+<th class="text-align:center head"><p>Large</p></th>
+<th class="text-align:center head"><p>Small</p></th>
+<th class="text-align:center head"><p>Slack1</p></th>
+<th class="text-align:center head"><p>Slack2</p></th>
+<th class="text-align:center head"><p>Slack3</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Objective</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac{10}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac3{11}\)</span></p></td>
+<td class="text-align:center"><p>420</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{4}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{11}\)</span></p></td>
+<td class="text-align:center"><p>140</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{53}{11}\)</span></p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac6{11}\)</span></p></td>
+<td class="text-align:center"><p>530</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{29}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac1{11}\)</span></p></td>
+<td class="text-align:center"><p>300</p></td>
+</tr>
+</tbody>
+</table>
+<p>Now we’ll find the next pivot.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Small</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+<th class="text-align:center head"><p>Ratio</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac4{11}\)</span></p></td>
+<td class="text-align:center"><p>140</p></td>
+<td class="text-align:center"><p>140/(4/11) = 385</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{53}{11}\)</span></p></td>
+<td class="text-align:center"><p>530</p></td>
+<td class="text-align:center"><p>530/(53/11) = 110 (min)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{29}{11}\)</span></p></td>
+<td class="text-align:center"><p>300</p></td>
+<td class="text-align:center"><p>300/(29/11) = 113.79</p></td>
+</tr>
+</tbody>
+</table>
+<p>So <code class="docutils literal notranslate"><span class="pre">Fabric</span></code> will be the final pivot.  Make the pivot with</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Objective</p></th>
+<th class="text-align:center head"><p>Large</p></th>
+<th class="text-align:center head"><p>Small</p></th>
+<th class="text-align:center head"><p>Slack1</p></th>
+<th class="text-align:center head"><p>Slack2</p></th>
+<th class="text-align:center head"><p>Slack3</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Objective</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac{10}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac3{11}\)</span></p></td>
+<td class="text-align:center"><p>420</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{4}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{11}\)</span></p></td>
+<td class="text-align:center"><p>140</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{11}{53}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac6{53}\)</span></p></td>
+<td class="text-align:center"><p>110</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{29}{11}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac1{11}\)</span></p></td>
+<td class="text-align:center"><p>300</p></td>
+</tr>
+</tbody>
+</table>
+<p>Eliminate in that column.  I just simply do the <code class="docutils literal notranslate"><span class="pre">Objective</span></code> and <code class="docutils literal notranslate"><span class="pre">Fill</span></code> as I am finished there.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Basic</p></th>
+<th class="text-align:center head"><p>Objective</p></th>
+<th class="text-align:center head"><p>Large</p></th>
+<th class="text-align:center head"><p>Small</p></th>
+<th class="text-align:center head"><p>Slack1</p></th>
+<th class="text-align:center head"><p>Slack2</p></th>
+<th class="text-align:center head"><p>Slack3</p></th>
+<th class="text-align:center head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>Objective</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{10}{53}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac9{53}\)</span></p></td>
+<td class="text-align:center"><p>520</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Fill</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac4{53}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{7}{53}\)</span></p></td>
+<td class="text-align:center"><p>100</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>Fabric</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{11}{53}\)</span></p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac6{53}\)</span></p></td>
+<td class="text-align:center"><p>110</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>Sewing</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(-\frac{29}{53}\)</span></p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{11}{53}\)</span></p></td>
+<td class="text-align:center"><p>10</p></td>
+</tr>
+</tbody>
+</table>
+<p>We see the solutions appear!  $520 was the max profit and that happened when we created 100 large and 110 small.  We also see that the slack on sewing is 10.  The tableau repeats all the previous solutions found!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -693,7 +963,7 @@ x+3y\leq 540\\
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7fb3529e7fd0&gt;
 </pre></div>
 </div>
-<img alt="../_images/Chapter03SimplexMethod_34_1.png" src="../_images/Chapter03SimplexMethod_34_1.png" />
+<img alt="../_images/Chapter03SimplexMethod_36_1.png" src="../_images/Chapter03SimplexMethod_36_1.png" />
 </div>
 </div>
 <blockquote>
@@ -802,7 +1072,7 @@ P = 3x + 2y = 3\cdot100+2\cdot110 = 520
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Chapter03SimplexMethod_39_0.png" src="../_images/Chapter03SimplexMethod_39_0.png" />
+<img alt="../_images/Chapter03SimplexMethod_41_0.png" src="../_images/Chapter03SimplexMethod_41_0.png" />
 </div>
 </div>
 <blockquote>
@@ -878,7 +1148,7 @@ x+3y +s_2 = 540\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/Chapter03SimplexMethod_46_0.png" src="../_images/Chapter03SimplexMethod_46_0.png" />
+<img alt="../_images/Chapter03SimplexMethod_48_0.png" src="../_images/Chapter03SimplexMethod_48_0.png" />
 </div>
 </div>
 <blockquote>
@@ -1270,7 +1540,7 @@ is to be maximized.)</p></li>
 $<span class="math notranslate nohighlight">\(
 z=5x_1+2x_2+8x_3
 \)</span><span class="math notranslate nohighlight">\(
-Contraints: 
+Contraints:
 \)</span><span class="math notranslate nohighlight">\(
 \begin{array}{l}
 2x_1-4x_2+x_3\leq 42\\
@@ -1286,7 +1556,7 @@ x_1,x_2,x_3\geq 0\\
 $<span class="math notranslate nohighlight">\(
 z=x_1+2x_2-x_4
 \)</span><span class="math notranslate nohighlight">\(
-Contraints: 
+Contraints:
 \)</span><span class="math notranslate nohighlight">\(
 \begin{array}{l}
 x_1+2x_2+3x_3\leq 24\\
@@ -1301,7 +1571,7 @@ x_1,x_2,x_3\geq 0\\
 $<span class="math notranslate nohighlight">\(
 z=x_1+2x_2+x_3-x_4
 \)</span><span class="math notranslate nohighlight">\(
-Contraints: 
+Contraints:
 \)</span><span class="math notranslate nohighlight">\(
 \begin{array}{l}
 x_1+x_2+3x_3_4x_4\leq 60\\
@@ -1313,7 +1583,7 @@ x_1,x_2,x_3,x_4\geq 0\\
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
 </pre></div>
 </div>
@@ -1327,7 +1597,7 @@ x_1,x_2,x_3,x_4\geq 0\\
          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 
 <span class="n">rhs_eq</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">24</span><span class="p">],</span>
-          <span class="p">[</span><span class="mi">42</span><span class="p">]]</span>            
+          <span class="p">[</span><span class="mi">42</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1404,7 +1674,7 @@ case the objective function is to be maximized.)</p></li>
 $<span class="math notranslate nohighlight">\(
 z=x_1+2x_2
 \)</span><span class="math notranslate nohighlight">\(
-Contraints: 
+Contraints:
 \)</span><span class="math notranslate nohighlight">\(
 \begin{array}{l}
 2x_1+x_2\leq 8\\
@@ -1419,7 +1689,7 @@ x_1,x_2\geq 5\\
 $<span class="math notranslate nohighlight">\(
 z=2x_1+3x_2+4x_3
 \)</span><span class="math notranslate nohighlight">\(
-Contraints: 
+Contraints:
 \)</span><span class="math notranslate nohighlight">\(
 \begin{array}{l}
 x_1+2x_2\leq 12\\
@@ -1434,7 +1704,7 @@ x_1,x_2,x_3\geq 0\\
 $<span class="math notranslate nohighlight">\(
 z=6x_1-9x_2
 \)</span><span class="math notranslate nohighlight">\(
-Contraints: 
+Contraints:
 \)</span><span class="math notranslate nohighlight">\(
 \begin{array}{l}
 2x_1-3x_2\leq 6\\

@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regression &#8212; Operations Research OER</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Programming" href="Chapter02LinearProgramming.html" />
+    <link rel="prev" title="Modeling" href="Chapter01Modeling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/JuliaSetECUColors.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Operations Research OER</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction to Operations Research
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Problem Solving
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter01Modeling.html">
+   Modeling
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter02LinearProgramming.html">
+   Linear Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter03SimplexMethod.html">
+   Simplex Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter04GoalProgramming.html">
+   Goal Programming
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Models
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter05NetworkModels.html">
+   Network Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter06Transport.html">
+   Transportation Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter07Queuing.html">
+   Queuing Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter08GreedyHeuristics.html">
+   Greedy Heuristics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Recursion
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ChapterRecursion.html">
+   Recursion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter09DynamicProgramming.html">
+   Dynamic Programming
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Randomization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10GameTheory.html">
+   Game Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11MonteCarlo.html">
+   Monte Carlo Simulation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Machine Learning Essentials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12Classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13GradientDescent.html">
+   Gradient Descent
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Project_Assignments/GettingStartedAssignment.html">
+   Getting Started With Python an Assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Project_Assignments/LPAssignment.html">
+   Linear Programming Assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Project_Assignments/RegressionAssignment.html">
+   Regression Assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Project_Assignments/RecursionAssignment.html">
+   Recursion Assignment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Project_Assignments/RandomizationAssignment.html">
+   Simulation Assignment
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Chapters/ChapterRegression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/nurfnick/Operations_Research"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/nurfnick/Operations_Research/issues/new?title=Issue%20on%20page%20%2FChapters/ChapterRegression.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/nurfnick/Operations_Research/master?urlpath=tree/Chapters/ChapterRegression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/master/Chapters/ChapterRegression.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivation">
+   Derivation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#r-value">
+   <span class="math notranslate nohighlight">
+    \(r\)
+   </span>
+   Value
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-regression">
+   Multiple Regression
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-with-categorical-variables">
+     Example with Categorical Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-regressions">
+     Other Regressions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exponential">
+       Exponential
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#polynomial">
+       Polynomial
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic Regression
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/nurfnick/Operations_Research/blob/main/ChapterRegression.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="regression">
+<h1>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Regression is a huge topic but we’ll try to cover the basics here with the idea that you will use regression often in business settings and that all the details will not be needed.</p>
+<p>We will mostly focus on the Method of Least Squares here.  The idea is to make a prediction and to minimize the error in that prediction by minimizing the sum of the squares of that error:</p>
+<div class="math notranslate nohighlight">
+\[
+SSE = \sum_{i=1}^n\left(y_i-\hat {y_i}\right)^2
+\]</div>
+</div>
+<div class="section" id="derivation">
+<h2>Derivation<a class="headerlink" href="#derivation" title="Permalink to this headline">¶</a></h2>
+<p>To derive the linear regression formula, we assume that <span class="math notranslate nohighlight">\(\hat y\)</span> is linear,
+$<span class="math notranslate nohighlight">\(
+\hat y = \beta_0 +\beta_1 x
+\)</span>$</p>
+<p>Then we plug this into the sum of squares error and take the partial derivatives with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>.  To minimize we then set those derivatives to zero and solve the system.</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla SSE(\beta_0,\beta_1) =
+\left(
+\sum -2(y_i-\beta_0 - \beta_1 x_i)
+,
+\sum -2(y_i-\beta_0 - \beta_1 x_i)x_i
+\right)
+\]</div>
+<p>Setting each of these to zero and simplifying the summations, we arrive at
+$<span class="math notranslate nohighlight">\(
+\sum y_i = n\beta_0 +\beta_1\sum x_i
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\sum x_iy_i = \beta_0\sum x_i +\beta_1\sum x^2_i
+\)</span>$</p>
+<p>Eliminating and solving, we see that
+$<span class="math notranslate nohighlight">\(
+\beta_1 = \frac{n\sum x_iy_i - \sum x_i \sum y_i}{n\sum x_i^2 - (\sum x_i)^2}
+\)</span>$</p>
+<p>and
+$<span class="math notranslate nohighlight">\(
+\beta_0 = \frac{\sum y_i - \beta_1\sum x_i}n
+\)</span>$</p>
+<p>Some times these are written using the bar notation, <span class="math notranslate nohighlight">\(\bar x = \frac{\sum x_i}n\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\beta_0 = \bar y - \beta_1\bar x
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\beta_1 = \frac{\bar{xy}-\bar x\bar y}{\bar{x^2} - \left(\bar x\right)^2}
+\]</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Given the points <span class="math notranslate nohighlight">\((0,4),(3,6),(7,8),(2,5)\)</span>, find the linear regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">meanx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">meany</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+<span class="n">sumsquarex</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">sumsquarex</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">sumsquarex</span> <span class="o">/=</span> <span class="n">n</span>
+
+<span class="n">xy</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">xy</span> <span class="o">+=</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">xy</span><span class="o">/=</span><span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span> <span class="o">=</span> <span class="p">(</span><span class="n">xy</span> <span class="o">-</span> <span class="n">meanx</span><span class="o">*</span><span class="n">meany</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sumsquarex</span><span class="o">-</span><span class="n">meanx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">b1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5769230769230769
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b0</span> <span class="o">=</span> <span class="n">meany</span> <span class="o">-</span> <span class="n">b1</span><span class="o">*</span><span class="n">meanx</span>
+<span class="n">b0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.019230769230769
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">b1</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">b0</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7c7345e77c70&gt;
+</pre></div>
+</div>
+<img alt="../_images/ChapterRegression_8_1.png" src="../_images/ChapterRegression_8_1.png" />
+</div>
+</div>
+<p>Fits the line very well!  You should be asking yourself why I didn’t use a built-in for this.  Well I should.  I picked <code class="docutils literal notranslate"><span class="pre">scipy</span></code> for my package as the code is easier to explain than <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.5769230769230769, intercept=4.019230769230769, rvalue=0.9944903161976938, pvalue=0.005509683802306207, stderr=0.04300130725961148, intercept_stderr=0.16929631597749104)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the slope <span class="math notranslate nohighlight">\(\beta_1\)</span> and intercept <span class="math notranslate nohighlight">\(\beta_0\)</span> agree with our above calculation.</p>
+</div>
+</div>
+<div class="section" id="r-value">
+<h2><span class="math notranslate nohighlight">\(r\)</span> Value<a class="headerlink" href="#r-value" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math notranslate nohighlight">\(r\)</span> value is an evaluation of the strength of the fit.  <span class="math notranslate nohighlight">\(r\)</span> is called the correlation coefficient and is calculated as
+$<span class="math notranslate nohighlight">\(
+r_{xy} = \frac{n\left(\bar{xy}-\bar x\bar y\right)}{(n-1)s_xs_y}
+\)</span>$</p>
+<p>Where <span class="math notranslate nohighlight">\(s_x\)</span> is the sample standard deviation <span class="math notranslate nohighlight">\(s_x = \sqrt{\frac1{n-1}\sum (x_i-\bar x)^2}\)</span></p>
+<p>Let’s repeat our example and compute this.  The only new thing required is the sample standard deviations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sx</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+  <span class="n">sx</span><span class="o">+=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">meanx</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">sx</span><span class="o">/=</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">sx</span> <span class="o">=</span> <span class="p">(</span><span class="n">sx</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">sy</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+  <span class="n">sy</span><span class="o">+=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">meany</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">sy</span><span class="o">/=</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">sy</span> <span class="o">=</span> <span class="p">(</span><span class="n">sy</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">xy</span> <span class="o">-</span> <span class="n">meanx</span><span class="o">*</span><span class="n">meany</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">sx</span><span class="o">*</span><span class="n">sy</span><span class="p">)</span>
+
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9944903161976939
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perhaps a better way to consider the correlation coefficient in the terms of the linear fit is to see it under the regression.  The correlation coffiecient can be shown to be</p>
+<div class="math notranslate nohighlight">
+\[
+r^2 = \frac{SSR}{SST} = \frac{\sum(\hat y_i-\bar y)^2}{\sum(y_i-\bar y)^2}
+\]</div>
+<p>So it is giving us a measure of how much the regression varies from the mean compared to the data varying from the mean.  Let’s compute this with our data just to see that these are equivalent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SSR</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">SST</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+  <span class="n">SSR</span> <span class="o">+=</span> <span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">meany</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+  <span class="n">SST</span> <span class="o">+=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">meany</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">SSR</span><span class="o">/</span><span class="n">SST</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.28388148, 1.28388148, 1.28388148])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-regression">
+<h2>Multiple Regression<a class="headerlink" href="#multiple-regression" title="Permalink to this headline">¶</a></h2>
+<p>For multiple regression, we will ask that there is some linear transformation from <span class="math notranslate nohighlight">\(\vec x\)</span> to <span class="math notranslate nohighlight">\(y\)</span>.  So we want
+$<span class="math notranslate nohighlight">\(
+y = \beta_1x_1 +\beta_2x_2 +\cdots +\beta_n x_n
+\)</span>$</p>
+<p>We can accomplish this by considering all the <span class="math notranslate nohighlight">\(y\)</span> in a column matrix and all the <span class="math notranslate nohighlight">\(x\)</span> in a matrix then
+$<span class="math notranslate nohighlight">\(
+Y = X\mathbf{\beta}
+\)</span>$</p>
+<p>But we want to find the <span class="math notranslate nohighlight">\(\mathbf{\beta}\)</span> that solve this equation.  We assume that <span class="math notranslate nohighlight">\(X\)</span> is rank <span class="math notranslate nohighlight">\(n\)</span>, then <span class="math notranslate nohighlight">\(X^TX\)</span> is invertible so
+$<span class="math notranslate nohighlight">\(
+X^TY = X^TX\beta
+\)</span><span class="math notranslate nohighlight">\(
+so
+\)</span><span class="math notranslate nohighlight">\(
+\beta = \left(X^TX\right)^{-1}X^TY
+\)</span>$</p>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let’s use the same example from above and compute the linear regression in a multiple regression system.  To do this, you add the intercept by creating a column of 1’s in the <span class="math notranslate nohighlight">\(X\)</span> matrix, <code class="docutils literal notranslate"><span class="pre">np.ones</span></code> is perfect for this.  Matrix multiplication is in the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> and matrix inverse can be done with <code class="docutils literal notranslate"><span class="pre">np.linalg.inv</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0. 1.]
+ [3. 1.]
+ [7. 1.]
+ [2. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@x</span><span class="p">)</span><span class="o">@</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5769230769230764 4.019230769230767
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-with-categorical-variables">
+<h3>Example with Categorical Variables<a class="headerlink" href="#example-with-categorical-variables" title="Permalink to this headline">¶</a></h3>
+<p>I am going to add a categorical variable to my baby example and show how we would include that.  <span class="math notranslate nohighlight">\((0,4,yes),(3,6,no),(7,8,yes),(2,5,no)\)</span>,</p>
+<p>Since my dataset is tiny, I could do it by hand but what fun would that be?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">,</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span><span class="s1">&#39;no&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;0&#39;, &#39;yes&#39;],
+       [&#39;3&#39;, &#39;no&#39;],
+       [&#39;7&#39;, &#39;yes&#39;],
+       [&#39;2&#39;, &#39;no&#39;]], dtype=&#39;&lt;U21&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>I have printed the column of categorical variables.  I will next change it via a one-hot-encoding.  Again I could use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package but I am not.</p>
+<p>I grab the column that has the categorical variables, find the different values it can be and then add columns to the <code class="docutils literal notranslate"><span class="pre">x</span></code> matrix with the indicator variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">allTheOptionsForCategrocial</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">allTheOptionsForCategrocial</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;no&#39;, &#39;yes&#39;], dtype=&#39;&lt;U21&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">allTheOptionsForCategrocial</span><span class="p">:</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span><span class="kc">None</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;0&#39;, &#39;yes&#39;, &#39;0&#39;, &#39;1&#39;],
+       [&#39;3&#39;, &#39;no&#39;, &#39;1&#39;, &#39;0&#39;],
+       [&#39;7&#39;, &#39;yes&#39;, &#39;0&#39;, &#39;1&#39;],
+       [&#39;2&#39;, &#39;no&#39;, &#39;1&#39;, &#39;0&#39;]], dtype=&#39;&lt;U21&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ve added the columns for the indicator.  Now I will remove the categorical one so all entries are numeric.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;0&#39;, &#39;0&#39;, &#39;1&#39;],
+       [&#39;3&#39;, &#39;1&#39;, &#39;0&#39;],
+       [&#39;7&#39;, &#39;0&#39;, &#39;1&#39;],
+       [&#39;2&#39;, &#39;1&#39;, &#39;0&#39;]], dtype=&#39;&lt;U21&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some reason everything is a char so I’ll convert back to floats.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 1.],
+       [3., 1., 0.],
+       [7., 0., 1.],
+       [2., 1., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Time for the formula!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@x</span><span class="p">)</span><span class="o">@</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@y</span><span class="p">)</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44, 4.4 , 3.96])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Interpreting this insists that slope for numeric is 0.44 but if you have a ‘no’ you have intercept of 4.4 where as if you have a ‘yes’ your intercept is 3.96.  This answer is very similar to before!</p>
+<p>We compute the multiple coeffiecint of determination, <span class="math notranslate nohighlight">\(R^2\)</span> value as <span class="math notranslate nohighlight">\(\frac{SSR}{SST}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="n">SSR</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">SST</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">meany</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+  <span class="n">SSR</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">-</span><span class="n">meany</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+  <span class="n">SST</span> <span class="o">+=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">meany</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">SSR</span><span class="o">/</span><span class="n">SST</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9838699100999083
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="other-regressions">
+<h3>Other Regressions<a class="headerlink" href="#other-regressions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="exponential">
+<h4>Exponential<a class="headerlink" href="#exponential" title="Permalink to this headline">¶</a></h4>
+<p>Many other regressions can be expressed as the linear regression.  For example, you suspect an exponential growth.<br />
+$<span class="math notranslate nohighlight">\(
+y = ce^{ax}
+\)</span><span class="math notranslate nohighlight">\(
+It is enough to take the log of your output \)</span>y<span class="math notranslate nohighlight">\( and fit a linear regression since
+\)</span><span class="math notranslate nohighlight">\(
+\log y = \log(ce^{ax}) = \log c + ax = \beta_0+\beta_1x.
+\)</span>$</p>
+<p>So transform your <span class="math notranslate nohighlight">\(y\)</span> values via the logarithm.  Fit with a linear regression.  Make sure to interpret your predictions correctly when making them.</p>
+</div>
+<div class="section" id="polynomial">
+<h4>Polynomial<a class="headerlink" href="#polynomial" title="Permalink to this headline">¶</a></h4>
+<p>Sometime we might be interested in a polynomial expansion, <span class="math notranslate nohighlight">\(\hat y = \beta_0+\beta_1x+\beta_2 x^2+\cdots+\beta_nx^n\)</span>.  To deal with this, we transform our x variable, computing <span class="math notranslate nohighlight">\(x^2\)</span>, <span class="math notranslate nohighlight">\(x^3\)</span>, etc.  Add these new columns to the multiple regression matrix and compute the multiple linear regression.  Again we should be careful of predcitions and confidence intervals as they are not the same as in the linear case.</p>
+</div>
+</div>
+</div>
+<div class="section" id="logistic-regression">
+<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h2>
+<p>Often we are interested in assigning a probability of a certain outcome based on another variable.  Consider the example of passing your operations research test based on how many hours you studied.  Below is survey results of number of hours studied and an indeicator for passing
+$<span class="math notranslate nohighlight">\(
+(10,1),(5,1),(5,0),(1,0)
+\)</span>$</p>
+<p>We want to be able to figure out your likelyhood of passing based on the number of hours you study.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">],[</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This was especially difficult in that it requires an advanced numerical method, not simply a transformation like the above.  Therefore I will use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">logreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression()</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">logreg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7c733d54c1c0&gt;
+</pre></div>
+</div>
+<img alt="../_images/ChapterRegression_44_1.png" src="../_images/ChapterRegression_44_1.png" />
+</div>
+</div>
+<p>There is clearly some weirdness here.  Partially this is the lack of data.  But you should get the idea on how to fit.  The reshaping of the <code class="docutils literal notranslate"><span class="pre">np.arrays</span></code> was annoying but nesseccary to get the fit done.</p>
+<p>I want to repeat the regression with some data I got from wikipedia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span> 	<span class="mf">0.50</span><span class="p">,</span> 	<span class="mf">0.75</span><span class="p">,</span> 	<span class="mf">1.00</span><span class="p">,</span> 	<span class="mf">1.25</span><span class="p">,</span> 	<span class="mf">1.50</span><span class="p">,</span> 	<span class="mf">1.75</span><span class="p">,</span> 	<span class="mf">1.75</span><span class="p">,</span> 	<span class="mf">2.00</span><span class="p">,</span> 	<span class="mf">2.25</span><span class="p">,</span> 	<span class="mf">2.50</span><span class="p">,</span> 	<span class="mf">2.75</span><span class="p">,</span> 	<span class="mf">3.00</span><span class="p">,</span> 	<span class="mf">3.25</span><span class="p">,</span> 	<span class="mf">3.50</span><span class="p">,</span> 	<span class="mf">4.00</span><span class="p">,</span> 	<span class="mf">4.25</span><span class="p">,</span> 	<span class="mf">4.50</span><span class="p">,</span> 	<span class="mf">4.75</span><span class="p">,</span> 	<span class="mf">5.00</span><span class="p">,</span> 	<span class="mf">5.50</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">0</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">1</span> <span class="p">,</span>	<span class="mi">1</span><span class="p">,</span> 	<span class="mi">1</span><span class="p">,</span> 	<span class="mi">1</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">logreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">logreg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7c733d5c1d20&gt;
+</pre></div>
+</div>
+<img alt="../_images/ChapterRegression_47_1.png" src="../_images/ChapterRegression_47_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Chapter01Modeling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Modeling</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Chapter02LinearProgramming.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Programming</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

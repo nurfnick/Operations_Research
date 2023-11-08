@@ -135,6 +135,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Chapter08GreedyHeuristics.html">
+   Greedy Heuristics
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Chapter09DynamicProgramming.html">
    Dynamic Programming
   </a>
@@ -499,7 +504,7 @@ x+3y\leq 540\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7f908301cc50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x7d5898116bc0&gt;
 </pre></div>
 </div>
 <img alt="../_images/Chapter02LinearProgramming_8_1.png" src="../_images/Chapter02LinearProgramming_8_1.png" />
@@ -791,9 +796,8 @@ x+3y +s_2 = 540\\
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-0366bc08-90f8-47db-a07e-a7ffbbfd436c">
-    <div class="colab-df-container">
-      <div>
+  <div id="df-70da7078-a75b-4c50-8325-79b11fe936cb" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -891,21 +895,21 @@ x+3y +s_2 = 540\\
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-0366bc08-90f8-47db-a07e-a7ffbbfd436c')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
+    <div class="colab-df-buttons">
 
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-70da7078-a75b-4c50-8325-79b11fe936cb')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
-      </button>
+    </button>
 
   <style>
     .colab-df-container {
       display:flex;
-      flex-wrap:wrap;
       gap: 12px;
     }
 
@@ -927,6 +931,10 @@ x+3y +s_2 = 540\\
       fill: #174EA6;
     }
 
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
     [theme=dark] .colab-df-convert {
       background-color: #3B4455;
       fill: #D2E3FC;
@@ -940,30 +948,159 @@ x+3y +s_2 = 540\\
     }
   </style>
 
-      <script>
-        const buttonEl =
-          document.querySelector('#df-0366bc08-90f8-47db-a07e-a7ffbbfd436c button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
+    <script>
+      const buttonEl =
+        document.querySelector('#df-70da7078-a75b-4c50-8325-79b11fe936cb button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
 
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-0366bc08-90f8-47db-a07e-a7ffbbfd436c');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-70da7078-a75b-4c50-8325-79b11fe936cb');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
 
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-dbfa1800-44fd-476f-90ab-c440c0a0e3ff">
+  <button class="colab-df-quickchart" onclick="quickchart('df-dbfa1800-44fd-476f-90ab-c440c0a0e3ff')"
+            title="Suggest charts."
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-dbfa1800-44fd-476f-90ab-c440c0a0e3ff button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
     </div>
   </div>
 </div></div>
@@ -979,9 +1116,8 @@ x+3y +s_2 = 540\\
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-e56ce726-19c0-4327-ad88-c9e6df08f2d5">
-    <div class="colab-df-container">
-      <div>
+  <div id="df-fea25d17-9e16-483d-a9c8-ce4edc3c6e9e" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1044,21 +1180,21 @@ x+3y +s_2 = 540\\
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-e56ce726-19c0-4327-ad88-c9e6df08f2d5')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
+    <div class="colab-df-buttons">
 
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-fea25d17-9e16-483d-a9c8-ce4edc3c6e9e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
-      </button>
+    </button>
 
   <style>
     .colab-df-container {
       display:flex;
-      flex-wrap:wrap;
       gap: 12px;
     }
 
@@ -1080,6 +1216,10 @@ x+3y +s_2 = 540\\
       fill: #174EA6;
     }
 
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
     [theme=dark] .colab-df-convert {
       background-color: #3B4455;
       fill: #D2E3FC;
@@ -1093,30 +1233,159 @@ x+3y +s_2 = 540\\
     }
   </style>
 
-      <script>
-        const buttonEl =
-          document.querySelector('#df-e56ce726-19c0-4327-ad88-c9e6df08f2d5 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
+    <script>
+      const buttonEl =
+        document.querySelector('#df-fea25d17-9e16-483d-a9c8-ce4edc3c6e9e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
 
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-e56ce726-19c0-4327-ad88-c9e6df08f2d5');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-fea25d17-9e16-483d-a9c8-ce4edc3c6e9e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
 
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-1f45865e-d8b6-4ce9-9651-820fddfbdabb">
+  <button class="colab-df-quickchart" onclick="quickchart('df-1f45865e-d8b6-4ce9-9651-820fddfbdabb')"
+            title="Suggest charts."
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-1f45865e-d8b6-4ce9-9651-820fddfbdabb button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
     </div>
   </div>
 </div></div>
@@ -1129,9 +1398,8 @@ x+3y +s_2 = 540\\
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-2366e455-f31a-4f4d-83fe-164bd7b70445">
-    <div class="colab-df-container">
-      <div>
+  <div id="df-833b4812-2b2b-484b-9d2e-c532c3321335" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1166,21 +1434,21 @@ x+3y +s_2 = 540\\
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-2366e455-f31a-4f4d-83fe-164bd7b70445')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
+    <div class="colab-df-buttons">
 
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-833b4812-2b2b-484b-9d2e-c532c3321335')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
-      </button>
+    </button>
 
   <style>
     .colab-df-container {
       display:flex;
-      flex-wrap:wrap;
       gap: 12px;
     }
 
@@ -1202,6 +1470,10 @@ x+3y +s_2 = 540\\
       fill: #174EA6;
     }
 
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
     [theme=dark] .colab-df-convert {
       background-color: #3B4455;
       fill: #D2E3FC;
@@ -1215,30 +1487,32 @@ x+3y +s_2 = 540\\
     }
   </style>
 
-      <script>
-        const buttonEl =
-          document.querySelector('#df-2366e455-f31a-4f4d-83fe-164bd7b70445 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
+    <script>
+      const buttonEl =
+        document.querySelector('#df-833b4812-2b2b-484b-9d2e-c532c3321335 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
 
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-2366e455-f31a-4f4d-83fe-164bd7b70445');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-833b4812-2b2b-484b-9d2e-c532c3321335');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
 
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
     </div>
   </div>
 </div></div>
@@ -1261,23 +1535,28 @@ x+3y +s_2 = 540\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/numpy/core/fromnumeric.py:86: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        message: Optimization terminated successfully. (HiGHS Status 7: Optimal)
+        success: True
+         status: 0
+            fun: -520.0
+              x: [ 1.000e+02  1.100e+02]
+            nit: 3
+          lower:  residual: [ 1.000e+02  1.100e+02]
+                 marginals: [ 0.000e+00  0.000e+00]
+          upper:  residual: [       inf        inf]
+                 marginals: [ 0.000e+00  0.000e+00]
+          eqlin:  residual: []
+                 marginals: []
+        ineqlin:  residual: [ 0.000e+00  1.100e+02  0.000e+00]
+                 marginals: [-1.887e-01 -0.000e+00 -1.698e-01]
+ mip_node_count: 0
+ mip_dual_bound: 0.0
+        mip_gap: 0.0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     con: array([], dtype=float64)
-     fun: -519.9999998950909
- message: &#39;Optimization terminated successfully.&#39;
-     nit: 5
-   slack: array([3.18961611e-07, 1.10000000e+02, 2.63395805e-07])
-  status: 0
- success: True
-       x: array([ 99.99999999, 109.99999996])
-</pre></div>
 </div>
 </div>
-</div>
-<p>We can see that there is some ambiguity with the results being what we expected <strong>if</strong> we round.  We consider that as part of the quickness and allow for that, afterall we could not create less than a full pillow!</p>
+<p>Interpreting this result is a little difficult.  <code class="docutils literal notranslate"><span class="pre">fun</span></code> returns the opposite of the value we were after (maximum of profit).  <code class="docutils literal notranslate"><span class="pre">x</span></code> is the number of pillows we should be producing to achieve the maximum.  <code class="docutils literal notranslate"><span class="pre">ineqlin:</span> <span class="pre">residuals</span></code> is giving the slack results.</p>
 </div>
 <div class="section" id="example-2">
 <h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
@@ -1370,9 +1649,8 @@ P= 73d+68c
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-3163e5be-644e-4d47-a92b-65a769b1d497">
-    <div class="colab-df-container">
-      <div>
+  <div id="df-b75dfb4a-8e7f-4569-ba4d-c5f0f43b2d34" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1407,21 +1685,21 @@ P= 73d+68c
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-3163e5be-644e-4d47-a92b-65a769b1d497')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
+    <div class="colab-df-buttons">
 
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b75dfb4a-8e7f-4569-ba4d-c5f0f43b2d34')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
   </svg>
-      </button>
+    </button>
 
   <style>
     .colab-df-container {
       display:flex;
-      flex-wrap:wrap;
       gap: 12px;
     }
 
@@ -1443,6 +1721,10 @@ P= 73d+68c
       fill: #174EA6;
     }
 
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
     [theme=dark] .colab-df-convert {
       background-color: #3B4455;
       fill: #D2E3FC;
@@ -1456,30 +1738,32 @@ P= 73d+68c
     }
   </style>
 
-      <script>
-        const buttonEl =
-          document.querySelector('#df-3163e5be-644e-4d47-a92b-65a769b1d497 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b75dfb4a-8e7f-4569-ba4d-c5f0f43b2d34 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
 
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-3163e5be-644e-4d47-a92b-65a769b1d497');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b75dfb4a-8e7f-4569-ba4d-c5f0f43b2d34');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
 
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
     </div>
   </div>
 </div></div>
@@ -1492,18 +1776,23 @@ P= 73d+68c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/numpy/core/fromnumeric.py:86: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     con: array([], dtype=float64)
-     fun: -621.999995902155
- message: &#39;Optimization terminated successfully.&#39;
-     nit: 4
-   slack: array([1.12047230e-07, 3.65704693e-07])
-  status: 0
- success: True
-       x: array([1.99999999, 6.99999995])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        message: Optimization terminated successfully. (HiGHS Status 7: Optimal)
+        success: True
+         status: 0
+            fun: -622.0
+              x: [ 2.000e+00  7.000e+00]
+            nit: 2
+          lower:  residual: [ 2.000e+00  7.000e+00]
+                 marginals: [ 0.000e+00  0.000e+00]
+          upper:  residual: [       inf        inf]
+                 marginals: [ 0.000e+00  0.000e+00]
+          eqlin:  residual: []
+                 marginals: []
+        ineqlin:  residual: [ 0.000e+00  0.000e+00]
+                 marginals: [-4.750e+00 -9.750e+00]
+ mip_node_count: 0
+ mip_dual_bound: 0.0
+        mip_gap: 0.0
 </pre></div>
 </div>
 </div>
