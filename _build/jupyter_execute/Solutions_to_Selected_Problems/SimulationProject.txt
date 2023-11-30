@@ -1,0 +1,39 @@
+import random
+
+random.choices([10,9],[9,1])[0]
+
+cho = []
+
+for i in range(1000):
+  cho.append(random.choices([10,9],[9,1])[0])
+
+sum(cho)/len(cho)
+
+random.choices([1,0],[1,9])[0]
+
+numtests = []
+for i in range(1000):
+  test = []
+  while sum(test) ==0:
+    test.append(random.choices([1,0],[1,9])[0])
+  numtests.append(len(test))
+
+sum(numtests)/len(numtests)
+
+test.index(1)
+
+rs = [10,10,10,10,10,10,10,10,10,9]
+random.shuffle(rs)
+rs
+
+rs.index(9)+1
+
+pos = []
+
+for i in range(1000):
+  random.shuffle(rs)
+  pos.append(rs.index(9)+1)
+
+sum(pos)/len(pos)
+
+

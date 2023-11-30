@@ -1,0 +1,21 @@
+import random
+
+random.choices([95,85,75,65,55],[10,20,40,20,10], k = 5)
+
+k = 10000
+
+choice = random.choices([95,85,75,65,55],[10,20,40,20,10], k = k)
+
+sum(choice)/k
+
+temp = [95,85,75,65,55]
+prob = [.10,.20,.40,.20,.10]
+e = 0
+for i in range(len(temp)):
+  e+= temp[i]*prob[i]
+
+e
+
+
+
+

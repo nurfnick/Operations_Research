@@ -1,0 +1,56 @@
+import random
+
+random.seed(42)
+
+random.choice([1,2,3,4,5,6])
+
+l = []
+
+for i in range(1000):
+  l.append(random.choice([1,2,3,4,5,6]))
+
+import numpy
+import matplotlib.pyplot as plt
+
+label, vals = numpy.histogram(l,6)
+plt.stairs(label, vals)
+
+plt.hist(l,6)
+
+sum(l)/len(l)
+
+random.choices([1,2,3,4,5,6],[1,1,1,1,1,2])[0]
+
+l = []
+
+for i in range(1000):
+  l.append(random.choices([1,2,3,4,5,6],[.1,.1,.1,.1,.1,.5])[0])
+
+sum(l)/len(l)
+
+vater = [1,1,1]
+
+def doTheyGetOff(listOfVater):
+  for i in range(len(listOfVater)):
+    if listOfVater[i] == 1:
+      if random.random()>0.5:
+        listOfVater[i] = 0
+  return listOfVater
+
+
+
+vater = [1,1,1]
+howManyTimes = []
+
+for i in range(10000):
+  vater = [1,1,1]
+  times = 0
+  while sum(vater)!=0:
+    vater = doTheyGetOff(vater)
+    times +=1
+  howManyTimes.append(times)
+
+import numpy
+numpy.mean(howManyTimes)
+
+
