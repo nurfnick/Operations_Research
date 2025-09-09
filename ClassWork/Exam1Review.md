@@ -13,3 +13,13 @@
 4. Do a linear regression on some points with random discuss what line means.
 
 ## Work
+
+1. Take derivative and set equal to zero.
+$$f'(x) = 2xe^{-x} +x^2e^{-x}(-1)$$
+
+$$2xe^{-x} -x^2e^{-x}=xe^{-x}\left(2-x\right)=0$$
+
+So $x = 0$ or $e^{-x} = 0$ or $2-x = 0$.  The middle one is never zero!  
+
+How to find if maximum or minimum?  Check the sign of the derivative.  It is negative below zero, positive from 0 to 2 and negative after 2.  Thus 0 is a minimum and 2 isd a max.
+
