@@ -1,0 +1,13 @@
+#AMPL data for "Pillow" problem Operations Research
+
+data;
+
+set I := 1 2;
+
+param:   fab,   sew,   fill,   pro  :=
+    1   6   1     11    3   
+    2   7    3     4    2  ; 
+
+param fabMax := 1370;
+param sewMax := 540;
+param fillMax := 1540;
